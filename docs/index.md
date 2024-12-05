@@ -8,7 +8,7 @@ As such, this *hub* is very much a work-in-progress, and will remain so as we co
 
 ### Contributors
 
-These sort of tasks are never accomplished alone! Massive thanks to the people who have contributed this.
+These sort of tasks are never accomplished alone! Massive thanks to the people who have contributed to this.
 
 <div class="grid cards" markdown>
 
