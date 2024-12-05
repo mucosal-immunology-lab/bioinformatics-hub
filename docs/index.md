@@ -16,7 +16,7 @@ These sort of tasks are never accomplished alone! Massive thanks to the people w
     **Matthew Macowan**
 
 -   ![Céline Pattaroni](assets/Contributors/celine_pattaroni.jpeg){ width="150" }  
-    **Céline Pattaroni**
+    [**Céline Pattaroni**](https://research.monash.edu/en/persons/celine-pattaroni)
 
 -   ![Giulia Iacono](assets/Contributors/giulia_iacono.jpg){ width="150" }  
     **Giulia Iacono**
