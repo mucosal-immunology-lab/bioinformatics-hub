@@ -5,6 +5,9 @@ repo_name: Mucosal-Immunology-Lab/bioinformatic-hub
 nav:
   - Home: index.md
   - Bulk Transcriptomics: RNAseq/rnaseq-nfcore.md
+  - Nextflow Pipelines: 
+    - nf-mucimmuno: NextFlow/nf-mucimmuno.md
+    - Single-cell RNAseq: NextFlow/scRNAseq.md
 
 theme:
   name: material
