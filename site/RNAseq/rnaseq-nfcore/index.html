@@ -1,264 +1,819 @@
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        
-        
-        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+    
+    
+      
         <title>Bulk Transcriptomics - Mucosal Immunology Bioinformatics Hub</title>
-        <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/fontawesome.min.css" rel="stylesheet">
-        <link href="../../css/brands.min.css" rel="stylesheet">
-        <link href="../../css/solid.min.css" rel="stylesheet">
-        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
-        <link href="../../css/base.css" rel="stylesheet">
-        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
-        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script> 
-    </head>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
 
-    <body>
-        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
-                <a class="navbar-brand" href="../..">Mucosal Immunology Bioinformatics Hub</a>
-                <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <!-- Expanded navigation -->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                        <!-- Main navigation -->
-                        <ul class="nav navbar-nav">
-                            <li class="nav-item">
-                                <a href="../.." class="nav-link">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">Bulk Transcriptomics</a>
-                            </li>
-                        </ul>
-
-                    <ul class="nav navbar-nav ms-md-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
-                                <i class="fa fa-search"></i> Search
-                            </a>
-                        </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../.." class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" class="nav-link">Mucosal-Immunology-Lab/bioinformatic-hub</a>
-                            </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
-            <span class="fa fa-angle-down"></span>
-        </button>
-    </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
-        <ul class="nav flex-column">
-            
-            <li class="nav-item" data-bs-level="1"><a href="#processing-rna-sequencing-data-with-nf-core" class="nav-link">Processing RNA sequencing data with nf-core</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#overview-book" class="nav-link">Overview :book:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#installation" class="nav-link">Installation</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#prepare-your-sample-sheet-pencil" class="nav-link">Prepare your sample sheet :pencil:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#run-the-pipeline-green_apple" class="nav-link">Run the pipeline :green_apple:</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#import-data-into-r" class="nav-link">Import data into R</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-bs-level="1"><a href="#rights" class="nav-link">Rights</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-        </ul>
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#processing-rna-sequencing-data-with-nf-core" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
-</div></div>
-                    <div class="col-md-9" role="main">
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mucosal Immunology Bioinformatics Hub" class="md-header__button md-logo" aria-label="Mucosal Immunology Bioinformatics Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mucosal Immunology Bioinformatics Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Bulk Transcriptomics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mucosal-Immunology-Lab/bioinformatic-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mucosal Immunology Bioinformatics Hub" class="md-nav__button md-logo" aria-label="Mucosal Immunology Bioinformatics Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mucosal Immunology Bioinformatics Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mucosal-Immunology-Lab/bioinformatic-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Bulk Transcriptomics
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Bulk Transcriptomics
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-nextflow-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create nextflow environment 🐍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-and-compile-rsem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download and compile RSEM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-your-sample-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare your sample sheet ✏️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run the pipeline 🍏
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run the pipeline 🍏">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-a-new-interactive-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start a new interactive session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-your-set-up-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test your set-up (optional) 🦺
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-genome-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download genome files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Download genome files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#human-genome-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human genome files 👨👩
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mouse-genome-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mouse genome files 🐁
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-your-rna-sequencing-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run your RNA sequencing reads 🐁
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run your RNA sequencing reads 🐁">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#human-run-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human run script 👨👩
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mouse-run-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mouse run script 🐁
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-data-into-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import data into R
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Import data into R">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r-code-for-import-and-voom-normalisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      R code for import and voom-normalisation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rights
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-nextflow-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create nextflow environment 🐍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-and-compile-rsem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download and compile RSEM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-your-sample-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare your sample sheet ✏️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run the pipeline 🍏
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run the pipeline 🍏">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-a-new-interactive-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start a new interactive session
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-your-set-up-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test your set-up (optional) 🦺
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-genome-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download genome files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Download genome files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#human-genome-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human genome files 👨👩
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mouse-genome-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mouse genome files 🐁
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-your-rna-sequencing-reads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run your RNA sequencing reads 🐁
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run your RNA sequencing reads 🐁">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#human-run-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human run script 👨👩
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mouse-run-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mouse run script 🐁
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-data-into-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import data into R
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Import data into R">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#r-code-for-import-and-voom-normalisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      R code for import and voom-normalisation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rights
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
 
 <h1 id="processing-rna-sequencing-data-with-nf-core">Processing RNA sequencing data with nf-core</h1>
-<ul>
-<li><a href="#processing-rna-sequencing-data-with-nf-core">Processing RNA sequencing data with nf-core</a></li>
-<li><a href="#overview-book">Overview :book:</a></li>
-<li><a href="#installation">Installation</a><ul>
-<li><a href="#create-nextflow-environment-snake">Create nextflow environment :snake:</a></li>
-<li><a href="#download-and-compile-rsem">Download and compile RSEM</a></li>
-</ul>
-</li>
-<li><a href="#prepare-your-sample-sheet-pencil">Prepare your sample sheet :pencil:</a></li>
-<li><a href="#run-the-pipeline-green_apple">Run the pipeline :green_apple:</a><ul>
-<li><a href="#start-a-new-interactive-session">Start a new interactive session</a></li>
-<li><a href="#test-your-set-up-optional-safety_vest">Test your set-up (optional) :safety_vest:</a></li>
-<li><a href="#download-genome-files">Download genome files</a></li>
-<li><a href="#human-genome-files-manwoman">Human genome files :man::woman:</a></li>
-<li><a href="#mouse-genome-files-mouse">Mouse genome files :mouse:</a></li>
-<li><a href="#run-your-rna-sequencing-reads-dna">Run your RNA sequencing reads :dna:</a></li>
-<li><a href="#human-run-script-manwoman">Human run script :man::woman:</a></li>
-<li><a href="#mouse-run-script-mouse">Mouse run script :mouse:</a></li>
-</ul>
-</li>
-<li><a href="#import-data-into-r">Import data into R</a><ul>
-<li><a href="#r-code-for-import-and-voom-normalisation">R code for import and voom-normalisation</a></li>
-</ul>
-</li>
-<li><a href="#rights">Rights</a></li>
-</ul>
-<h2 id="overview-book">Overview :book:</h2>
+<h2 id="overview">Overview <img alt="📖" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4d6.png" title=":book:" /></h2>
 <p>Here we will describe the process for processing RNA sequencing data using the <a href="https://nf-co.re/rnaseq"><strong>nf-core/rnaseq</strong></a> pipeline. This document was written as of version 3.14.0</p>
 <p><strong>nf-core/rnaseq</strong> is a bioinformatics pipeline that can be used to analyse RNA sequencing data obtained from organisms with a reference genome and annotation. It takes a samplesheet and FASTQ files as input, performs quality control (QC), trimming and (pseudo-)alignment, and produces a gene expression matrix and extensive QC report.</p>
 <p>Full details of the pipeline and the many customisable options can be view on the pipeline website.</p>
-<p><img src="../../assets/RNAseq/nf-core-rnaseq_metro_map_grey.png"></p>
+<p><img alt="Metro Map" src="../../assets/RNAseq/nf-core-rnaseq_metro_map_grey.png" /></p>
 <h2 id="installation">Installation</h2>
 <p>In this section, we discuss the installation process on the M3 MASSIVE cluster.</p>
-<h3 id="create-nextflow-environment-snake">Create nextflow environment :snake:</h3>
+<h3 id="create-nextflow-environment">Create nextflow environment 🐍</h3>
 <p>To begin with, we need to create a new environment using <a href="https://github.com/mamba-org/mamba"><strong>mamba</strong></a>. Mamba is recommended here over conda due to its massively improved dependency solving speeds and parallel package downloading (among other reasons).</p>
-<pre><code class="language-bash"># Create environment
-mamba create -n nextflow nextflow \
-    salmon=1.10.0 fq fastqc umi_tools \
-    trim-galore bbmap sortmerna samtools \
-    picard stringtie bedtools rseqc \
-    qualimap preseq multiqc subread \
-    ucsc-bedgraphtobigwig ucsc-bedclip \
-    bioconductor-deseq2
-
-# Activate environment
-mamba activate nextflow
-</code></pre>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Create environment</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>mamba<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>nextflow<span class="w"> </span>nextflow<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nv">salmon</span><span class="o">=</span><span class="m">1</span>.10.0<span class="w"> </span>fq<span class="w"> </span>fastqc<span class="w"> </span>umi_tools<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span>trim-galore<span class="w"> </span>bbmap<span class="w"> </span>sortmerna<span class="w"> </span>samtools<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span>picard<span class="w"> </span>stringtie<span class="w"> </span>bedtools<span class="w"> </span>rseqc<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>qualimap<span class="w"> </span>preseq<span class="w"> </span>multiqc<span class="w"> </span>subread<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span>ucsc-bedgraphtobigwig<span class="w"> </span>ucsc-bedclip<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span>bioconductor-deseq2
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Activate environment</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>mamba<span class="w"> </span>activate<span class="w"> </span>nextflow
+</span></code></pre></div>
 <h3 id="download-and-compile-rsem">Download and compile RSEM</h3>
 <p>RSEM is a software package for estimating gene and isoform expression levels from RNA-Seq data.</p>
-<pre><code class="language-bash"># Download RSEM
-git clone https://github.com/deweylab/RSEM
-
-# Enter the directory (RSEM) and compile
-cd RSEM; make
-</code></pre>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Download RSEM</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/deweylab/RSEM
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Enter the directory (RSEM) and compile</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">cd</span><span class="w"> </span>RSEM<span class="p">;</span><span class="w"> </span>make
+</span></code></pre></div>
 <p>Make note of this directory for your run script so you can add this to your PATH variable.</p>
-<h2 id="prepare-your-sample-sheet-pencil">Prepare your sample sheet :pencil:</h2>
+<h2 id="prepare-your-sample-sheet">Prepare your sample sheet ✏️</h2>
 <p>You will need to have a sample sheet prepared that contains a sample name, the <code>fastq.gz</code> file paths, and the strandedness of the read files.</p>
 <p>If you are working with a single-ended sequencing run, leave the <code>fastq_2</code> column empty, but the header still needs to be included.</p>
 <p>For example, <code>samplesheet.csv</code>:</p>
-<pre><code class="language-bash">sample,fastq_1,fastq_2,strandedness
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz,auto
-CONTROL_REP1,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz,auto
-CONTROL_REP1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz,auto
-</code></pre>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sample,fastq_1,fastq_2,strandedness
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz,auto
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>CONTROL_REP1,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz,auto
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>CONTROL_REP1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz,auto
+</span></code></pre></div>
 <p>Each row represents a fastq file (single-end) or a pair of fastq files (paired end). Rows with the same sample identifier are considered technical replicates and merged automatically. The strandedness refers to the library preparation and will be automatically inferred if set to auto.</p>
-<h2 id="run-the-pipeline-green_apple">Run the pipeline :green_apple:</h2>
+<h2 id="run-the-pipeline">Run the pipeline 🍏</h2>
 <h3 id="start-a-new-interactive-session">Start a new interactive session</h3>
 <p>Firstly, we will start a new interactive session on the M3 MASSIVE cluster.</p>
-<pre><code class="language-bash">smux n --time=2-00:00:00 --mem=64GB --ntasks=1 --cpuspertask=12 -J nf-core/rnaseq
-</code></pre>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>smux<span class="w"> </span>n<span class="w"> </span>--time<span class="o">=</span><span class="m">2</span>-00:00:00<span class="w"> </span>--mem<span class="o">=</span>64GB<span class="w"> </span>--ntasks<span class="o">=</span><span class="m">1</span><span class="w"> </span>--cpuspertask<span class="o">=</span><span class="m">12</span><span class="w"> </span>-J<span class="w"> </span>nf-core/rnaseq
+</span></code></pre></div>
 <p>Once we are inside the interactive session, we need to select an appropriate version of the Java JDK to use. For the Nextflow pipeline we will be running, we need at least <strong>version 17+</strong>.</p>
-<pre><code class="language-bash"># View available java JDK modules
-module avail java
-
-# Load an appropriate one (over version 17)
-module load java/openjdk-17.0.2
-
-# Can double-check the correct version is loaded
-java --version
-</code></pre>
-<h3 id="test-your-set-up-optional-safety_vest">Test your set-up (optional) :safety_vest:</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># View available java JDK modules</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>module<span class="w"> </span>avail<span class="w"> </span>java
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Load an appropriate one (over version 17)</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>module<span class="w"> </span>load<span class="w"> </span>java/openjdk-17.0.2
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Can double-check the correct version is loaded</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>java<span class="w"> </span>--version
+</span></code></pre></div>
+<h3 id="test-your-set-up-optional">Test your set-up (optional) 🦺</h3>
 <p>This step is optional, but highly advisable for a first-time setup or when re-installing.</p>
-<pre><code class="language-bash">nextflow run nf-core/rnaseq -r 3.14.0 \
-    -profile test \
-    --outdir test \
-    -resume \
-    --skip-dupradar \
-    --skip_markduplicates
-</code></pre>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.14.0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>-profile<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>--outdir<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>-resume<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span>--skip-dupradar<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span>--skip_markduplicates
+</span></code></pre></div>
 <ul>
-<li>We skip the <code>dupradar</code> step, because to install <code>bioconductor-dupradar</code>, mamba wants to downgrade <code>salmon</code> to a very early version, which is not ideal :facepalm:</li>
-<li>We also skip the <code>markduplicates</code> step because it is not recommended to remove duplicates anyway due to normal biological duplicates (i.e. there won't just be 1 copy of a given gene in a complete sample) :mag::sparkles:</li>
+<li>We skip the <code>dupradar</code> step, because to install <code>bioconductor-dupradar</code>, mamba wants to downgrade <code>salmon</code> to a very early version, which is not ideal <img alt="🤦" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f926.png" title=":facepalm:" /></li>
+<li>We also skip the <code>markduplicates</code> step because it is not recommended to remove duplicates anyway due to normal biological duplicates (i.e. there won't just be 1 copy of a given gene in a complete sample) <img alt="🔍" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f50d.png" title=":mag:" /><img alt="✨" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/2728.png" title=":sparkles:" /></li>
 </ul>
 <h3 id="download-genome-files">Download genome files</h3>
 <p>To avoid issues with genome incompatibility with the version of STAR you are running, it is recommended to simply download the relevant genome fasta and GTF files using the following scripts, and then supply them directly to the function call.</p>
-<h4 id="human-genome-files-manwoman">Human genome files :man::woman:</h4>
-<pre><code class="language-bash">#!/bin/bash
-VERSION=111
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/homo_sapiens/Homo_sapiens.GRCh38.$VERSION.gtf.gz
-</code></pre>
-<h4 id="mouse-genome-files-mouse">Mouse genome files :mouse:</h4>
-<pre><code class="language-bash">#!/bin/bash
-VERSION=111
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/mus_musculus/Mus_musculus.GRCm39.$VERSION.gtf.gz
-</code></pre>
-<h3 id="run-your-rna-sequencing-reads-dna">Run your RNA sequencing reads :dna:</h3>
+<h4 id="human-genome-files">Human genome files 👨👩</h4>
+<div class="language-bash highlight"><span class="filename">01_retrieve_human_genome.sh</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">VERSION</span><span class="o">=</span><span class="m">111</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>wget<span class="w"> </span>-L<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-<span class="nv">$VERSION</span>/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>wget<span class="w"> </span>-L<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-<span class="nv">$VERSION</span>/gtf/homo_sapiens/Homo_sapiens.GRCh38.<span class="nv">$VERSION</span>.gtf.gz
+</span></code></pre></div>
+<h4 id="mouse-genome-files">Mouse genome files 🐁</h4>
+<div class="language-bash highlight"><span class="filename">01_retrieve_mouse_genome.sh</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">VERSION</span><span class="o">=</span><span class="m">111</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>wget<span class="w"> </span>-L<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-<span class="nv">$VERSION</span>/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>wget<span class="w"> </span>-L<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-<span class="nv">$VERSION</span>/gtf/mus_musculus/Mus_musculus.GRCm39.<span class="nv">$VERSION</span>.gtf.gz
+</span></code></pre></div>
+<h3 id="run-your-rna-sequencing-reads">Run your RNA sequencing reads 🐁</h3>
 <p>To avoid typing the whole command out (and in case the pipeline crashes), create a script that will handle the process. Two examples are given here, with one for human samples, and one for mouse samples.</p>
 <ul>
 <li>You will need to replace the RSEM folder location with your own path from above.</li>
 <li>Using the <code>save_reference</code> option stores the formatted genome files to save time if you need to resume or restart the pipeline.</li>
 </ul>
-<h4 id="human-run-script-manwoman">Human run script :man::woman:</h4>
-<pre><code class="language-bash">#!/bin/bash
-module load java/openjdk-17.0.2
-export PATH=$PATH:/home/mmacowan/mf33/tools/RSEM/
-
-nextflow run nf-core/rnaseq -r 3.14.0 \
-    --input samplesheet.csv \
-    --outdir rnaseq_output \
-    --fasta /home/mmacowan/mf33/scratch_nobackup/RNA/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz \
-    --gtf /home/mmacowan/mf33/scratch_nobackup/RNA/Homo_sapiens.GRCh38.111.gtf.gz \
-    --skip_dupradar \
-    --skip_markduplicates \
-    --save_reference \
-    -resume
-
-</code></pre>
-<h4 id="mouse-run-script-mouse">Mouse run script :mouse:</h4>
-<pre><code class="language-bash">#!/bin/bash
-module load java/openjdk-17.0.2
-export PATH=$PATH:”/home/mmacowan/mf33/tools/RSEM/”
-
-nextflow run nf-core/rnaseq -r 3.14.0 \
-    --input samplesheet.csv \
-    --outdir rnaseq_output \
-    --fasta /home/mmacowan/mf33/scratch_nobackup/RNA/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz \
-    --gtf /home/mmacowan/mf33/scratch_nobackup/RNA/Mus_musculus.GRCm39.111.gtf.gz \
-    --skip_dupradar \
-    --skip_markduplicates \
-    --save_reference \
-    -resume
-</code></pre>
+<h4 id="human-run-script">Human run script 👨👩</h4>
+<div class="language-bash highlight"><span class="filename">02_run_rnaseq_human.sh</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>module<span class="w"> </span>load<span class="w"> </span>java/openjdk-17.0.2
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/mmacowan/mf33/tools/RSEM/
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.14.0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span>--input<span class="w"> </span>samplesheet.csv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span>--outdir<span class="w"> </span>rnaseq_output<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span>--fasta<span class="w"> </span>/home/mmacowan/mf33/scratch_nobackup/RNA/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span>--gtf<span class="w"> </span>/home/mmacowan/mf33/scratch_nobackup/RNA/Homo_sapiens.GRCh38.111.gtf.gz<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span>--skip_dupradar<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span>--skip_markduplicates<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span>--save_reference<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span>-resume
+</span></code></pre></div>
+<h4 id="mouse-run-script">Mouse run script 🐁</h4>
+<div class="language-bash highlight"><span class="filename">02_run_rnaseq_mouse.sh</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>module<span class="w"> </span>load<span class="w"> </span>java/openjdk-17.0.2
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:”/home/mmacowan/mf33/tools/RSEM/”
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.14.0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span>--input<span class="w"> </span>samplesheet.csv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span>--outdir<span class="w"> </span>rnaseq_output<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span>--fasta<span class="w"> </span>/home/mmacowan/mf33/scratch_nobackup/RNA/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span>--gtf<span class="w"> </span>/home/mmacowan/mf33/scratch_nobackup/RNA/Mus_musculus.GRCm39.111.gtf.gz<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span>--skip_dupradar<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span>--skip_markduplicates<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span>--save_reference<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span>-resume
+</span></code></pre></div>
 <h2 id="import-data-into-r">Import data into R</h2>
 <p>We have a standardised method for importing data into R. Luckily for us, the NF-CORE/rnaseq pipeline outputs are provided in <code>.rds</code> format as <code>SummarizedExperiment</code> objects, with bias-corrected gene counts without an offset.</p>
 <ul>
@@ -272,65 +827,65 @@ nextflow run nf-core/rnaseq -r 3.14.0 \
 </ul>
 <h3 id="r-code-for-import-and-voom-normalisation">R code for import and voom-normalisation</h3>
 <p>Here we show our standard process for preparing RNAseq data for downstream analysis.</p>
-<pre><code class="language-r"># Load R packages
-pkgs &lt;- c('knitr', 'here', 'SummarizedExperiment', 'biomaRt', 'edgeR', 'limma')
-pacman::p_load(char = pkgs)
-
-# Import the bias-corrected counts from STAR Salmon
-rna_data &lt;- readRDS(here('input', 'salmon.merged.gene_counts_length_scaled.rds'))
-
-# Get Ensembl annotations
-ensembl &lt;- useMart('ensembl', dataset = 'hsapiens_gene_ensembl')
-
-ensemblIDsBronch &lt;- rownames(rna_bronch)
-
-gene_list &lt;- getBM(attributes = c('ensembl_gene_id', 'hgnc_symbol', 'gene_biotype'),
-                   filters = 'ensembl_gene_id', values = ensemblIDsBronch, mart = ensembl)
-colnames(gene_list) &lt;- c(&quot;gene_id&quot;, &quot;hgnc_symbol&quot;, &quot;gene_biotype&quot;)
-gene_list &lt;- filter(gene_list, !duplicated(gene_id))
-
-# Ensure that only genes in the STAR Salmon outputs are kept for the gene list
-rna_data &lt;- rna_data[rownames(rna_data) %in% gene_list$gene_id, ]
-
-# Add the ENSEMBL data to the rowData element
-rowData(rna_data) &lt;- merge(gene_list, rowData(rna_data), by = &quot;gene_id&quot;, all = FALSE)
-
-# Load the RNA metadata
-metadata_rna &lt;- read_csv(here('input', 'metadata_rna.csv'))
-
-# Sort the metadata rows to match the order of the abundance data
-rownames(metadata_rna) &lt;- metadata_rna$RNA_barcode
-metadata_rna &lt;- metadata_rna[colnames(rna_data),]
-
-# Create a DGEList from the SummarizedExperiment object
-rna_data_dge &lt;- DGEList(assay(rna_data, 'counts'), 
-                        samples = metadata_rna, 
-                        group = metadata_rna$group,
-                        genes = rowData(rna_data),
-                        remove.zeros = TRUE)
-
-# Filter the DGEList based on the group information
-design &lt;- model.matrix(~ group, data = rna_data_dge$samples)
-keep_min10 &lt;- filterByExpr(rna_data_dge, design, min.count = 10)
-rna_data_dge_min10 &lt;- rna_data_dge[keep_min10, ]
-
-# Calculate norm factors and perform voom normalisation
-rna_data_dge_min10 &lt;- calcNormFactors(rna_data_dge_min10)
-rna_data_dge_min10 &lt;- voom(rna_data_dge_min10, design, plot = TRUE)
-
-# Add the normalised abundance data from STAR Salmon and filter to match the counts data
-rna_data_dge_min10$abundance &lt;- as.matrix(assay(rna_bronch, 'abundance'))[keep_min10, ]
-
-# Select protein coding defined genes only
-rna_data_dge_min10 &lt;- rna_data_dge_min10[rna_data_dge_min10$genes$gene_biotype == &quot;protein_coding&quot; &amp; rna_data_dge_min10$genes$hgnc_symbol != &quot;&quot;, ]
-
-# Add symbol as rowname
-rownames(rna_data_dge_min10) &lt;- rna_data_dge_min10$genes$gene_name
-
-# Save the DGEList
-saveRDS(rna_data_dge_min10, here('input', 'rna_data_dge_min10.rds'))
-</code></pre>
-<h1 id="rights">Rights</h1>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Load R packages</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">pkgs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;knitr&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;here&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;SummarizedExperiment&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;biomaRt&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;edgeR&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;limma&#39;</span><span class="p">)</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkgs</span><span class="p">)</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Import the bias-corrected counts from STAR Salmon</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">rna_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readRDS</span><span class="p">(</span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;salmon.merged.gene_counts_length_scaled.rds&#39;</span><span class="p">))</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1"># Get Ensembl annotations</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="n">ensembl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">useMart</span><span class="p">(</span><span class="s">&#39;ensembl&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dataset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;hsapiens_gene_ensembl&#39;</span><span class="p">)</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="n">ensemblIDsBronch</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">rna_bronch</span><span class="p">)</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="n">gene_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">getBM</span><span class="p">(</span><span class="n">attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;ensembl_gene_id&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;hgnc_symbol&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gene_biotype&#39;</span><span class="p">),</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">                   </span><span class="n">filters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;ensembl_gene_id&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ensemblIDsBronch</span><span class="p">,</span><span class="w"> </span><span class="n">mart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ensembl</span><span class="p">)</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="nf">colnames</span><span class="p">(</span><span class="n">gene_list</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;gene_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hgnc_symbol&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;gene_biotype&quot;</span><span class="p">)</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="n">gene_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">gene_list</span><span class="p">,</span><span class="w"> </span><span class="o">!</span><span class="nf">duplicated</span><span class="p">(</span><span class="n">gene_id</span><span class="p">))</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="c1"># Ensure that only genes in the STAR Salmon outputs are kept for the gene list</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="n">rna_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rna_data</span><span class="p">[</span><span class="nf">rownames</span><span class="p">(</span><span class="n">rna_data</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">gene_list</span><span class="o">$</span><span class="n">gene_id</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="c1"># Add the ENSEMBL data to the rowData element</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="nf">rowData</span><span class="p">(</span><span class="n">rna_data</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">gene_list</span><span class="p">,</span><span class="w"> </span><span class="nf">rowData</span><span class="p">(</span><span class="n">rna_data</span><span class="p">),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gene_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="c1"># Load the RNA metadata</span>
+</span><span id="__span-10-25"><a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="n">metadata_rna</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;metadata_rna.csv&#39;</span><span class="p">))</span>
+</span><span id="__span-10-26"><a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>
+</span><span id="__span-10-27"><a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="c1"># Sort the metadata rows to match the order of the abundance data</span>
+</span><span id="__span-10-28"><a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="nf">rownames</span><span class="p">(</span><span class="n">metadata_rna</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metadata_rna</span><span class="o">$</span><span class="n">RNA_barcode</span>
+</span><span id="__span-10-29"><a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="n">metadata_rna</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metadata_rna</span><span class="p">[</span><span class="nf">colnames</span><span class="p">(</span><span class="n">rna_data</span><span class="p">),]</span>
+</span><span id="__span-10-30"><a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>
+</span><span id="__span-10-31"><a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="c1"># Create a DGEList from the SummarizedExperiment object</span>
+</span><span id="__span-10-32"><a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="n">rna_data_dge</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">DGEList</span><span class="p">(</span><span class="nf">assay</span><span class="p">(</span><span class="n">rna_data</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;counts&#39;</span><span class="p">),</span><span class="w"> </span>
+</span><span id="__span-10-33"><a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a><span class="w">                        </span><span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata_rna</span><span class="p">,</span><span class="w"> </span>
+</span><span id="__span-10-34"><a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="w">                        </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata_rna</span><span class="o">$</span><span class="n">group</span><span class="p">,</span>
+</span><span id="__span-10-35"><a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="w">                        </span><span class="n">genes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rowData</span><span class="p">(</span><span class="n">rna_data</span><span class="p">),</span>
+</span><span id="__span-10-36"><a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="w">                        </span><span class="n">remove.zeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</span><span id="__span-10-37"><a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a>
+</span><span id="__span-10-38"><a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a><span class="c1"># Filter the DGEList based on the group information</span>
+</span><span id="__span-10-39"><a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a><span class="n">design</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">model.matrix</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rna_data_dge</span><span class="o">$</span><span class="n">samples</span><span class="p">)</span>
+</span><span id="__span-10-40"><a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a><span class="n">keep_min10</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">filterByExpr</span><span class="p">(</span><span class="n">rna_data_dge</span><span class="p">,</span><span class="w"> </span><span class="n">design</span><span class="p">,</span><span class="w"> </span><span class="n">min.count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+</span><span id="__span-10-41"><a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a><span class="n">rna_data_dge_min10</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rna_data_dge</span><span class="p">[</span><span class="n">keep_min10</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-10-42"><a id="__codelineno-10-42" name="__codelineno-10-42" href="#__codelineno-10-42"></a>
+</span><span id="__span-10-43"><a id="__codelineno-10-43" name="__codelineno-10-43" href="#__codelineno-10-43"></a><span class="c1"># Calculate norm factors and perform voom normalisation</span>
+</span><span id="__span-10-44"><a id="__codelineno-10-44" name="__codelineno-10-44" href="#__codelineno-10-44"></a><span class="n">rna_data_dge_min10</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">calcNormFactors</span><span class="p">(</span><span class="n">rna_data_dge_min10</span><span class="p">)</span>
+</span><span id="__span-10-45"><a id="__codelineno-10-45" name="__codelineno-10-45" href="#__codelineno-10-45"></a><span class="n">rna_data_dge_min10</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">voom</span><span class="p">(</span><span class="n">rna_data_dge_min10</span><span class="p">,</span><span class="w"> </span><span class="n">design</span><span class="p">,</span><span class="w"> </span><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</span><span id="__span-10-46"><a id="__codelineno-10-46" name="__codelineno-10-46" href="#__codelineno-10-46"></a>
+</span><span id="__span-10-47"><a id="__codelineno-10-47" name="__codelineno-10-47" href="#__codelineno-10-47"></a><span class="c1"># Add the normalised abundance data from STAR Salmon and filter to match the counts data</span>
+</span><span id="__span-10-48"><a id="__codelineno-10-48" name="__codelineno-10-48" href="#__codelineno-10-48"></a><span class="n">rna_data_dge_min10</span><span class="o">$</span><span class="n">abundance</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="nf">assay</span><span class="p">(</span><span class="n">rna_bronch</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;abundance&#39;</span><span class="p">))[</span><span class="n">keep_min10</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-10-49"><a id="__codelineno-10-49" name="__codelineno-10-49" href="#__codelineno-10-49"></a>
+</span><span id="__span-10-50"><a id="__codelineno-10-50" name="__codelineno-10-50" href="#__codelineno-10-50"></a><span class="c1"># Select protein coding defined genes only</span>
+</span><span id="__span-10-51"><a id="__codelineno-10-51" name="__codelineno-10-51" href="#__codelineno-10-51"></a><span class="n">rna_data_dge_min10</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rna_data_dge_min10</span><span class="p">[</span><span class="n">rna_data_dge_min10</span><span class="o">$</span><span class="n">genes</span><span class="o">$</span><span class="n">gene_biotype</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;protein_coding&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rna_data_dge_min10</span><span class="o">$</span><span class="n">genes</span><span class="o">$</span><span class="n">hgnc_symbol</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</span><span id="__span-10-52"><a id="__codelineno-10-52" name="__codelineno-10-52" href="#__codelineno-10-52"></a>
+</span><span id="__span-10-53"><a id="__codelineno-10-53" name="__codelineno-10-53" href="#__codelineno-10-53"></a><span class="c1"># Add symbol as rowname</span>
+</span><span id="__span-10-54"><a id="__codelineno-10-54" name="__codelineno-10-54" href="#__codelineno-10-54"></a><span class="nf">rownames</span><span class="p">(</span><span class="n">rna_data_dge_min10</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rna_data_dge_min10</span><span class="o">$</span><span class="n">genes</span><span class="o">$</span><span class="n">gene_name</span>
+</span><span id="__span-10-55"><a id="__codelineno-10-55" name="__codelineno-10-55" href="#__codelineno-10-55"></a>
+</span><span id="__span-10-56"><a id="__codelineno-10-56" name="__codelineno-10-56" href="#__codelineno-10-56"></a><span class="c1"># Save the DGEList</span>
+</span><span id="__span-10-57"><a id="__codelineno-10-57" name="__codelineno-10-57" href="#__codelineno-10-57"></a><span class="nf">saveRDS</span><span class="p">(</span><span class="n">rna_data_dge_min10</span><span class="p">,</span><span class="w"> </span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;rna_data_dge_min10.rds&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<h2 id="rights">Rights</h2>
 <p><strong>NF-CORE/rnaseq</strong></p>
 <p>There are many people to thank here for writing and maintaining the NF-CORE/rnaseq pipeline (<a href="https://nf-co.re/rnaseq/3.14.0#credits">see here</a>).
 If you use this pipeline for your analysis, please cite it using the following doi: 10.5281/zenodo.1400710</p>
@@ -339,82 +894,58 @@ If you use this pipeline for your analysis, please cite it using the following d
 <li>Copyright © 2024 – Mucosal Immunology Lab, Melbourne VIC, Australia</li>
 <li>Licence: These tools are provided under the MIT licence (see LICENSE file for details)</li>
 <li>Authors: M. Macowan</li>
-</ul></div>
-            </div>
-        </div>
+</ul>
 
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script src="../../js/bootstrap.bundle.min.js"></script>
-        <script>
-            var base_url = "../..",
-                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
-        </script>
-        <script src="../../js/base.js"></script>
-        <script src="../../search/main.js"></script>
 
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-            <div class="modal-body">
-                <p>From here you can search these documents. Enter your search terms below.</p>
-                <form>
-                    <div class="form-group">
-                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-    </div>
-</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width: 20%;">Keys</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="help shortcut"><kbd>?</kbd></td>
-                    <td>Open this help</td>
-                  </tr>
-                  <tr>
-                    <td class="next shortcut"><kbd>n</kbd></td>
-                    <td>Next page</td>
-                  </tr>
-                  <tr>
-                    <td class="prev shortcut"><kbd>p</kbd></td>
-                    <td>Previous page</td>
-                  </tr>
-                  <tr>
-                    <td class="search shortcut"><kbd>s</kbd></td>
-                    <td>Search</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-
-    </body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
 </html>

@@ -1,24 +1,5 @@
 # Processing RNA sequencing data with nf-core
 
-- [Processing RNA sequencing data with nf-core](#processing-rna-sequencing-data-with-nf-core)
-  - [Overview :book:](#overview-book)
-  - [Installation](#installation)
-    - [Create nextflow environment :snake:](#create-nextflow-environment-snake)
-    - [Download and compile RSEM](#download-and-compile-rsem)
-  - [Prepare your sample sheet :pencil:](#prepare-your-sample-sheet-pencil)
-  - [Run the pipeline :green\_apple:](#run-the-pipeline-green_apple)
-    - [Start a new interactive session](#start-a-new-interactive-session)
-    - [Test your set-up (optional) :safety\_vest:](#test-your-set-up-optional-safety_vest)
-    - [Download genome files](#download-genome-files)
-      - [Human genome files :man::woman:](#human-genome-files-manwoman)
-      - [Mouse genome files :mouse:](#mouse-genome-files-mouse)
-    - [Run your RNA sequencing reads :dna:](#run-your-rna-sequencing-reads-dna)
-      - [Human run script :man::woman:](#human-run-script-manwoman)
-      - [Mouse run script :mouse:](#mouse-run-script-mouse)
-  - [Import data into R](#import-data-into-r)
-    - [R code for import and voom-normalisation](#r-code-for-import-and-voom-normalisation)
-- [Rights](#rights)
-
 ## Overview :book:
 
 Here we will describe the process for processing RNA sequencing data using the [**nf-core/rnaseq**](https://nf-co.re/rnaseq) pipeline. This document was written as of version 3.14.0
@@ -27,13 +8,13 @@ Here we will describe the process for processing RNA sequencing data using the [
 
 Full details of the pipeline and the many customisable options can be view on the pipeline website.
 
-<img src="../../assets/RNAseq/nf-core-rnaseq_metro_map_grey.png">
+![Metro Map](../assets/RNAseq/nf-core-rnaseq_metro_map_grey.png)
 
 ## Installation
 
 In this section, we discuss the installation process on the M3 MASSIVE cluster.
 
-### Create nextflow environment :snake:
+### Create nextflow environment 🐍
 
 To begin with, we need to create a new environment using [**mamba**](https://github.com/mamba-org/mamba). Mamba is recommended here over conda due to its massively improved dependency solving speeds and parallel package downloading (among other reasons).
 
@@ -65,7 +46,7 @@ cd RSEM; make
 
 Make note of this directory for your run script so you can add this to your PATH variable.
 
-## Prepare your sample sheet :pencil:
+## Prepare your sample sheet ✏️
 
 You will need to have a sample sheet prepared that contains a sample name, the `fastq.gz` file paths, and the strandedness of the read files.
 
@@ -82,7 +63,7 @@ CONTROL_REP1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz,a
 
 Each row represents a fastq file (single-end) or a pair of fastq files (paired end). Rows with the same sample identifier are considered technical replicates and merged automatically. The strandedness refers to the library preparation and will be automatically inferred if set to auto.
 
-## Run the pipeline :green_apple:
+## Run the pipeline 🍏
 
 ### Start a new interactive session
 
@@ -105,7 +86,7 @@ module load java/openjdk-17.0.2
 java --version
 ```
 
-### Test your set-up (optional) :safety_vest:
+### Test your set-up (optional) 🦺
 
 This step is optional, but highly advisable for a first-time setup or when re-installing.
 
@@ -125,34 +106,34 @@ nextflow run nf-core/rnaseq -r 3.14.0 \
 
 To avoid issues with genome incompatibility with the version of STAR you are running, it is recommended to simply download the relevant genome fasta and GTF files using the following scripts, and then supply them directly to the function call.
 
-#### Human genome files :man::woman:
+#### Human genome files 👨👩
 
-```bash
+```bash title="01_retrieve_human_genome.sh"
 #!/bin/bash
 VERSION=111
 wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
 wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/homo_sapiens/Homo_sapiens.GRCh38.$VERSION.gtf.gz
 ```
 
-#### Mouse genome files :mouse:
+#### Mouse genome files 🐁
 
-```bash
+```bash title="01_retrieve_mouse_genome.sh"
 #!/bin/bash
 VERSION=111
 wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz
 wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/mus_musculus/Mus_musculus.GRCm39.$VERSION.gtf.gz
 ```
 
-### Run your RNA sequencing reads :dna:
+### Run your RNA sequencing reads 🐁
 
 To avoid typing the whole command out (and in case the pipeline crashes), create a script that will handle the process. Two examples are given here, with one for human samples, and one for mouse samples.
 
 * You will need to replace the RSEM folder location with your own path from above.
 * Using the `save_reference` option stores the formatted genome files to save time if you need to resume or restart the pipeline.
 
-#### Human run script :man::woman:
+#### Human run script 👨👩
 
-```bash
+```bash title="02_run_rnaseq_human.sh"
 #!/bin/bash
 module load java/openjdk-17.0.2
 export PATH=$PATH:/home/mmacowan/mf33/tools/RSEM/
@@ -169,9 +150,9 @@ nextflow run nf-core/rnaseq -r 3.14.0 \
 
 ```
 
-#### Mouse run script :mouse:
+#### Mouse run script 🐁
 
-```bash
+```bash title="02_run_rnaseq_mouse.sh"
 #!/bin/bash
 module load java/openjdk-17.0.2
 export PATH=$PATH:”/home/mmacowan/mf33/tools/RSEM/”
@@ -263,7 +244,7 @@ rownames(rna_data_dge_min10) <- rna_data_dge_min10$genes$gene_name
 saveRDS(rna_data_dge_min10, here('input', 'rna_data_dge_min10.rds'))
 ```
 
-# Rights
+## Rights
 
 **NF-CORE/rnaseq**
 

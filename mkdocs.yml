@@ -5,3 +5,25 @@ repo_name: Mucosal-Immunology-Lab/bioinformatic-hub
 nav:
   - Home: index.md
   - Bulk Transcriptomics: RNAseq/rnaseq-nfcore.md
+
+theme:
+  name: material
+  features:
+    - content.code.copy
+
+extra_css:
+  - extra.css
+
+markdown_extensions: 
+  - pymdownx.emoji
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  

@@ -1,17 +1,7 @@
-# Welcome to MkDocs
+# Welcome to the Mucosal Immunology Lab Bioinformatics Hub
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+## Overview
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+Over the years, we have refined several workflows for processing of the various omic modalities we utilise within our group.
+As with any workflows in the bioinformatics field, these are constantly evolving as new tools and best practices emerge.
+As such, this *hub* is very much a work-in-progress, and will remain so as we continue to add and update it.
