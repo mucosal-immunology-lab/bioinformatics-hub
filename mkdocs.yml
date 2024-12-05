@@ -8,6 +8,7 @@ nav:
   - Nextflow Pipelines: 
     - nf-mucimmuno: NextFlow/nf-mucimmuno.md
     - Single-cell RNAseq: NextFlow/scRNAseq.md
+  - Public Datasets: PublicDatasets/public-datasets.md
 
 theme:
   name: material
