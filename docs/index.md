@@ -28,7 +28,7 @@ These sort of tasks are never accomplished alone! Massive thanks to the people w
 
 ## Group Research Overview
 
-The Mucosal Immunology Research Group, led by Professors Marsland, Harris and Westall, is focused on understanding the fundamental principles in health and disease of the gut, lung and nervous system. Projects span the space from discovery using preclinical models of host-microbe interactions and inflammation through to high performance computational approaches to identify clinical biomarkers and development of novel drug candidates.
+[The Mucosal Immunology Research Group](https://www.monash.edu/medicine/translational/immunology/research/mucosal-immunology-research-group), led by Professors Marsland, Harris and Westall, is focused on understanding the fundamental principles in health and disease of the gut, lung and nervous system. Projects span the space from discovery using preclinical models of host-microbe interactions and inflammation through to high performance computational approaches to identify clinical biomarkers and development of novel drug candidates.
 
 ### Group Heads
 
