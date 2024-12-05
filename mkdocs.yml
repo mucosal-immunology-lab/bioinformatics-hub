@@ -8,6 +8,7 @@ nav:
 
 theme:
   name: material
+  logo: assets/mil_logo.png
   features:
     - content.code.copy
 
@@ -26,4 +27,11 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
   
+extra:
+  analytics:
+    provider: google
+    property: G-7HN0DB92MT
