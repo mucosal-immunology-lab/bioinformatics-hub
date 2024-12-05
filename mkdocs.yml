@@ -16,7 +16,7 @@ theme:
     - content.code.copy
 
 extra_css:
-  - extra.css
+  - stylesheet/extra.css
 
 markdown_extensions: 
   - pymdownx.emoji
@@ -33,6 +33,13 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - markdown.extensions.tables
+  - pymdownx.tabbed
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tasklist
+  - pymdownx.tilde
+  - pymdownx.emoji
   
 extra:
   analytics:

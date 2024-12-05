@@ -3,4 +3,8 @@
     background-color: #6200ea;
     color: #ffffff;
   }
-  
+
+/* Set grid to display 3 columns on all screen sizes */
+.grid.cards {
+  grid-template-columns: repeat(3, 1fr);
+}
