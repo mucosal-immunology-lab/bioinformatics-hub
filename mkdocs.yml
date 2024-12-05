@@ -1,1 +1,7 @@
 site_name: Mucosal Immunology Bioinformatics Hub
+repo_url: https://mucosal-immunology-lab.github.io/bioinformatics-hub/
+repo_name: Mucosal-Immunology-Lab/bioinformatic-hub
+
+nav:
+  - Home: index.md
+  - Bulk Transcriptomics: RNAseq/rnaseq-nfcore.md
