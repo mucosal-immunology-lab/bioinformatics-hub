@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Bulk Transcriptomics - Mucosal Immunology Bioinformatics Hub</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Mucosal Immunology Bioinformatics Hub</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Bulk Transcriptomics</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../.." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" class="nav-link">Mucosal-Immunology-Lab/bioinformatic-hub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#processing-rna-sequencing-data-with-nf-core" class="nav-link">Processing RNA sequencing data with nf-core</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#overview-book" class="nav-link">Overview :book:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#installation" class="nav-link">Installation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#prepare-your-sample-sheet-pencil" class="nav-link">Prepare your sample sheet :pencil:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#run-the-pipeline-green_apple" class="nav-link">Run the pipeline :green_apple:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#import-data-into-r" class="nav-link">Import data into R</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#rights" class="nav-link">Rights</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="processing-rna-sequencing-data-with-nf-core">Processing RNA sequencing data with nf-core</h1>
+<ul>
+<li><a href="#processing-rna-sequencing-data-with-nf-core">Processing RNA sequencing data with nf-core</a></li>
+<li><a href="#overview-book">Overview :book:</a></li>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#create-nextflow-environment-snake">Create nextflow environment :snake:</a></li>
+<li><a href="#download-and-compile-rsem">Download and compile RSEM</a></li>
+</ul>
+</li>
+<li><a href="#prepare-your-sample-sheet-pencil">Prepare your sample sheet :pencil:</a></li>
+<li><a href="#run-the-pipeline-green_apple">Run the pipeline :green_apple:</a><ul>
+<li><a href="#start-a-new-interactive-session">Start a new interactive session</a></li>
+<li><a href="#test-your-set-up-optional-safety_vest">Test your set-up (optional) :safety_vest:</a></li>
+<li><a href="#download-genome-files">Download genome files</a></li>
+<li><a href="#human-genome-files-manwoman">Human genome files :man::woman:</a></li>
+<li><a href="#mouse-genome-files-mouse">Mouse genome files :mouse:</a></li>
+<li><a href="#run-your-rna-sequencing-reads-dna">Run your RNA sequencing reads :dna:</a></li>
+<li><a href="#human-run-script-manwoman">Human run script :man::woman:</a></li>
+<li><a href="#mouse-run-script-mouse">Mouse run script :mouse:</a></li>
+</ul>
+</li>
+<li><a href="#import-data-into-r">Import data into R</a><ul>
+<li><a href="#r-code-for-import-and-voom-normalisation">R code for import and voom-normalisation</a></li>
+</ul>
+</li>
+<li><a href="#rights">Rights</a></li>
+</ul>
+<h2 id="overview-book">Overview :book:</h2>
+<p>Here we will describe the process for processing RNA sequencing data using the <a href="https://nf-co.re/rnaseq"><strong>nf-core/rnaseq</strong></a> pipeline. This document was written as of version 3.14.0</p>
+<p><strong>nf-core/rnaseq</strong> is a bioinformatics pipeline that can be used to analyse RNA sequencing data obtained from organisms with a reference genome and annotation. It takes a samplesheet and FASTQ files as input, performs quality control (QC), trimming and (pseudo-)alignment, and produces a gene expression matrix and extensive QC report.</p>
+<p>Full details of the pipeline and the many customisable options can be view on the pipeline website.</p>
+<p><img src="../../assets/RNAseq/nf-core-rnaseq_metro_map_grey.png"></p>
+<h2 id="installation">Installation</h2>
+<p>In this section, we discuss the installation process on the M3 MASSIVE cluster.</p>
+<h3 id="create-nextflow-environment-snake">Create nextflow environment :snake:</h3>
+<p>To begin with, we need to create a new environment using <a href="https://github.com/mamba-org/mamba"><strong>mamba</strong></a>. Mamba is recommended here over conda due to its massively improved dependency solving speeds and parallel package downloading (among other reasons).</p>
+<pre><code class="language-bash"># Create environment
+mamba create -n nextflow nextflow \
+    salmon=1.10.0 fq fastqc umi_tools \
+    trim-galore bbmap sortmerna samtools \
+    picard stringtie bedtools rseqc \
+    qualimap preseq multiqc subread \
+    ucsc-bedgraphtobigwig ucsc-bedclip \
+    bioconductor-deseq2
+
+# Activate environment
+mamba activate nextflow
+</code></pre>
+<h3 id="download-and-compile-rsem">Download and compile RSEM</h3>
+<p>RSEM is a software package for estimating gene and isoform expression levels from RNA-Seq data.</p>
+<pre><code class="language-bash"># Download RSEM
+git clone https://github.com/deweylab/RSEM
+
+# Enter the directory (RSEM) and compile
+cd RSEM; make
+</code></pre>
+<p>Make note of this directory for your run script so you can add this to your PATH variable.</p>
+<h2 id="prepare-your-sample-sheet-pencil">Prepare your sample sheet :pencil:</h2>
+<p>You will need to have a sample sheet prepared that contains a sample name, the <code>fastq.gz</code> file paths, and the strandedness of the read files.</p>
+<p>If you are working with a single-ended sequencing run, leave the <code>fastq_2</code> column empty, but the header still needs to be included.</p>
+<p>For example, <code>samplesheet.csv</code>:</p>
+<pre><code class="language-bash">sample,fastq_1,fastq_2,strandedness
+CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz,auto
+CONTROL_REP1,AEG588A1_S1_L003_R1_001.fastq.gz,AEG588A1_S1_L003_R2_001.fastq.gz,auto
+CONTROL_REP1,AEG588A1_S1_L004_R1_001.fastq.gz,AEG588A1_S1_L004_R2_001.fastq.gz,auto
+</code></pre>
+<p>Each row represents a fastq file (single-end) or a pair of fastq files (paired end). Rows with the same sample identifier are considered technical replicates and merged automatically. The strandedness refers to the library preparation and will be automatically inferred if set to auto.</p>
+<h2 id="run-the-pipeline-green_apple">Run the pipeline :green_apple:</h2>
+<h3 id="start-a-new-interactive-session">Start a new interactive session</h3>
+<p>Firstly, we will start a new interactive session on the M3 MASSIVE cluster.</p>
+<pre><code class="language-bash">smux n --time=2-00:00:00 --mem=64GB --ntasks=1 --cpuspertask=12 -J nf-core/rnaseq
+</code></pre>
+<p>Once we are inside the interactive session, we need to select an appropriate version of the Java JDK to use. For the Nextflow pipeline we will be running, we need at least <strong>version 17+</strong>.</p>
+<pre><code class="language-bash"># View available java JDK modules
+module avail java
+
+# Load an appropriate one (over version 17)
+module load java/openjdk-17.0.2
+
+# Can double-check the correct version is loaded
+java --version
+</code></pre>
+<h3 id="test-your-set-up-optional-safety_vest">Test your set-up (optional) :safety_vest:</h3>
+<p>This step is optional, but highly advisable for a first-time setup or when re-installing.</p>
+<pre><code class="language-bash">nextflow run nf-core/rnaseq -r 3.14.0 \
+    -profile test \
+    --outdir test \
+    -resume \
+    --skip-dupradar \
+    --skip_markduplicates
+</code></pre>
+<ul>
+<li>We skip the <code>dupradar</code> step, because to install <code>bioconductor-dupradar</code>, mamba wants to downgrade <code>salmon</code> to a very early version, which is not ideal :facepalm:</li>
+<li>We also skip the <code>markduplicates</code> step because it is not recommended to remove duplicates anyway due to normal biological duplicates (i.e. there won't just be 1 copy of a given gene in a complete sample) :mag::sparkles:</li>
+</ul>
+<h3 id="download-genome-files">Download genome files</h3>
+<p>To avoid issues with genome incompatibility with the version of STAR you are running, it is recommended to simply download the relevant genome fasta and GTF files using the following scripts, and then supply them directly to the function call.</p>
+<h4 id="human-genome-files-manwoman">Human genome files :man::woman:</h4>
+<pre><code class="language-bash">#!/bin/bash
+VERSION=111
+wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
+wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/homo_sapiens/Homo_sapiens.GRCh38.$VERSION.gtf.gz
+</code></pre>
+<h4 id="mouse-genome-files-mouse">Mouse genome files :mouse:</h4>
+<pre><code class="language-bash">#!/bin/bash
+VERSION=111
+wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz
+wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/mus_musculus/Mus_musculus.GRCm39.$VERSION.gtf.gz
+</code></pre>
+<h3 id="run-your-rna-sequencing-reads-dna">Run your RNA sequencing reads :dna:</h3>
+<p>To avoid typing the whole command out (and in case the pipeline crashes), create a script that will handle the process. Two examples are given here, with one for human samples, and one for mouse samples.</p>
+<ul>
+<li>You will need to replace the RSEM folder location with your own path from above.</li>
+<li>Using the <code>save_reference</code> option stores the formatted genome files to save time if you need to resume or restart the pipeline.</li>
+</ul>
+<h4 id="human-run-script-manwoman">Human run script :man::woman:</h4>
+<pre><code class="language-bash">#!/bin/bash
+module load java/openjdk-17.0.2
+export PATH=$PATH:/home/mmacowan/mf33/tools/RSEM/
+
+nextflow run nf-core/rnaseq -r 3.14.0 \
+    --input samplesheet.csv \
+    --outdir rnaseq_output \
+    --fasta /home/mmacowan/mf33/scratch_nobackup/RNA/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz \
+    --gtf /home/mmacowan/mf33/scratch_nobackup/RNA/Homo_sapiens.GRCh38.111.gtf.gz \
+    --skip_dupradar \
+    --skip_markduplicates \
+    --save_reference \
+    -resume
+
+</code></pre>
+<h4 id="mouse-run-script-mouse">Mouse run script :mouse:</h4>
+<pre><code class="language-bash">#!/bin/bash
+module load java/openjdk-17.0.2
+export PATH=$PATH:”/home/mmacowan/mf33/tools/RSEM/”
+
+nextflow run nf-core/rnaseq -r 3.14.0 \
+    --input samplesheet.csv \
+    --outdir rnaseq_output \
+    --fasta /home/mmacowan/mf33/scratch_nobackup/RNA/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz \
+    --gtf /home/mmacowan/mf33/scratch_nobackup/RNA/Mus_musculus.GRCm39.111.gtf.gz \
+    --skip_dupradar \
+    --skip_markduplicates \
+    --save_reference \
+    -resume
+</code></pre>
+<h2 id="import-data-into-r">Import data into R</h2>
+<p>We have a standardised method for importing data into R. Luckily for us, the NF-CORE/rnaseq pipeline outputs are provided in <code>.rds</code> format as <code>SummarizedExperiment</code> objects, with bias-corrected gene counts without an offset.</p>
+<ul>
+<li><code>salmon.merged.gene_counts_length_scaled.rds</code></li>
+</ul>
+<p>There are two matrices provided to us: <code>counts</code> and <code>abundance</code>.</p>
+<ul>
+<li>The <code>abundance</code> matrix is the scaled and normalised transcripts per million (TPM) abundance. TPM explicitly erases information about library size. That is, it estimates the relative abundance of each transcript proportional to the total population of transcripts sampled in the experiment. Thus, you can imagine TPM, in a way, as a partition of unity — we want to assign a fraction of the total expression (whatever that may be) to transcript, regardless of whether our library is 10M fragments or 100M fragments.</li>
+<li>The <code>counts</code> matrix is a re-estimated counts table that aims to provide count-level data to be compatible with downstream tools such as DESeq2.</li>
+<li>The <code>tximport</code> package has a single function for importing transcript-level estimates. The type argument is used to specify what software was used for estimation. A simple list with matrices, <code>"abundance"</code>, <code>"counts"</code>, and <code>"length"</code>, is returned, where the transcript level information is summarized to the gene-level. Typically, abundance is provided by the quantification tools as TPM (transcripts-per-million), while the counts are estimated counts (possibly fractional), and the <code>"length"</code> matrix contains the effective gene lengths. The <code>"length"</code> matrix can be used to generate an offset matrix for downstream gene-level differential analysis of count matrices.</li>
+</ul>
+<h3 id="r-code-for-import-and-voom-normalisation">R code for import and voom-normalisation</h3>
+<p>Here we show our standard process for preparing RNAseq data for downstream analysis.</p>
+<pre><code class="language-r"># Load R packages
+pkgs &lt;- c('knitr', 'here', 'SummarizedExperiment', 'biomaRt', 'edgeR', 'limma')
+pacman::p_load(char = pkgs)
+
+# Import the bias-corrected counts from STAR Salmon
+rna_data &lt;- readRDS(here('input', 'salmon.merged.gene_counts_length_scaled.rds'))
+
+# Get Ensembl annotations
+ensembl &lt;- useMart('ensembl', dataset = 'hsapiens_gene_ensembl')
+
+ensemblIDsBronch &lt;- rownames(rna_bronch)
+
+gene_list &lt;- getBM(attributes = c('ensembl_gene_id', 'hgnc_symbol', 'gene_biotype'),
+                   filters = 'ensembl_gene_id', values = ensemblIDsBronch, mart = ensembl)
+colnames(gene_list) &lt;- c(&quot;gene_id&quot;, &quot;hgnc_symbol&quot;, &quot;gene_biotype&quot;)
+gene_list &lt;- filter(gene_list, !duplicated(gene_id))
+
+# Ensure that only genes in the STAR Salmon outputs are kept for the gene list
+rna_data &lt;- rna_data[rownames(rna_data) %in% gene_list$gene_id, ]
+
+# Add the ENSEMBL data to the rowData element
+rowData(rna_data) &lt;- merge(gene_list, rowData(rna_data), by = &quot;gene_id&quot;, all = FALSE)
+
+# Load the RNA metadata
+metadata_rna &lt;- read_csv(here('input', 'metadata_rna.csv'))
+
+# Sort the metadata rows to match the order of the abundance data
+rownames(metadata_rna) &lt;- metadata_rna$RNA_barcode
+metadata_rna &lt;- metadata_rna[colnames(rna_data),]
+
+# Create a DGEList from the SummarizedExperiment object
+rna_data_dge &lt;- DGEList(assay(rna_data, 'counts'), 
+                        samples = metadata_rna, 
+                        group = metadata_rna$group,
+                        genes = rowData(rna_data),
+                        remove.zeros = TRUE)
+
+# Filter the DGEList based on the group information
+design &lt;- model.matrix(~ group, data = rna_data_dge$samples)
+keep_min10 &lt;- filterByExpr(rna_data_dge, design, min.count = 10)
+rna_data_dge_min10 &lt;- rna_data_dge[keep_min10, ]
+
+# Calculate norm factors and perform voom normalisation
+rna_data_dge_min10 &lt;- calcNormFactors(rna_data_dge_min10)
+rna_data_dge_min10 &lt;- voom(rna_data_dge_min10, design, plot = TRUE)
+
+# Add the normalised abundance data from STAR Salmon and filter to match the counts data
+rna_data_dge_min10$abundance &lt;- as.matrix(assay(rna_bronch, 'abundance'))[keep_min10, ]
+
+# Select protein coding defined genes only
+rna_data_dge_min10 &lt;- rna_data_dge_min10[rna_data_dge_min10$genes$gene_biotype == &quot;protein_coding&quot; &amp; rna_data_dge_min10$genes$hgnc_symbol != &quot;&quot;, ]
+
+# Add symbol as rowname
+rownames(rna_data_dge_min10) &lt;- rna_data_dge_min10$genes$gene_name
+
+# Save the DGEList
+saveRDS(rna_data_dge_min10, here('input', 'rna_data_dge_min10.rds'))
+</code></pre>
+<h1 id="rights">Rights</h1>
+<p><strong>NF-CORE/rnaseq</strong></p>
+<p>There are many people to thank here for writing and maintaining the NF-CORE/rnaseq pipeline (<a href="https://nf-co.re/rnaseq/3.14.0#credits">see here</a>).
+If you use this pipeline for your analysis, please cite it using the following doi: 10.5281/zenodo.1400710</p>
+<p><strong>This document</strong></p>
+<ul>
+<li>Copyright © 2024 – Mucosal Immunology Lab, Melbourne VIC, Australia</li>
+<li>Licence: These tools are provided under the MIT licence (see LICENSE file for details)</li>
+<li>Authors: M. Macowan</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
