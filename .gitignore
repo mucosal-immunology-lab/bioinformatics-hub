@@ -1,0 +1,7 @@
+*.swp
+.nextflow
+.nextflow.log*
+results/
+work/
+site/
+.DS_Store

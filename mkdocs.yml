@@ -35,3 +35,6 @@ extra:
   analytics:
     provider: google
     property: G-7HN0DB92MT
+
+# Analytics:
+# https://analytics.google.com/analytics/web/provision/#/p469513623/reports/intelligenthome 
