@@ -8,6 +8,10 @@ nav:
   - Nextflow Pipelines: 
     - nf-mucimmuno: NextFlow/nf-mucimmuno.md
     - Single-cell RNAseq: NextFlow/scRNAseq.md
+  - Utilities:
+    - Handling sequencing data:
+      - Converting NovaSeq outputs: Utilities/convert-raw-novaseq-outputs.md
+      - SRA sequencing data submission: Utilities/sra-data-submission.md
   - Public Datasets: PublicDatasets/public-datasets.md
 
 theme:
