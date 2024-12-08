@@ -15,7 +15,7 @@ These sort of tasks are never accomplished alone! Massive thanks to the people w
 -   ![Matthew Macowan](assets/Contributors/matthew_macowan.png){ width="150" }  
     **Matthew Macowan**
 
-    Bioinformatician &ndash; *Mucosal Immunology Group*
+    Bioinformatician &ndash; *Mucosal Immunology Lab*
 
 -   ![Céline Pattaroni](assets/Contributors/celine_pattaroni.jpeg){ width="150" }  
     [**Céline Pattaroni**](https://research.monash.edu/en/persons/celine-pattaroni)
@@ -25,12 +25,12 @@ These sort of tasks are never accomplished alone! Massive thanks to the people w
 -   ![Giulia Iacono](assets/Contributors/giulia_iacono.jpg){ width="150" }  
     **Giulia Iacono**
 
-    Post Doc &ndash; *Mucosal Immunology Group*
+    Post Doc &ndash; *Mucosal Immunology Lab*
 
 </div>
 
 * Alana Butler: Bioinformatician
-* Bailey Cardwell: PhD student &ndash; *Mucosal Immunology Group*
+* Bailey Cardwell: PhD student &ndash; *Mucosal Immunology Lab*
 
 ## Group Research Overview
 

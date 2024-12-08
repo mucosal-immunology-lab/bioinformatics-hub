@@ -5,6 +5,11 @@ repo_name: Mucosal-Immunology-Lab/bioinformatic-hub
 nav:
   - Home: index.md
   - Bulk Transcriptomics: RNAseq/rnaseq-nfcore.md
+  - LCMS Analysis:
+    - Overview: LCMS/lcms-analysis.md
+    - 1. Raw Data Processing with MS-DIAL: LCMS/msdial-processing.md
+    - 2. Peak Matrix Processing: LCMS/pmp-quality-control.md
+    - 3. Secondary Feature Annotation: LCMS/secondary-feature-annotation.md
   - Nextflow Pipelines: 
     - nf-mucimmuno: NextFlow/nf-mucimmuno.md
     - Single-cell RNAseq: NextFlow/scRNAseq.md
