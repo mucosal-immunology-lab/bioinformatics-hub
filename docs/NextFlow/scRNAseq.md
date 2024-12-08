@@ -12,7 +12,9 @@
 
 This repository contains the relevant Nextflow workflow components, including a conda environment and submodules, to run the pipeline. To retrieve this repository alone, run the `retrieve_me.sh` script above.
 
-:warning: Git `sparse-checkout` is required to retrieve just the **nf-mucimmuno/scRNAseq** pipeline. It was only introduced to Git in version 2.27.0, so ensure that the loaded version is high enough (or that there is a version loaded on the cluster at all). As of July 2024, the M3 MASSIVE cluster has version 2.38.1 available. :warning:
+!!! warning "Git version requirements"
+  
+    Git `sparse-checkout` is required to retrieve just the **nf-mucimmuno/scRNAseq** pipeline. It was only introduced to Git in version 2.27.0, so ensure that the loaded version is high enough (or that there is a version loaded on the cluster at all). As of July 2024, the M3 MASSIVE cluster has version 2.38.1 available.
 
 ```bash
 # Check git version
@@ -84,7 +86,9 @@ mamba activate nextflow-scrnaseq
 
 Create a new folder somewhere to store your genome files. Enter the new folder, and run the relevant code depending on your host organism. Run these steps in an interactive session with ~48GB RAM and 16 cores, or submit them as an sbatch job.
 
-:warning: Please check if these are already available somewhere before regenerating them yourself! :warning:
+!!! warning "Do these databases exist already?"
+
+    Please check if these are already available somewhere before regenerating them yourself!
 
 STAR should be loaded already via the conda environment for the genome indexing step. We will set `--sjdbOverhang` to 79 to be suitable for use with the longer `R2` FASTQ data resulting from BD Rhapsody single cell sequencing. This may require alteration for other platforms. **Essentially, you just need to set `--sjdbOverhang` to the length of your R2 sequences minus 1.**
 
@@ -165,7 +169,11 @@ The benefit of providing the name of the CLS bead versions in the sample sheet i
 
 Further, we also need to provide the path to the STAR genome index folder for each sample &ndash; while in many cases this value will remain constant, the benefit of providing this information is that you can process runs with different R2 sequence lengths at the same time. Recall from above that the genome index you use should use an `--sjdbOverhang` length that of your R2 sequences minus 1.
 
-Your sample sheet should look as follows, **ensuring you use the exact column names as below**. Remember that on the M3 MASSIVE cluster, you need to use the **full file path** &ndash; relative file paths don't usually work.
+Your sample sheet should look as follows, **ensuring you use the exact column names as below**. 
+
+!!! warning "File paths on M3"
+
+    Remember that on the M3 MASSIVE cluster, you need to use the **full file path** &ndash; relative file paths don't usually work.
 
 ```bash
 sample,fastq_1,fastq_2,CLS,GenomeIndex
@@ -174,7 +182,7 @@ CONTROL_S2,CONTROL_S2_R1.fastq.gz,CONTROL_S1_R2.fastq.gz,BD_Enhanced_V2,mf33/Dat
 TREATMENT_S1,TREATMENT_S1_R1.fastq.gz,TREATMENT_S1_R2.fastq.gz,BD_Enhanced_V2,mf33/Databases/ensembl/human/STARgenomeIndex79
 ```
 
-An example is provided in [`data/samplesheet_test`](../assets/NextFlow/samplesheet_test.csv).
+An example is provided [here](../assets/NextFlow/samplesheet_test.csv).
 
 ### Running the pipeline 🏃
 
@@ -185,7 +193,9 @@ Now you can run the pipeline. You will need to set up a parent job to run each o
 smux n --time=3-00:00:00 --mem=16GB --ntasks=1 --cpuspertask=2 -J nf-STARsolo
 ```
 
-Make sure you alter the `nextflow.config` file to provide the path to your sample sheet, unless it is `./data/samplesheet.csv` which is the default for the cluster profile. Stay within the top `cluster` profile section to alter settings for Slurm-submitted jobs.
+!!! warning "Set the correct sample sheet location"
+
+    Make sure you alter the `nextflow.config` file to provide the path to your sample sheet, unless it is `./data/samplesheet.csv` which is the default for the cluster profile. Stay within the top `cluster` profile section to alter settings for Slurm-submitted jobs.
 
 Inside your interactive session, be sure to activate your `nextflow-scrnaseq` environment from above. Then, **inside the scRNAseq folder**, begin the pipeline using the following command (ensuring you use the `cluster` profile to make use of the Slurm workflow manager).
 
