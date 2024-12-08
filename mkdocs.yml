@@ -45,6 +45,8 @@ markdown_extensions:
   - pymdownx.tasklist
   - pymdownx.tilde
   - pymdownx.emoji
+  - pymdownx.tabbed:
+      alternate_style: true
   
 extra:
   analytics:

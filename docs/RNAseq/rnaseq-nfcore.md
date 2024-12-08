@@ -99,92 +99,95 @@ nextflow run nf-core/rnaseq -r 3.14.0 \
     --skip_markduplicates
 ```
 
-* We skip the `dupradar` step, because to install `bioconductor-dupradar`, mamba wants to downgrade `salmon` to a very early version, which is not ideal :facepalm:
-* We also skip the `markduplicates` step because it is not recommended to remove duplicates anyway due to normal biological duplicates (i.e. there won't just be 1 copy of a given gene in a complete sample) :mag::sparkles:
+!!! info "Um... why are we skipping things?"
 
-### Download genome files
+    * We skip the `dupradar` step, because to install `bioconductor-dupradar`, mamba wants to downgrade `salmon` to a very early version, which is not ideal :facepalm:
+    * We also skip the `markduplicates` step because it is not recommended to remove duplicates anyway due to normal biological duplicates (i.e. there won't just be 1 copy of a given gene in a complete sample) :mag::sparkles:
+
+### Download genome files 🧬
 
 To avoid issues with genome incompatibility with the version of STAR you are running, it is recommended to simply download the relevant genome fasta and GTF files using the following scripts, and then supply them directly to the function call.
 
-#### Human genome files 👨👩
+=== "Human genome files 👨👩"
 
-```bash title="01_retrieve_human_genome.sh"
-#!/bin/bash
-VERSION=111
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/homo_sapiens/Homo_sapiens.GRCh38.$VERSION.gtf.gz
-```
+    ```bash title="01_retrieve_human_genome.sh"
+    #!/bin/bash
+    VERSION=111
+    wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
+    wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/homo_sapiens/Homo_sapiens.GRCh38.$VERSION.gtf.gz
+    ```
 
-#### Mouse genome files 🐁
+=== "Mouse genome files 🐁"
 
-```bash title="01_retrieve_mouse_genome.sh"
-#!/bin/bash
-VERSION=111
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/mus_musculus/Mus_musculus.GRCm39.$VERSION.gtf.gz
-```
+    ```bash title="01_retrieve_mouse_genome.sh"
+    #!/bin/bash
+    VERSION=111
+    wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz
+    wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/mus_musculus/Mus_musculus.GRCm39.$VERSION.gtf.gz
+    ```
 
-### Run your RNA sequencing reads 🐁
+### Run your RNA sequencing reads 🏃
 
 To avoid typing the whole command out (and in case the pipeline crashes), create a script that will handle the process. Two examples are given here, with one for human samples, and one for mouse samples.
 
 * You will need to replace the RSEM folder location with your own path from above.
 * Using the `save_reference` option stores the formatted genome files to save time if you need to resume or restart the pipeline.
 
-#### Human run script 👨👩
+=== "Human run script 👨👩"
 
-```bash title="02_run_rnaseq_human.sh"
-#!/bin/bash
-module load java/openjdk-17.0.2
-export PATH=$PATH:/home/mmacowan/mf33/tools/RSEM/
+    ```bash title="02_run_rnaseq_human.sh"
+    #!/bin/bash
+    module load java/openjdk-17.0.2
+    export PATH=$PATH:/home/mmacowan/mf33/tools/RSEM/
 
-nextflow run nf-core/rnaseq -r 3.14.0 \
-    --input samplesheet.csv \
-    --outdir rnaseq_output \
-    --fasta /home/mmacowan/mf33/scratch_nobackup/RNA/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz \
-    --gtf /home/mmacowan/mf33/scratch_nobackup/RNA/Homo_sapiens.GRCh38.111.gtf.gz \
-    --skip_dupradar \
-    --skip_markduplicates \
-    --save_reference \
-    -resume
+    nextflow run nf-core/rnaseq -r 3.14.0 \
+        --input samplesheet.csv \
+        --outdir rnaseq_output \
+        --fasta /home/mmacowan/mf33/scratch_nobackup/RNA/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz \
+        --gtf /home/mmacowan/mf33/scratch_nobackup/RNA/Homo_sapiens.GRCh38.111.gtf.gz \
+        --skip_dupradar \
+        --skip_markduplicates \
+        --save_reference \
+        -resume
+    ```
 
-```
+=== "Mouse genome files 🐁"
 
-#### Mouse run script 🐁
+    ```bash title="02_run_rnaseq_mouse.sh"
+    #!/bin/bash
+    module load java/openjdk-17.0.2
+    export PATH=$PATH:/home/mmacowan/mf33/tools/RSEM/
 
-```bash title="02_run_rnaseq_mouse.sh"
-#!/bin/bash
-module load java/openjdk-17.0.2
-export PATH=$PATH:”/home/mmacowan/mf33/tools/RSEM/”
+    nextflow run nf-core/rnaseq -r 3.14.0 \
+        --input samplesheet.csv \
+        --outdir rnaseq_output \
+        --fasta /home/mmacowan/mf33/scratch_nobackup/RNA/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz \
+        --gtf /home/mmacowan/mf33/scratch_nobackup/RNA/Mus_musculus.GRCm39.111.gtf.gz \
+        --skip_dupradar \
+        --skip_markduplicates \
+        --save_reference \
+        -resume
+    ```
 
-nextflow run nf-core/rnaseq -r 3.14.0 \
-	--input samplesheet.csv \
-	--outdir rnaseq_output \
-	--fasta /home/mmacowan/mf33/scratch_nobackup/RNA/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz \
-	--gtf /home/mmacowan/mf33/scratch_nobackup/RNA/Mus_musculus.GRCm39.111.gtf.gz \
-	--skip_dupradar \
-	--skip_markduplicates \
-	--save_reference \
-	-resume
-```
-
-## Import data into R
+## Import data into R 📥
 
 We have a standardised method for importing data into R. Luckily for us, the NF-CORE/rnaseq pipeline outputs are provided in `.rds` format as `SummarizedExperiment` objects, with bias-corrected gene counts without an offset.
 
 * `salmon.merged.gene_counts_length_scaled.rds`
 
-There are two matrices provided to us: `counts` and `abundance`.
+??? info "Tell me more!"
 
-- The `abundance` matrix is the scaled and normalised transcripts per million (TPM) abundance. TPM explicitly erases information about library size. That is, it estimates the relative abundance of each transcript proportional to the total population of transcripts sampled in the experiment. Thus, you can imagine TPM, in a way, as a partition of unity — we want to assign a fraction of the total expression (whatever that may be) to transcript, regardless of whether our library is 10M fragments or 100M fragments.
-- The `counts` matrix is a re-estimated counts table that aims to provide count-level data to be compatible with downstream tools such as DESeq2.
-- The `tximport` package has a single function for importing transcript-level estimates. The type argument is used to specify what software was used for estimation. A simple list with matrices, `"abundance"`, `"counts"`, and `"length"`, is returned, where the transcript level information is summarized to the gene-level. Typically, abundance is provided by the quantification tools as TPM (transcripts-per-million), while the counts are estimated counts (possibly fractional), and the `"length"` matrix contains the effective gene lengths. The `"length"` matrix can be used to generate an offset matrix for downstream gene-level differential analysis of count matrices.
+    * There are two matrices provided to us: `counts` and `abundance`.
+        * The `counts` matrix is a re-estimated counts table that aims to provide count-level data to be compatible with downstream tools such as DESeq2.
+        * The `abundance` matrix is the scaled and normalised transcripts per million (TPM) abundance. TPM explicitly erases information about library size. That is, it estimates the relative abundance of each transcript proportional to the total population of transcripts sampled in the experiment. Thus, you can imagine TPM, in a way, as a partition of unity — we want to assign a fraction of the total expression (whatever that may be) to transcript, regardless of whether our library is 10M fragments or 100M fragments.
+    * The `tximport` package has a single function for importing transcript-level estimates. The type argument is used to specify what software was used for estimation. A simple list with matrices, `"abundance"`, `"counts"`, and `"length"`, is returned, where the transcript level information is summarized to the gene-level. Typically, abundance is provided by the quantification tools as TPM (transcripts-per-million), while the counts are estimated counts (possibly fractional), and the `"length"` matrix contains the effective gene lengths. The `"length"` matrix can be used to generate an offset matrix for downstream gene-level differential analysis of count matrices.
+
 
 ### R code for import and voom-normalisation
 
 Here we show our standard process for preparing RNAseq data for downstream analysis.
 
-```r
+```r title="Prepare Voom-normalised DGE List"
 # Load R packages
 pkgs <- c('knitr', 'here', 'SummarizedExperiment', 'biomaRt', 'edgeR', 'limma')
 pacman::p_load(char = pkgs)

@@ -88,53 +88,55 @@ Create a new folder somewhere to store your genome files. Enter the new folder, 
 
 STAR should be loaded already via the conda environment for the genome indexing step. We will set `--sjdbOverhang` to 79 to be suitable for use with the longer `R2` FASTQ data resulting from BD Rhapsody single cell sequencing. This may require alteration for other platforms. **Essentially, you just need to set `--sjdbOverhang` to the length of your R2 sequences minus 1.**
 
-#### Human genome files 👨👩
+=== "Human genome files 👨👩"
 
-```bash title="01_retrieve_human_genome.sh"
-#!/bin/bash
-VERSION=111
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/homo_sapiens/Homo_sapiens.GRCh38.$VERSION.gtf.gz
-gunzip *
-```
+    ```bash title="01_retrieve_human_genome.sh"
+    #!/bin/bash
+    VERSION=111
+    wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
+    wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/homo_sapiens/Homo_sapiens.GRCh38.$VERSION.gtf.gz
+    gunzip *
+    ```
 
-Then use STAR to prepare the genome index.
+=== "Mouse genome files 🐁"
 
-```bash title="02_index_human_genome.sh"
-#!/bin/bash
-VERSION=111
-STAR \
-    --runThreadN 16 \
-    --genomeDir "STARgenomeIndex79/" \
-    --runMode genomeGenerate \
-    --genomeFastaFiles "Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa" \
-    --sjdbGTFfile "Homo_sapiens.GRCh38.$VERSION.gtf" \
-    --sjdbOverhang 79
-```
-
-#### Mouse genome files 🐁
-
-```bash title="01_retrieve_mouse_genome.sh"
-#!/bin/bash
-VERSION=111
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz
-wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/mus_musculus/Mus_musculus.GRCm39.$VERSION.gtf.gz
-gunzip *
-```
+    ```bash title="01_retrieve_mouse_genome.sh"
+    #!/bin/bash
+    VERSION=111
+    wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz
+    wget -L ftp://ftp.ensembl.org/pub/release-$VERSION/gtf/mus_musculus/Mus_musculus.GRCm39.$VERSION.gtf.gz
+    gunzip *
+    ```
 
 Then use STAR to prepare the genome index.
 
-```bash title="02_index_mouse_genome.sh"
-#!/bin/bash
-VERSION=111
-STAR \
-    --runThreadN 16 \
-    --genomeDir "STARgenomeIndex79/" \
-    --runMode genomeGenerate \
-    --genomeFastaFiles "Mus_musculus.GRCm39.dna_sm.primary_assembly.fa" \
-    --sjdbGTFfile "Mus_musculus.GRCm39.$VERSION.gtf" \
-    --sjdbOverhang 79
-```
+=== "Human genome files 👨👩"
+
+    ```bash title="02_index_human_genome.sh"
+    #!/bin/bash
+    VERSION=111
+    STAR \
+        --runThreadN 16 \
+        --genomeDir "STARgenomeIndex79/" \
+        --runMode genomeGenerate \
+        --genomeFastaFiles "Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa" \
+        --sjdbGTFfile "Homo_sapiens.GRCh38.$VERSION.gtf" \
+        --sjdbOverhang 79
+    ```
+
+=== "Mouse genome files 🐁"
+
+    ```bash title="02_index_mouse_genome.sh"
+    #!/bin/bash
+    VERSION=111
+    STAR \
+        --runThreadN 16 \
+        --genomeDir "STARgenomeIndex79/" \
+        --runMode genomeGenerate \
+        --genomeFastaFiles "Mus_musculus.GRCm39.dna_sm.primary_assembly.fa" \
+        --sjdbGTFfile "Mus_musculus.GRCm39.$VERSION.gtf" \
+        --sjdbOverhang 79
+    ```
 
 ### Prepare your sample sheet ✏️
 

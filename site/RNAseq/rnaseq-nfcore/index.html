@@ -372,66 +372,18 @@
           <li class="md-nav__item">
   <a href="#download-genome-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Download genome files
+      Download genome files 🧬
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Download genome files">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#human-genome-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Human genome files 👨👩
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mouse-genome-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mouse genome files 🐁
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#run-your-rna-sequencing-reads" class="md-nav__link">
     <span class="md-ellipsis">
-      Run your RNA sequencing reads 🐁
+      Run your RNA sequencing reads 🏃
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Run your RNA sequencing reads 🐁">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#human-run-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      Human run script 👨👩
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mouse-run-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mouse run script 🐁
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -443,11 +395,11 @@
         <li class="md-nav__item">
   <a href="#import-data-into-r" class="md-nav__link">
     <span class="md-ellipsis">
-      Import data into R
+      Import data into R 📥
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Import data into R">
+    <nav class="md-nav" aria-label="Import data into R 📥">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -820,66 +772,18 @@
           <li class="md-nav__item">
   <a href="#download-genome-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Download genome files
+      Download genome files 🧬
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Download genome files">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#human-genome-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Human genome files 👨👩
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mouse-genome-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mouse genome files 🐁
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#run-your-rna-sequencing-reads" class="md-nav__link">
     <span class="md-ellipsis">
-      Run your RNA sequencing reads 🐁
+      Run your RNA sequencing reads 🏃
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Run your RNA sequencing reads 🐁">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#human-run-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      Human run script 👨👩
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mouse-run-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mouse run script 🐁
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -891,11 +795,11 @@
         <li class="md-nav__item">
   <a href="#import-data-into-r" class="md-nav__link">
     <span class="md-ellipsis">
-      Import data into R
+      Import data into R 📥
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Import data into R">
+    <nav class="md-nav" aria-label="Import data into R 📥">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1001,31 +905,42 @@
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span>--skip-dupradar<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span>--skip_markduplicates
 </span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Um... why are we skipping things?</p>
 <ul>
 <li>We skip the <code>dupradar</code> step, because to install <code>bioconductor-dupradar</code>, mamba wants to downgrade <code>salmon</code> to a very early version, which is not ideal <img alt="🤦" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f926.png" title=":facepalm:" /></li>
 <li>We also skip the <code>markduplicates</code> step because it is not recommended to remove duplicates anyway due to normal biological duplicates (i.e. there won't just be 1 copy of a given gene in a complete sample) <img alt="🔍" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f50d.png" title=":mag:" /><img alt="✨" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/2728.png" title=":sparkles:" /></li>
 </ul>
-<h3 id="download-genome-files">Download genome files</h3>
+</div>
+<h3 id="download-genome-files">Download genome files 🧬</h3>
 <p>To avoid issues with genome incompatibility with the version of STAR you are running, it is recommended to simply download the relevant genome fasta and GTF files using the following scripts, and then supply them directly to the function call.</p>
-<h4 id="human-genome-files">Human genome files 👨👩</h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Human genome files 👨👩</label><label for="__tabbed_1_2">Mouse genome files 🐁</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="language-bash highlight"><span class="filename">01_retrieve_human_genome.sh</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/bin/bash</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">VERSION</span><span class="o">=</span><span class="m">111</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>wget<span class="w"> </span>-L<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-<span class="nv">$VERSION</span>/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>wget<span class="w"> </span>-L<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-<span class="nv">$VERSION</span>/gtf/homo_sapiens/Homo_sapiens.GRCh38.<span class="nv">$VERSION</span>.gtf.gz
 </span></code></pre></div>
-<h4 id="mouse-genome-files">Mouse genome files 🐁</h4>
+</div>
+<div class="tabbed-block">
 <div class="language-bash highlight"><span class="filename">01_retrieve_mouse_genome.sh</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">VERSION</span><span class="o">=</span><span class="m">111</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>wget<span class="w"> </span>-L<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-<span class="nv">$VERSION</span>/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna_sm.primary_assembly.fa.gz
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>wget<span class="w"> </span>-L<span class="w"> </span>ftp://ftp.ensembl.org/pub/release-<span class="nv">$VERSION</span>/gtf/mus_musculus/Mus_musculus.GRCm39.<span class="nv">$VERSION</span>.gtf.gz
 </span></code></pre></div>
-<h3 id="run-your-rna-sequencing-reads">Run your RNA sequencing reads 🐁</h3>
+</div>
+</div>
+</div>
+<h3 id="run-your-rna-sequencing-reads">Run your RNA sequencing reads 🏃</h3>
 <p>To avoid typing the whole command out (and in case the pipeline crashes), create a script that will handle the process. Two examples are given here, with one for human samples, and one for mouse samples.</p>
 <ul>
 <li>You will need to replace the RSEM folder location with your own path from above.</li>
 <li>Using the <code>save_reference</code> option stores the formatted genome files to save time if you need to resume or restart the pipeline.</li>
 </ul>
-<h4 id="human-run-script">Human run script 👨👩</h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Human run script 👨👩</label><label for="__tabbed_2_2">Mouse genome files 🐁</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="language-bash highlight"><span class="filename">02_run_rnaseq_human.sh</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>module<span class="w"> </span>load<span class="w"> </span>java/openjdk-17.0.2
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/mmacowan/mf33/tools/RSEM/
@@ -1040,10 +955,11 @@
 </span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span>--save_reference<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span>-resume
 </span></code></pre></div>
-<h4 id="mouse-run-script">Mouse run script 🐁</h4>
+</div>
+<div class="tabbed-block">
 <div class="language-bash highlight"><span class="filename">02_run_rnaseq_mouse.sh</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/bin/bash</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>module<span class="w"> </span>load<span class="w"> </span>java/openjdk-17.0.2
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:”/home/mmacowan/mf33/tools/RSEM/”
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/mmacowan/mf33/tools/RSEM/
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>nextflow<span class="w"> </span>run<span class="w"> </span>nf-core/rnaseq<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>.14.0<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span>--input<span class="w"> </span>samplesheet.csv<span class="w"> </span><span class="se">\</span>
@@ -1055,20 +971,28 @@
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span>--save_reference<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span>-resume
 </span></code></pre></div>
-<h2 id="import-data-into-r">Import data into R</h2>
+</div>
+</div>
+</div>
+<h2 id="import-data-into-r">Import data into R 📥</h2>
 <p>We have a standardised method for importing data into R. Luckily for us, the NF-CORE/rnaseq pipeline outputs are provided in <code>.rds</code> format as <code>SummarizedExperiment</code> objects, with bias-corrected gene counts without an offset.</p>
 <ul>
 <li><code>salmon.merged.gene_counts_length_scaled.rds</code></li>
 </ul>
-<p>There are two matrices provided to us: <code>counts</code> and <code>abundance</code>.</p>
+<details class="info">
+<summary>Tell me more!</summary>
 <ul>
-<li>The <code>abundance</code> matrix is the scaled and normalised transcripts per million (TPM) abundance. TPM explicitly erases information about library size. That is, it estimates the relative abundance of each transcript proportional to the total population of transcripts sampled in the experiment. Thus, you can imagine TPM, in a way, as a partition of unity — we want to assign a fraction of the total expression (whatever that may be) to transcript, regardless of whether our library is 10M fragments or 100M fragments.</li>
+<li>There are two matrices provided to us: <code>counts</code> and <code>abundance</code>.<ul>
 <li>The <code>counts</code> matrix is a re-estimated counts table that aims to provide count-level data to be compatible with downstream tools such as DESeq2.</li>
+<li>The <code>abundance</code> matrix is the scaled and normalised transcripts per million (TPM) abundance. TPM explicitly erases information about library size. That is, it estimates the relative abundance of each transcript proportional to the total population of transcripts sampled in the experiment. Thus, you can imagine TPM, in a way, as a partition of unity — we want to assign a fraction of the total expression (whatever that may be) to transcript, regardless of whether our library is 10M fragments or 100M fragments.</li>
+</ul>
+</li>
 <li>The <code>tximport</code> package has a single function for importing transcript-level estimates. The type argument is used to specify what software was used for estimation. A simple list with matrices, <code>"abundance"</code>, <code>"counts"</code>, and <code>"length"</code>, is returned, where the transcript level information is summarized to the gene-level. Typically, abundance is provided by the quantification tools as TPM (transcripts-per-million), while the counts are estimated counts (possibly fractional), and the <code>"length"</code> matrix contains the effective gene lengths. The <code>"length"</code> matrix can be used to generate an offset matrix for downstream gene-level differential analysis of count matrices.</li>
 </ul>
+</details>
 <h3 id="r-code-for-import-and-voom-normalisation">R code for import and voom-normalisation</h3>
 <p>Here we show our standard process for preparing RNAseq data for downstream analysis.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Load R packages</span>
+<div class="language-r highlight"><span class="filename">Prepare Voom-normalised DGE List</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Load R packages</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">pkgs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;knitr&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;here&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;SummarizedExperiment&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;biomaRt&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;edgeR&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;limma&#39;</span><span class="p">)</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">pacman</span><span class="o">::</span><span class="nf">p_load</span><span class="p">(</span><span class="n">char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pkgs</span><span class="p">)</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>

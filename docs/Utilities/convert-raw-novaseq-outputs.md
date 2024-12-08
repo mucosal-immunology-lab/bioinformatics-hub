@@ -30,7 +30,9 @@ The document should be in the following format, where `index` is the `i7 adapter
 
 For the indexes, **both** sequences used on the sample sheet should be the reverse complement of the actual sequences.
 
-If you make this on a Windows system, ensure you save your output encoded by `UTF-8` and not `UTF-8 with BOM`.
+!!! warning "Ensure correct file encoding 🪟👀"
+
+    If you make this on a Windows system, ensure you save your output encoded by `UTF-8` and not `UTF-8 with BOM`.
 
 ```bash
 [Header]
@@ -72,9 +74,11 @@ The most up-to-date bcl-convert will be inside the output `usr/bin/` folder, and
 
 With the `raw_data` folder and `samplesheet.txt` both in the same directory, we can now run BCL Convert to generate our demultiplexed FASTQ files. Ensure you have at least 64GB of RAM in your interactive smux session.
 
-You will need a very high limit for open files &ndash; BCL Convert will attempt to set this limit to 65,535. However, by default, the limit on the M3 MASSIVE cluster is only 1,024 and cannot be increased by users themselves.
+!!! warning "Open file limit error"
 
-You can request additional open file limit from the M3 MASSIVE help desk.
+    You will need a very high limit for open files &ndash; BCL Convert will attempt to set this limit to 65,535. However, by default, the limit on the M3 MASSIVE cluster is only 1,024 and cannot be increased by users themselves.
+
+    You can request additional open file limit from the M3 MASSIVE help desk.
 
 !!! question "Can I run this on my local machine?"
 
@@ -84,11 +88,11 @@ You can request additional open file limit from the M3 MASSIVE help desk.
     The minimum requirements (as of BCL Convert v4.0) are:
 
     - **Hardware requirements**
-      - Single multiprocessor or multicore computer
-      - Minimum 64 GB RAM
+        - Single multiprocessor or multicore computer
+        - Minimum 64 GB RAM
     - **Software requirements**
-      - Root access to your computer
-      - File system access to adjust ulimit
+        - Root access to your computer
+        - File system access to adjust ulimit
 
 You can start an interactive bash session and increase the open file limit as follows:
 
