@@ -11,5 +11,5 @@ The MS-DIAL software we recommend provides a pipeline for untargeted metabolomic
 1. [Process raw LCMS data with MS-DIAL](./msdial-processing.md)
 2. [Perform automated quality control with pmp](./pmp-quality-control.md)
 3. [Secondary feature annotation with HMDB/LIPID MAPS](./secondary-feature-annotation.md)
-4. Manual curation of annotated spectra
+4. [Manual curation of annotated spectra](./manual-peak-curation.md)
 5. Downstream analysis

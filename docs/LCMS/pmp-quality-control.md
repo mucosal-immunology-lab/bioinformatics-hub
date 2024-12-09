@@ -12,7 +12,7 @@ easy to use and reproducible manner.
 
 ## Preprocessing script 📜
 
-An R function to handle the various steps is available as [`pmp_preprocess()`](../assets/LCMS/scripts/pmp_preprocess.R), and will be explained in-depth below.
+An R function to handle the various steps is available as [`pmp_preprocess()`](../assets/LCMS/LCMS_preprocessing/pmp_preprocess.R), and will be explained in-depth below.
 
 ??? info "Parameters for `pmp_preprocess`"
 
@@ -404,7 +404,7 @@ Now that you have finished initial quality control, and have an imputed, glog-no
 
 ## Rights
 
-* Copyright (c) 2024 Mucosal Immunology Lab, Monash University, Melbourne, Australia.
+* Copyright ©️ 2024 Mucosal Immunology Lab, Monash University, Melbourne, Australia.
 * `pmp` package: Jankevics A, Lloyd GR, Weber RJM (2021). pmp: Peak Matrix Processing and signal batch correction for metabolomics datasets. R package version 1.4.0.
 * License: This pipeline is provided under the MIT license.
 * Authors: M. Macowan and C. Pattaroni

@@ -9,7 +9,7 @@ After processing LCMS data through the MS-DIAL pipeline, secondary annotations f
     * **How does that differ from MS/MS (MS2) data?**
         * While MS1 provides a broad profile of ions without structural information, MS/MS involves selecting specific ions from the MS1 scan (precursor ions), fragmenting them, and analysing the resulting product ions. This fragmentation reveals structural details, enabling precise compound identification and differentiation of isomers. 
 
-## Secondary annotation with HMDB
+## Secondary annotation with HMDB 📘
 
 You should currently have a `SummarizedExperiment` object that has been pre-processed with `pmp`. The next stage is to match the MS1 mass data for each feature to the Human Metabolome Database (HMDB) database file.
 
@@ -58,7 +58,7 @@ metab_stool_glog <- add_hmdb(metab_SE = metab_stool_glog,
                              cores = 6)
 ```
 
-## Secondary annotation with LIPID MAPS
+## Secondary annotation with LIPID MAPS 🧈
 
 After processing lipidomics data through MS-DIAL, you can enhance the annotations of MS1 features by leveraging the LIPID MAPS Structure Database (LMSD). At this point, you should have a `SummarizedExperiment` object containing preliminary annotations and those from the HMDB database. The next step involves matching the MS1 mass data of each feature to the entries in the LMSD database.
 
@@ -109,7 +109,7 @@ lmsd_ann_list <- add_lmsd(metab_SE = metab_stool_glog,
 rowData(metab_stool_glog) <- lmsd_ann_list$metadata_lmsd_table
 ```
 
-## Comparing annotations from different databases
+## Comparing annotations from different databases ⚖️📚
 
 To compare the assigned annotations from each of the methods the [compare_annotations_SE()](../assets/LCMS/LCMS_preprocessing/compare_annotations_SE.R) function. It will produce a `data.frame` containing only features with at least one annotation, and allow us see whether the annotations typically agree with each other.
 
@@ -138,7 +138,7 @@ To compare the assigned annotations from each of the methods the [compare_annota
                                             agg_lmsd_ann = lmsd_ann_list$agg_lmsd_df)
     ```
 
-## Keeping only annotated features
+## Keeping only annotated features 🏷️✅
 
 From here, we can filter our `SummarizedExperiment` object for features with at least one annotation.
 While the other features likely represent interesting metabolites and lipids, without an available annotation, they won't be interpretable downstream.
@@ -162,6 +162,9 @@ We can achieve this providing our `SummarizedExperiment` object to the [`keep_an
     # Keep only annotated rows and generate shortname column
     metab_stool_glog <- keep_annotated(metab_SE = metab_stool_glog,
                                        mode = 'metabolomics')
+    
+    # Save the object
+    saveRDS(metab_stool_glog, here('output', '01_Preprocessing', 'metab_stool_glog_anno.rds'))
     ```
 
     !!! question "Are the other annotations still there?"
@@ -185,6 +188,9 @@ We can achieve this providing our `SummarizedExperiment` object to the [`keep_an
     # Keep only annotated rows and generate shortname column
     lipid_stool_glog <- keep_annotated(metab_SE = lipid_stool_glog,
                                        mode = 'lipidomics')
+
+    # Save the object
+    saveRDS(lipid_stool_glog, here('output', '01_Preprocessing', 'lipid_stool_glog_anno.rds'))
     ```
 
     !!! question "Are the other annotations still there?"
@@ -200,11 +206,11 @@ We can achieve this providing our `SummarizedExperiment` object to the [`keep_an
 ## Next steps ➡️
 
 You now have a normalised, imputed, dataset that has undergone secondary annotation and been filtered for annotated features.
-It is now time to proceed to [manual curation of the annotated spectra]().
+It is now time to proceed to [manual curation of the annotated spectra](./manual-peak-curation.md).
 
 ## Rights
 
-* Copyright (c) 2024 Respiratory Immunology lab, Monash University, Melbourne, Australia.
+* Copyright ©️ 2024 Respiratory Immunology lab, Monash University, Melbourne, Australia.
 * [HMDB version 5.0](https://pubmed.ncbi.nlm.nih.gov/34986597/): Wishart DS, Guo A, Oler E, Wang F, Anjum A, Peters H, Dizon R, Sayeeda Z, Tian S, Lee BL, Berjanskii M. HMDB 5.0: the human metabolome database for 2022. *Nucleic acids research*. 2022 Jan 7;50(D1):D622-31.
 * License: This pipeline is provided under the MIT license.
 * Authors: M. Macowan and C. Pattaroni
