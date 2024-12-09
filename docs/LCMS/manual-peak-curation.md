@@ -7,7 +7,7 @@ Manual peak curation is an essential part of the preprocessing of LMCS datasets,
     You will tend to find that about **30-50% of peaks are poor quality** and require removal &ndash; this is of course dataset dependent.
 
     * Poor signal-to-noise ratio is a common issue, resulting in "messy" and noisy spectra.
-    * Peaks only present in a few samples should also be removed to avoid over-fitted data imputation & ndash; it is fine to keep peaks that show up in just a single biological sample group however, because perhaps it is only abundant in this setting.
+    * Peaks only present in a few samples should also be removed to avoid over-fitted data imputation &ndash; it is fine to keep peaks that show up in just a single biological sample group however, because perhaps it is only abundant in this setting.
 
 ## Prepare XML files for MS-DIAL 📄🛠️
 
@@ -180,6 +180,7 @@ Now we will select for the best features from both the positive and negative ion
 We find this to be preferable to avoid cases where there are multiple features with the same name and pattern &ndash; this is particularly noticeable on heatmaps when you can see bands of features with identical patterns.
 
 To identify the best feature, we will select the highest value from the multiple of `Fill %` and `S/N ratio`.
+From there, we will create a logical vector to indicate whether a feature should be retained.
 
 ```r title="Best feature selection"
 # Recover metabolomics data
@@ -207,7 +208,11 @@ feature_keep <- element_meta %>%
     mutate(keep = ifelse(is.na(metab_score), FALSE, TRUE)) %>%
     arrange(original_order) %>%
     pull(keep)
+```
 
+Now we can use the "keep vector" to filter the `SummarizedExperiment` object, remove the QC samples, and save the object to an `.rds` file.
+
+```r title="Filter SummarizedExperiment and save to file"
 # Filter the SummarizedExperiment object
 metab_stool_glog <- metab_stool_glog[feature_keep,]
 
