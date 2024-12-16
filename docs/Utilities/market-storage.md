@@ -4,12 +4,12 @@
 
 Market storage, also known as Market-file, is a disk-based storage solution designed for research data that requires regular access, typically on a daily basis. It functions similarly to Monash University's `S:\` Drive and is ideal for frequently changing data that is too large for local storage. Market storage can be accessed as a desktop share/network drive (SMB) or mounted on a server (NFS). Access is managed via user groups for SMB shares or network addresses for NFS shares.
 
-### External access
+### External access 🥷
 
 Access to your Market storage when not using Monash Wi-Fi or WLAN connections requires your computer to be connected to the Monash VPN.
 Instructions for set-up and connection are available [here](https://www.monash.edu/esolutions/network/vpn).
 
-### Features and backup system
+### Features and backup system ☁️
 
 Exclusively using disk capacity, Market storage offers fast and immediate file access. Data remains in Market until it is either archived to Vault storage or deleted. Backups are conducted daily, with a 30-day retention period for recovery. 
 
@@ -17,13 +17,13 @@ Exclusively using disk capacity, Market storage offers fast and immediate file a
 
     Changes made within a single day cannot be individually recovered, as only the latest version before the nightly backup is retained. Deleted files can be recovered within the 30-day window but are irretrievable beyond that.
 
-### Recommendations for large collections
+### Recommendations for large collections 📦📦📦
 
 While Market storage supports large datasets, collections exceeding 10TB are best managed using a combination of Market and Vault storage. Active or analysed data should be stored in a smaller Market allocation, while older, unused data can be archived in Vault and retrieved as needed. Market storage can be shared externally through Aspera, a web-based tool for transferring large datasets, though it is unsuitable for critical or sensitive information. With less capacity than Vault storage, Market allocations are quota-based and can be requested via the Data Dashboard.
 
-## Map the drive to your computer
+## Map the drive to your computer 🗺️
 
-=== "Linux"
+=== "Linux 🐧"
 
     !!! warning "Monash VPN"
 
@@ -67,7 +67,7 @@ While Market storage supports large datasets, collections exceeding 10TB are bes
 
         When you run the `mount` command, you will be prompted to enter your Monash password. This is your Monash login password, and not necessarily the same as your computer login, depending on which machine you are using.
 
-=== "MacOS"
+=== "MacOS 🍎"
 
     !!! warning "Monash VPN"
 
@@ -90,7 +90,7 @@ While Market storage supports large datasets, collections exceeding 10TB are bes
 
     !["MacOS step 2"](../assets/Utilities/file-systems/market_macOS-02.png)
 
-=== "Windows"
+=== "Windows 🪟"
 
     !!! warning "Monash VPN"
 
