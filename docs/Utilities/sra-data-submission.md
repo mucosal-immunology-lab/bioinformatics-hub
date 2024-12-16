@@ -2,19 +2,20 @@
 
 A guide to submitting sequencing data to the National Center for Biotechnology Information (NCBI) sequencing read archive (SRA) database. Includes information on uploading data to the SRA using the high-speed Aspera Connect tool.
 
-**Patient-derived sequencing files**
+!!! warning "Patient-derived sequencing files"
 
-If your samples are derived from humans, ensure that your **file names include no reference to patient identifiers**. Once uploaded to the SRA database, it is very difficult to change the names of files, and requires directly contacting the database to arrange for removal of files and for you to reupload the data. It also involves a difficult process of them re-mapping the new uploads to your existing SRA metadata files.
+    If your samples are derived from humans, ensure that your **file names include no reference to patient identifiers**. Once uploaded to the SRA database, it is very difficult to change the names of files, and requires directly contacting the database to arrange for removal of files and for you to reupload the data. It also involves a difficult process of them re-mapping the new uploads to your existing SRA metadata files.
 
-Also ensure that you only include the absolute minimum amount of metadata, in a manner that protects patient confidentiality. Absolutely no information should be unique to one single patient in your cohort, even an age (if you have a patient with a unique age, this should be replaced with `NA` for the purposes of SRA submission). For manuscripts, you can include a phrase indicating that further metadata is available upon reasonable request. **The important thing here is to not infringe on patient privacy and confidentiality.**
+    Also ensure that you only include the absolute minimum amount of metadata, in a manner that protects patient confidentiality. Absolutely no information should be unique to one single patient in your cohort, even an age (if you have a patient with a unique age, this should be replaced with `NA` for the purposes of SRA submission). For manuscripts, you can include a phrase indicating that further metadata is available upon reasonable request. **The important thing here is to not infringe on patient privacy and confidentiality.**
 
-Things you could potentially include:
-- Modified and anonymised patient ID
-- Sampling group
-- Timepoint (not exact days or months)
-- Sex
-- Collection year (no exact dates)
-- Tissue
+    Things you could potentially include:
+
+    - Modified and anonymised patient ID
+    - Sampling group
+    - Timepoint (not exact days or months)
+    - Sex
+    - Collection year (no exact dates)
+    - Tissue
 
 ## Process overview
 
@@ -33,7 +34,7 @@ Go to the [SRA submission](https://submit.ncbi.nlm.nih.gov/) website to register
 - Organism name: Human (change if using mouse or rat data)
 - Project type: Metagenome (add transcriptome if you also have host transcriptomics)
 
-## Register BioSamples :test_tube:
+## Register BioSamples 🧪
 
 ### Microbiome data 🦠
 
@@ -43,8 +44,10 @@ Microbiome samples will be registered as *MIMARKS Specimen* samples. On the **Bi
 - **Organism**: `human metagenome` (or as appropriate)
 - **Env broad scale**: `host-associated`
 - **Env local scale**: `mammalia-associated habitat`
-- **Env medium**: (as appropriate)
+- **Env medium**: (as appropriate &ndash; e.g. `bronchial brushing`, `stool`, etc.)
 - **Strain, isolate, cultivar, ecotype**: `NA`
+- **Host**: (as appropriate &ndash; e.g. `Homo sapiens`, `Mus musculus`, etc.)
+- **Latitude/Longitude**: (as appropriate &ndash; e.g. `37.8457 S 144.9819 E` for the Alfred Hospital, Melbourne)
 - Add any other relevant host information in the table, as well as the host tissue samples
 - Any other column which is not relevant can be set to `NA`
 
