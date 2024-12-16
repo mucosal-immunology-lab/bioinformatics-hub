@@ -104,75 +104,82 @@ As above, the **SRA Metadata** tab is where the magic will happen :magic_wand::s
 
     You can choose either of the following upload options, and each has pros and cons.
     
-    - **Filezilla** allows parallel uploads according to your settings, but upload speed is typically slower.
     - **Aspera Connect** (at least with NCBI) only allows sequential uploads, but the upload speed is significantly faster.
+    - **Filezilla** allows parallel uploads according to your settings, but upload speed is typically slower.
 
-### FileZilla 🦖
+=== "Aspera Connect"
 
-Using [FileZilla](https://filezilla-project.org/) is more effective when you have large files and/or a large number of files.
+    The IBM Aspera Connect tool allows for much faster uploads than FileZilla, and is a good alternative for large files.
 
-In FileZilla, open the sites manager and connect to NCBI as follows:
-- Protocol: `FTP`
-- Host: `ftp-private.ncbi.nlm.nih.gov`
-- Username: `subftp`
-- Password: this is your user-specific NCBI password given when you submit your data
+    **Linux process** 🐧
 
-In the `Advanced` tab next to the `General` tab, set the `Default remote directory` field to the directory specified by NCBI. This will looks something like: `/uploads/{username}_{uniqueID}`.
+    The process described here is for Linux, but is similar for Windows and MacOS operating systems. More information is provided on the [IBM website](https://www.ibm.com/docs/en/aspera-connect/4.2?topic=suc-installation).
 
-Select connect, and gain access to your account folder on the NCBI FTP server.
+    -  Download the [Aspera Connect software](https://www.ibm.com/aspera/connect/).
+    -  Open a new terminal window (`Ctrl+Alt+T`)
+    -  Navigate to downloads, extract the `tar.gz` file.
+    -  Run the install script.
 
-**Create a new project folder** within the main upload folder, and enter the folder. Add your files to the upload queue, and begin the upload process.
+    ```bash
+    # Extract the file
+    tar -zxvf ibm-aspera-connect-version+platform.tar.gz
+    # Run the install script
+    ./ibm-aspera-connect-version+platform.sh
+    ```
 
-### Aspera Connect
+    - Add the Aspera Connect bin folder to your PATH variable (reopen terminal to apply changes).
 
-The IBM Aspera Connect tool allows for much faster uploads than FileZilla, and is a good alternative for large files.
+    ```bash
+    # Add folder to PATH
+    echo 'export PATH=$PATH:/home/{user}/.aspera/connect/bin/ >> ~/.bashrc'
+    ```
 
-#### Linux process 🐧
+    - Download the NCBI Aspera Connect [key file](https://submit.ncbi.nlm.nih.gov/preload/aspera_key/).
+    - Navigate to the parent folder of the folder containing the files you want to upload to the SRA database, and create a new bash script.
 
-The process described here is for Linux, but is similar for Windows and MacOS operating systems. More information is provided on the [IBM website](https://www.ibm.com/docs/en/aspera-connect/4.2?topic=suc-installation).
+    ```bash
+    # Create a new bash script file
+    touch upload_seq_data.sh
+    ```
 
-1.  Download the [Aspera Connect software](https://www.ibm.com/aspera/connect/).
-2.  Open a new terminal window (`Ctrl+Alt+T`)
-3.  Navigate to downloads, extract the `tar.gz` file.
-4.  Run the install script.
+    - Add the following code to the bash script file. 
+        - The `-i` argument is the path to the key file, and must be given as a full path (not a relative one).
+        - The `-d` argument specifies that the directory will be created if it doesn't exist.
+        - You can adjust the maximum upload speed using the `-l500m` argument, where `500` is the speed in Mbps. You could increase or decrease as desired.
+        - Add the folder containing the data to upload, which can be relative to the folder containing the bash script.
+        -  Next provide the upload folder provided by NCBI, which will be user-specific, and **ensure you provide a project folder** at the end of this. Data will not be available if it is uploaded into the main uploads folder.
 
-```bash
-# Extract the file
-tar -zxvf ibm-aspera-connect-version+platform.tar.gz
-# Run the install script
-./ibm-aspera-connect-version+platform.sh
-```
+    !!! warning "Seriously... remember to specify a new folder 👀"
 
-5. Add the Aspera Connect bin folder to your PATH variable (reopen terminal to apply changes).
+        If you don't specify a folder (`{name-of-project}`) after the main directory path, your files will be uploaded to the main user directory.
+        Your files will then not be available for any SRA submission, and you will have to re-upload everything.
+        
+        `subasp@upload.ncbi.nlm.nih.gov:uploads/{user-specific-ID}/{name-of-project}`
 
-```bash
-# Add folder to PATH
-echo 'export PATH=$PATH:/home/{user}/.aspera/connect/bin/ >> ~/.bashrc'
-```
+    ```bash title="upload_seq_data.sh"
+    #!/bin/bash
+    ascp -i {/full/path/to/key-file/aspera.openssh} -QT -l500m -k1 -d {./name-of-seq-data-folder} subasp@upload.ncbi.nlm.nih.gov:uploads/{user-specific-ID}/{name-of-project}
+    ```
 
-6. Download the NCBI Aspera Connect [key file](https://submit.ncbi.nlm.nih.gov/preload/aspera_key/).
-7. Navigate to the parent folder of the folder containing the files you want to upload to the SRA database, and create a new bash script.
+    - Run the bash script, and upload all files. The default settings will allow you to resume uploads if they are interrupted, and it will not overwrite files that are identical in the destination folder.
 
-```bash
-# Create a new bash script file
-touch upload_seq_data.sh
-```
+    ```bash
+    # Run script
+    bash upload_seq_data.sh
+    ```
 
-8. Add the following code to the bash script file. 
--   The `-i` argument is the path to the key file, and must be given as a full path (not a relative one).
--   The `-d` argument specifies that the directory will be created if it doesn't exist.
--   You can adjust the maximum upload speed using the `-l500m` argument, where `500` is the speed in Mbps. You could increase or decrease as desired.
--   Add the folder containing the data to upload, which can be relative to the folder containing the bash script.
--   Next provide the upload folder provided by NCBI, which will be user-specific, and **ensure you provide a project folder** at the end of this. Data will not be available if it is uploaded into the main uploads folder.
+=== "FileZilla 🦖"
 
-```bash title="upload_seq_data.sh"
-#!/bin/bash
-ascp -i {/full/path/to/key-file/aspera.openssh} -QT -l500m -k1 -d {./name-of-seq-data-folder} subasp@upload.ncbi.nlm.nih.gov:uploads/{user-specific-ID}/{name-of-project}
-```
+    Using [FileZilla](https://filezilla-project.org/) is more effective when you have large files and/or a large number of files.
 
-9. Run the bash script, and upload all files. The default settings will allow you to resume uploads if they are interrupted, and it will not overwrite files that are identical in the destination folder.
+    In FileZilla, open the sites manager and connect to NCBI as follows:
+    - Protocol: `FTP`
+    - Host: `ftp-private.ncbi.nlm.nih.gov`
+    - Username: `subftp`
+    - Password: this is your user-specific NCBI password given when you submit your data
 
-```bash
-# Run script
-bash upload_seq_data.sh
-```
+    In the `Advanced` tab next to the `General` tab, set the `Default remote directory` field to the directory specified by NCBI. This will looks something like: `/uploads/{username}_{uniqueID}`.
+
+    Select connect, and gain access to your account folder on the NCBI FTP server.
+
+    **Create a new project folder** within the main upload folder, and enter the folder. Add your files to the upload queue, and begin the upload process.
