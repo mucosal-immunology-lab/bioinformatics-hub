@@ -18,6 +18,8 @@ nav:
     - Handling sequencing data:
       - Converting NovaSeq outputs: Utilities/convert-raw-novaseq-outputs.md
       - SRA sequencing data submission: Utilities/sra-data-submission.md
+    - Monash data storage:
+      - Market storage: Utilities/market-storage.md
   - Public Datasets: PublicDatasets/public-datasets.md
 
 theme:
