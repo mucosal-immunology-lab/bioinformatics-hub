@@ -20,6 +20,7 @@ nav:
       - SRA sequencing data submission: Utilities/sra-data-submission.md
     - Monash data storage:
       - Market storage: Utilities/market-storage.md
+      - Vault storage: Utilities/vault-storage.md
   - Public Datasets: PublicDatasets/public-datasets.md
 
 theme:

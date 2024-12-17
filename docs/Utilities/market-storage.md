@@ -2,7 +2,11 @@
 
 ## Overview
 
-Market storage, also known as Market-file, is a disk-based storage solution designed for research data that requires regular access, typically on a daily basis. It functions similarly to Monash University's `S:\` Drive and is ideal for frequently changing data that is too large for local storage. Market storage can be accessed as a desktop share/network drive (SMB) or mounted on a server (NFS). Access is managed via user groups for SMB shares or network addresses for NFS shares.
+Market storage, also known as Market-file, is a disk-based storage solution designed for research data that requires regular access, typically on a daily basis. It functions similarly to Monash University's `S:\` Drive and is ideal for frequently changing data that is too large for local storage. Market storage can be accessed as a desktop share/network drive (SMB) or mounted on a server (NFS). Access is managed via user groups for SMB shares or network addresses for NFS shares. See the [Market Storage User Guide](https://docs.erc.monash.edu/RDSM/UserGuides/MarketStorageUserGuide) for more information.
+
+!!! info "Requesting storage"
+
+    Storage can be requested or amended on the Monash University [research cloud data dashboard](https://datadashboard.erc.monash.edu/).
 
 ### External access 🥷
 
