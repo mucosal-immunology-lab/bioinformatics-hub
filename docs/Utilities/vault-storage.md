@@ -19,7 +19,7 @@ Vault combines disk and tape storage for efficiency. The disk acts as a fast cac
 
     Tape recalls can be slow, particularly for many small, scattered files, due to the process of locating tapes, loading them, and accessing specific data. Users are encouraged to organize data into structured folders and bundle small files into archives (e.g., using ZIP, TAR, or SquashFS) to enable quicker retrieval. For urgent access to large datasets, bulk recalls can be requested but are uncommon and assessed on a case-by-case basis.
 
-## Accessing the Vault
+## Accessing the Vault 🏦
 
 === "Filezilla 🦖"
 
@@ -48,7 +48,7 @@ Vault combines disk and tape storage for efficiency. The disk acts as a fast cac
 
     - You can then navigate to the files you need to download and add them to your FileZilla transfer queue. The process works the same for upload.
 
-=== "Rsync"
+=== "Rsync 🔄"
 
     !!! warning "Monash VPN"
 
@@ -58,7 +58,7 @@ Vault combines disk and tape storage for efficiency. The disk acts as a fast cac
 
     - You can check for a install by running `rsync --help`. If you get the help menu showing up, you're good to go.
     
-    ??? question "I don't have it installed... where do I get rsync from?"
+    ??? question "I don't have it installed... where do I get Rsync from?"
 
         === "MacOS 🍎"
 

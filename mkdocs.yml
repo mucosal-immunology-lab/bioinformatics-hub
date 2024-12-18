@@ -14,8 +14,10 @@ nav:
   - Nextflow Pipelines: 
     - nf-mucimmuno: NextFlow/nf-mucimmuno.md
     - Single-cell RNAseq: NextFlow/scRNAseq.md
+    - DADA2 16S rRNA: NextFlow/dada2_16S.md
   - Utilities:
     - Handling sequencing data:
+      - Data best practices: Utilities/data-best-practices.md
       - Converting NovaSeq outputs: Utilities/convert-raw-novaseq-outputs.md
       - SRA sequencing data submission: Utilities/sra-data-submission.md
     - Monash data storage:
