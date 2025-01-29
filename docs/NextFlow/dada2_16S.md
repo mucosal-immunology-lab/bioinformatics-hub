@@ -215,6 +215,8 @@ To adjust the `cluster` profile settings, stay within the appropriate section at
 
 Several outputs will be copied from their respective Nextflow `work` directories to the output folder of your choice (default: `results`).
 
+### Phyloseq inputs 📦
+
 The main outputs of interest for downstream processing are the inputs to create your `phyloseq` object.
 
 | Output | Description |
@@ -222,6 +224,8 @@ The main outputs of interest for downstream processing are the inputs to create 
 | `seqtab_nochim.rds` | The clean counts table matrix |
 | `taxonomy_species.rds` | The SILVA-assigned taxonomy table |
 | `tree.rds` | The *de novo* phylogenetic tree |
+
+### QC and filtering plots 📊
 
 There are also a collection of quality control and filtering plots available in this directory too. Below is an example of the output structure for running a single run.
 
