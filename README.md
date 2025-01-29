@@ -1,5 +1,7 @@
 # Bioinformatics Hub
 
+Please visit the hub [here](https://mucosal-immunology-lab.github.io/bioinformatics-hub/)
+
 ## Goal
 
 This repository will aim to reformat our existing workflows into a more easily accessible format.
