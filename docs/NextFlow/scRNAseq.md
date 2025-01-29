@@ -219,45 +219,45 @@ In order to work with different technologies, and accommodate for differences in
 
 To adjust the `cluster` profile settings, stay within the appropriate section at the top of the file.
 
-***Parameters***
+??? info "Parameters"
 
-Visit [STAR documentation](https://github.com/alexdobin/STAR/) for explanations of all available options for STARsolo.
+    Visit [STAR documentation](https://github.com/alexdobin/STAR/) for explanations of all available options for STARsolo.
 
-| Option | Description |
-|---|---|
-| samples_csv | The file path to your sample sheet |
-| outdir | A new folder name to be created for your results |
-| *trimgalore*.quality | The minimum quality before a sequence is truncated (default: `20`) |
-| *trimgalore*.adapter | A custom adapter sequence for the R1 sequences (default: `'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'`) |
-| *trimgalore*.adapter2 | A custom adapter sequence for the R2 sequences (default: `'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'`) |
-| *starsolo*.soloUMIdedup | The type of UMI deduplication (default: `'1MM_CR'`) |
-| *starsolo*.soloUMIfiltering | The type of UMI filtering for reads uniquely mapping to genes (default: `'MultiGeneUMI_CR'`) |
-| *starsolo*.soloCellFilter | The method type and parameters for cell filtering (default: `'EmptyDrops_CR'`) |
-| *starsolo*.soloMultiMappers | The counting method for reads mapping for multiple genes (default: `'EM'`) |
+    | Option | Description |
+    |---|---|
+    | samples_csv | The file path to your sample sheet |
+    | outdir | A new folder name to be created for your results |
+    | *trimgalore*.quality | The minimum quality before a sequence is truncated (default: `20`) |
+    | *trimgalore*.adapter | A custom adapter sequence for the R1 sequences (default: `'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'`) |
+    | *trimgalore*.adapter2 | A custom adapter sequence for the R2 sequences (default: `'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'`) |
+    | *starsolo*.soloUMIdedup | The type of UMI deduplication (default: `'1MM_CR'`) |
+    | *starsolo*.soloUMIfiltering | The type of UMI filtering for reads uniquely mapping to genes (default: `'MultiGeneUMI_CR'`) |
+    | *starsolo*.soloCellFilter | The method type and parameters for cell filtering (default: `'EmptyDrops_CR'`) |
+    | *starsolo*.soloMultiMappers | The counting method for reads mapping for multiple genes (default: `'EM'`) |
 
-***Process***
+??? info "Process"
 
-These settings relate to resource allocation and cluster settings. FASTQC and TRIMGALORE steps can take longer than 4 hours for typical single-cell RNAseq file, and therefore the default option is to run these steps on the `comp` partition.
+    These settings relate to resource allocation and cluster settings. FASTQC and TRIMGALORE steps can take longer than 4 hours for typical single-cell RNAseq file, and therefore the default option is to run these steps on the `comp` partition.
 
-| Option | Description |
-| --- | --- |
-| executor | The workload manager (default: `'slurm'`) |
-| conda | The conda environment to use (default: `'./environment.yaml'`) |
-| queueSize | The maximum number of jobs to be submitted at any time (default: `12`) |
-| submitRateLimit | The rate allowed for job submission &ndash; either a number of jobs per second (e.g. 20sec) or a number of jobs per time period (e.g. 20/5min) (default: `'1/2sec'`) |
-| memory | The maximum global memory allowed for Nextflow to use (default: `'320 GB'`) |
-| *FASTQC*.memory | Memory for FASTQC step to use (default: `'80 GB'`) |
-| *FASTQC*.cpus | Number of CPUs for FASTQC step to use (default: `8`) |
-| *FASTQC*.clusterOptions | Specific cluster options for FASTQC step (default: `'--time=8:00:00'`) |
-| *TRIMGALORE*.memory | Memory for TRIMGALORE step to use (default: `'80 GB'`) |
-| *TRIMGALORE*.cpus | Number of CPUs for TRIMGALORE step to use (default: `8`) |
-| *TRIMGALORE*.clusterOptions | Specific cluster options for TRIMGALORE step (default : `'--time=8:00:00'`) |
-| *STARSOLO*.memory | Memory for STARSOLO step to use (default: `'80 GB'`) |
-| *STARSOLO*.cpus | Number of CPUs for STARSOLO step to use (default: `12`) |
-| *STARSOLO*.clusterOptions | Specific cluster options for STARSOLO step (default : `'--time=4:00:00 --partition=genomics --qos=genomics'`) |
-| *COLLECT_EXPORT_FILES*.memory | Memory for COLLECT_EXPORT_FILES step to use (default: `'32 GB'`) |
-| *COLLECT_EXPORT_FILES*.cpus | Number of CPUs for COLLECT_EXPORT_FILES step to use (default: `8`) |
-| *COLLECT_EXPORT_FILES*.clusterOptions | Specific cluster options for COLLECT_EXPORT_FILES step (default : `'--time=4:00:00 --partition=genomics --qos=genomics'`) |
+    | Option | Description |
+    | --- | --- |
+    | executor | The workload manager (default: `'slurm'`) |
+    | conda | The conda environment to use (default: `'./environment.yaml'`) |
+    | queueSize | The maximum number of jobs to be submitted at any time (default: `12`) |
+    | submitRateLimit | The rate allowed for job submission &ndash; either a number of jobs per second (e.g. 20sec) or a number of jobs per time period (e.g. 20/5min) (default: `'1/2sec'`) |
+    | memory | The maximum global memory allowed for Nextflow to use (default: `'320 GB'`) |
+    | *FASTQC*.memory | Memory for FASTQC step to use (default: `'80 GB'`) |
+    | *FASTQC*.cpus | Number of CPUs for FASTQC step to use (default: `8`) |
+    | *FASTQC*.clusterOptions | Specific cluster options for FASTQC step (default: `'--time=8:00:00'`) |
+    | *TRIMGALORE*.memory | Memory for TRIMGALORE step to use (default: `'80 GB'`) |
+    | *TRIMGALORE*.cpus | Number of CPUs for TRIMGALORE step to use (default: `8`) |
+    | *TRIMGALORE*.clusterOptions | Specific cluster options for TRIMGALORE step (default : `'--time=8:00:00'`) |
+    | *STARSOLO*.memory | Memory for STARSOLO step to use (default: `'80 GB'`) |
+    | *STARSOLO*.cpus | Number of CPUs for STARSOLO step to use (default: `12`) |
+    | *STARSOLO*.clusterOptions | Specific cluster options for STARSOLO step (default : `'--time=4:00:00 --partition=genomics --qos=genomics'`) |
+    | *COLLECT_EXPORT_FILES*.memory | Memory for COLLECT_EXPORT_FILES step to use (default: `'32 GB'`) |
+    | *COLLECT_EXPORT_FILES*.cpus | Number of CPUs for COLLECT_EXPORT_FILES step to use (default: `8`) |
+    | *COLLECT_EXPORT_FILES*.clusterOptions | Specific cluster options for COLLECT_EXPORT_FILES step (default : `'--time=4:00:00 --partition=genomics --qos=genomics'`) |
 
 ## Outputs
 
