@@ -259,3 +259,8 @@ dada2_16S/
     ├── taxonomy.txt
     └── tree.rds
 ```
+
+## Rights
+
+- Copyright ©️ 2025 Mucosal Immunology Lab, Monash University, Melbourne, Australia.
+- Authors: M. Macowan

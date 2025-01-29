@@ -364,3 +364,8 @@ scRNAseq
             ├── sample1.Log.progress.out
             └── versions.yml
 ```
+
+## Rights
+
+- Copyright ©️ 2024 Mucosal Immunology Lab, Monash University, Melbourne, Australia.
+- Authors: M. Macowan

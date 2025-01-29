@@ -244,7 +244,7 @@ From here, you can move onto downstream analysis of the data.
 
 ## Rights
 
-* Copyright ©️ 2024 Respiratory Immunology lab, Monash University, Melbourne, Australia.
+* Copyright ©️ 2024 Mucosal Immunology lab, Monash University, Melbourne, Australia.
 * [HMDB version 5.0](https://pubmed.ncbi.nlm.nih.gov/34986597/): Wishart DS, Guo A, Oler E, Wang F, Anjum A, Peters H, Dizon R, Sayeeda Z, Tian S, Lee BL, Berjanskii M. HMDB 5.0: the human metabolome database for 2022. *Nucleic acids research*. 2022 Jan 7;50(D1):D622-31.
 * License: This pipeline is provided under the MIT license.
 * Authors: M. Macowan, B. Cardwell, and C. Pattaroni
