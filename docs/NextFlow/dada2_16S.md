@@ -263,4 +263,14 @@ dada2_16S/
 ## Rights
 
 - Copyright ©️ 2025 Mucosal Immunology Lab, Monash University, Melbourne, Australia.
+- Licence: This pipeline is provided under the MIT license.
 - Authors: M. Macowan
+
+!!! info ""
+
+    - Illumina Utils: [Meren Lab](https://github.com/merenlab/illumina-utils)
+    - DADA2: [Benjamin Callahan et al.](https://github.com/benjjneb/dada2)
+    - SILVA: [arb-silva.de](https://www.arb-silva.de/)
+    - RAxML: [Exelixis Lab](https://cme.h-its.org/exelixis/web/software/raxml/)
+    - phangorn: [Klaus Schliep et al.](https://github.com/KlausVigo/phangorn)
+    - ips: [Christoph Heibl et al.](https://github.com/heibl/ips)

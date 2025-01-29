@@ -368,4 +368,12 @@ scRNAseq
 ## Rights
 
 - Copyright ©️ 2024 Mucosal Immunology Lab, Monash University, Melbourne, Australia.
+- Licence: This pipeline is provided under the MIT license.
 - Authors: M. Macowan
+
+!!! info ""
+
+    - FastQC: [Babraham Bioinformatics](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+    - MultiQC: [National Genomics Infrastructure (SciLifeLab, Sweden), Seqera Labs et al.](https://github.com/MultiQC/MultiQC)
+    - TrimGalore!: [Babraham Bioinformatics](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/)
+    - STARsolo: [Alex Dobin et al.](https://github.com/alexdobin/STAR/tree/master)

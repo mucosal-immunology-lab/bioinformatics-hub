@@ -15,3 +15,9 @@ Additionally, we may provide additional tools and code for further downstream pr
 [**nf-mucimmuno/dada2_16S**](./dada2_16S.md) is a pipeline for pre-processing of 16S rRNA amplicon sequencing data using the popular [DADA2](https://benjjneb.github.io/dada2/index.html) package and associated tools. It covers demultiplexing with `illumina-utils`, the DADA2 workflow, and subsequent generation of a *de novo* phylogenetic tree using RAxML.
 
 ![nfmucimmuno/dada2_16S](../assets/NextFlow/nf-mucimmuno_dada2_16S.png)
+
+## Rights
+
+- Copyright ©️ 2025 Mucosal Immunology Lab, Monash University, Melbourne, Australia.
+- Licence: Pipelines are provided under the MIT license.
+- Authors: M. Macowan
