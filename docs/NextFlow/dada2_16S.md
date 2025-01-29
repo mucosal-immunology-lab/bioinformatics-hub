@@ -2,7 +2,7 @@
 
 ## Introduction
 
-[**nf-mucimmuno/dada2_16S**](https://github.com/mucosal-immunology-lab/nf-mucimmuno/tree/main/dada2_16S) is a bioinformatics pipeline that can be used to run the popular DADA2 pre-processing pipeline for bacterial 16S rRNA amplicon sequencing data. It can handle multiple runs to generate a single unified output. It takes a samplesheet and either pre- or post-demultiplexed data (depending on what you have available), performs quality profiling, filtering and trimming, sequencing error modelling, sample inference, and merging of paired ends. From there, it combines all runs together, removes chimeras, assigns SILVA taxonomy, and generate a *de novo* phylogenetic tree using RAxML.
+[**nf-mucimmuno/dada2_16S**](https://github.com/mucosal-immunology-lab/nf-mucimmuno/tree/main/dada2_16S) is a bioinformatics pipeline that can be used to run the popular DADA2 pre-processing pipeline for bacterial 16S rRNA amplicon sequencing data. It can handle multiple runs to generate a single unified output. It takes a samplesheet and either pre- or post-demultiplexed data (depending on what you have available), performs quality profiling, filtering and trimming, sequencing error modelling, sample inference, and merging of paired ends. From there, it combines all runs together, removes chimeras, assigns SILVA taxonomy, and generates a *de novo* phylogenetic tree using RAxML.
 
 ![nfmucimmuno/scRNAseq](../assets/NextFlow/nf-mucimmuno_dada2_16S.png)
 
