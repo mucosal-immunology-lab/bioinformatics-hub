@@ -87,7 +87,7 @@ Because you specify the full directory path for your raw input data, you can tec
 
     Essentially if there's an existing folder called `demultiplexed`, demultiplexing is skipped for that run, and the existing files are used.
 
-    - `run01` requires demultiplexing, and as such simply includes `R1.fastq.gz`, `R2.fastq.gz`, and `Index.fastq.gz`. It also importantly contains a the barcode mapping file which provides a link between the unique adapters and each sample.
+    - `run01` requires demultiplexing, and as such simply includes `R1.fastq.gz`, `R2.fastq.gz`, and `Index.fastq.gz`. It also importantly contains a barcode mapping file which provides a link between the unique adapters and each sample.
     - `run02` however is already demultiplexed, and therefore only requires the forward (`R1`) and reverse (`R2`) reads.
     
     !!! warning "Make sure you correctly name your barcode mapping file!"
