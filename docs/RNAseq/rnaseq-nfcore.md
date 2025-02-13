@@ -198,10 +198,10 @@ rna_data <- readRDS(here('input', 'salmon.merged.gene_counts_length_scaled.rds')
 # Get Ensembl annotations
 ensembl <- useMart('ensembl', dataset = 'hsapiens_gene_ensembl')
 
-ensemblIDsBronch <- rownames(rna_bronch)
+ensemblIDs <- rownames(rna_data)
 
 gene_list <- getBM(attributes = c('ensembl_gene_id', 'hgnc_symbol', 'gene_biotype'),
-                   filters = 'ensembl_gene_id', values = ensemblIDsBronch, mart = ensembl)
+                   filters = 'ensembl_gene_id', values = ensemblIDs, mart = ensembl)
 colnames(gene_list) <- c("gene_id", "hgnc_symbol", "gene_biotype")
 gene_list <- filter(gene_list, !duplicated(gene_id))
 
@@ -235,7 +235,7 @@ rna_data_dge_min10 <- calcNormFactors(rna_data_dge_min10)
 rna_data_dge_min10 <- voom(rna_data_dge_min10, design, plot = TRUE)
 
 # Add the normalised abundance data from STAR Salmon and filter to match the counts data
-rna_data_dge_min10$abundance <- as.matrix(assay(rna_bronch, 'abundance'))[keep_min10, ]
+rna_data_dge_min10$abundance <- as.matrix(assay(rna_data, 'abundance'))[keep_min10, ]
 
 # Select protein coding defined genes only
 rna_data_dge_min10 <- rna_data_dge_min10[rna_data_dge_min10$genes$gene_biotype == "protein_coding" & rna_data_dge_min10$genes$hgnc_symbol != "", ]

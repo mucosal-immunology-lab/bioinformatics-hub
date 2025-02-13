@@ -27,10 +27,14 @@ These sort of tasks are never accomplished alone! Massive thanks to the people w
 
     Post Doc &ndash; *Mucosal Immunology Lab*
 
+-   ![Bailey Cardwell](assets/Contributors/bailey_cardwell.jpg){ width="150" }  
+    **Bailey Cardwell**
+
+    PhD student &ndash; *Mucosal Immunology Lab*
+
 </div>
 
-* Alana Butler: Bioinformatician
-* Bailey Cardwell: PhD student &ndash; *Mucosal Immunology Lab*
+* Alana Butler: Bioinformatician *(former member)*
 
 ## Group Research Overview
 

@@ -6,6 +6,10 @@
 
 ![nfmucimmuno/scRNAseq](../assets/NextFlow/nf-mucimmuno_dada2_16S.png)
 
+!!! tip
+
+    This is essentially the Nextflow version of our DADA2 pipeline guide, which you can explore [here](../Microbiome/dada2_pipeline.md).
+
 ## Usage
 
 ### Download the repository 📁
