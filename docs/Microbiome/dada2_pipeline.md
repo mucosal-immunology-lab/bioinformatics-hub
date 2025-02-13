@@ -801,8 +801,16 @@ Adapted from Callahan *et al.* [pipeline](https://f1000research.com/articles/5-1
     left_join(seq_names_tidy, by = 'raxml_names')
     tree$tip.label <- tip_labels$original
 
+    # Force dichotomy (resolve any multifurcations)
+    tree_dich <- ape::multi2di(tree)
+
+    # Re-root the tree explicitly using an outgroup (i.e. the first tip)
+    tree_rooted <- root(tree_dich,
+                        outgroup = tree_dich$tip.label[1],
+                        resolve.root = TRUE)
+
     # Save to disk
-    saveRDS(tree, here('input', '01_dada2', 'tree.rds'))
+    saveRDS(tree_rooted, here('input', '01_dada2', 'tree.rds'))
     ```
 
 ## Rights
