@@ -137,9 +137,8 @@ Make a note of the paths to each of these files, as you will need to enter these
     
     We recommend the SILVA database: [DADA2-formatted SILVA database version 138.2](https://zenodo.org/records/14169026).
 
-    - You will require the following files, which can be downloaded by clicking the links.
+    - You will require the following database file, which can be downloaded directly by clicking the link.
         - [`silva_nr99_v138.2_toSpecies_trainset.fa.gz`](https://zenodo.org/records/14169026/files/silva_nr99_v138.2_toSpecies_trainset.fa.gz?download=1)
-        - [`silva_v138.2_assignSpecies.fa.gz`](https://zenodo.org/records/14169026/files/silva_v138.2_assignSpecies.fa.gz?download=1)
 
 ### Install RAxML 🌳
 
