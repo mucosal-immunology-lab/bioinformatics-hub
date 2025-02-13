@@ -14,8 +14,7 @@ nav:
     - 2. Peak Matrix Processing: LCMS/pmp-quality-control.md
     - 3. Secondary Feature Annotation: LCMS/secondary-feature-annotation.md
     - 4. Manual Peak Curation: LCMS/manual-peak-curation.md
-  - Nextflow Pipelines: 
-    - nf-mucimmuno: NextFlow/nf-mucimmuno.md
+  - Nextflow Pipelines:
     - Single-cell RNAseq: NextFlow/scRNAseq.md
     - DADA2 16S rRNA: NextFlow/dada2_16S.md
   - Utilities:
