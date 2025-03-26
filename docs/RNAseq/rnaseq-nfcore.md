@@ -70,7 +70,7 @@ Each row represents a fastq file (single-end) or a pair of fastq files (paired e
 Firstly, we will start a new interactive session on the M3 MASSIVE cluster.
 
 ```bash
-smux n --time=2-00:00:00 --mem=64GB --ntasks=1 --cpuspertask=12 -J nf-core/rnaseq
+smux n --time=2-00:00:00 --mem=128GB --ntasks=1 --cpuspertask=24 -J nf-core/rnaseq
 ```
 
 Once we are inside the interactive session, we need to select an appropriate version of the Java JDK to use. For the Nextflow pipeline we will be running, we need at least **version 17+**.
