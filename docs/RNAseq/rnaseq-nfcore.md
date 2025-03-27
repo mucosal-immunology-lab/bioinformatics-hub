@@ -187,65 +187,129 @@ We have a standardised method for importing data into R. Luckily for us, the NF-
 
 Here we show our standard process for preparing RNAseq data for downstream analysis.
 
-```r title="Prepare Voom-normalised DGE List"
-# Load R packages
-pkgs <- c('knitr', 'here', 'SummarizedExperiment', 'biomaRt', 'edgeR', 'limma')
-pacman::p_load(char = pkgs)
+=== "Human 👨👩"
 
-# Import the bias-corrected counts from STAR Salmon
-rna_data <- readRDS(here('input', 'salmon.merged.gene_counts_length_scaled.rds'))
+    ```r title="Prepare Voom-normalised DGE List"
+    # Load R packages
+    pkgs <- c('knitr', 'here', 'SummarizedExperiment', 'biomaRt', 'edgeR', 'limma')
+    pacman::p_load(char = pkgs)
 
-# Get Ensembl annotations
-ensembl <- useMart('ensembl', dataset = 'hsapiens_gene_ensembl')
+    # Import the bias-corrected counts from STAR Salmon
+    rna_data <- readRDS(here('input', 'salmon.merged.gene_counts_length_scaled.rds'))
 
-ensemblIDs <- rownames(rna_data)
+    # Get Ensembl annotations
+    ensembl <- useMart('ensembl', dataset = 'hsapiens_gene_ensembl')
 
-gene_list <- getBM(attributes = c('ensembl_gene_id', 'hgnc_symbol', 'gene_biotype'),
-                   filters = 'ensembl_gene_id', values = ensemblIDs, mart = ensembl)
-colnames(gene_list) <- c("gene_id", "hgnc_symbol", "gene_biotype")
-gene_list <- filter(gene_list, !duplicated(gene_id))
+    ensemblIDs <- rownames(rna_data)
 
-# Ensure that only genes in the STAR Salmon outputs are kept for the gene list
-rna_data <- rna_data[rownames(rna_data) %in% gene_list$gene_id, ]
+    gene_list <- getBM(attributes = c('ensembl_gene_id', 'hgnc_symbol', 'gene_biotype'),
+                    filters = 'ensembl_gene_id', values = ensemblIDs, mart = ensembl)
+    colnames(gene_list) <- c("gene_id", "hgnc_symbol", "gene_biotype")
+    gene_list <- filter(gene_list, !duplicated(gene_id))
 
-# Add the ENSEMBL data to the rowData element
-rowData(rna_data) <- merge(gene_list, rowData(rna_data), by = "gene_id", all = FALSE)
+    # Ensure that only genes in the STAR Salmon outputs are kept for the gene list
+    rna_data <- rna_data[rownames(rna_data) %in% gene_list$gene_id, ]
 
-# Load the RNA metadata
-metadata_rna <- read_csv(here('input', 'metadata_rna.csv'))
+    # Add the ENSEMBL data to the rowData element
+    rowData(rna_data) <- merge(gene_list, rowData(rna_data), by = "gene_id", all = FALSE)
 
-# Sort the metadata rows to match the order of the abundance data
-rownames(metadata_rna) <- metadata_rna$RNA_barcode
-metadata_rna <- metadata_rna[colnames(rna_data),]
+    # Load the RNA metadata
+    metadata_rna <- read_csv(here('input', 'metadata_rna.csv'))
 
-# Create a DGEList from the SummarizedExperiment object
-rna_data_dge <- DGEList(assay(rna_data, 'counts'), 
-                        samples = metadata_rna, 
-                        group = metadata_rna$group,
-                        genes = rowData(rna_data),
-                        remove.zeros = TRUE)
+    # Sort the metadata rows to match the order of the abundance data
+    rownames(metadata_rna) <- metadata_rna$RNA_barcode
+    metadata_rna <- metadata_rna[colnames(rna_data),]
 
-# Filter the DGEList based on the group information
-design <- model.matrix(~ group, data = rna_data_dge$samples)
-keep_min10 <- filterByExpr(rna_data_dge, design, min.count = 10)
-rna_data_dge_min10 <- rna_data_dge[keep_min10, ]
+    # Create a DGEList from the SummarizedExperiment object
+    rna_data_dge <- DGEList(assay(rna_data, 'counts'), 
+                            samples = metadata_rna, 
+                            group = metadata_rna$group,
+                            genes = rowData(rna_data),
+                            remove.zeros = TRUE)
 
-# Calculate norm factors and perform voom normalisation
-rna_data_dge_min10 <- calcNormFactors(rna_data_dge_min10)
-rna_data_dge_min10 <- voom(rna_data_dge_min10, design, plot = TRUE)
+    # Filter the DGEList based on the group information
+    design <- model.matrix(~ group, data = rna_data_dge$samples)
+    keep_min10 <- filterByExpr(rna_data_dge, design, min.count = 10)
+    rna_data_dge_min10 <- rna_data_dge[keep_min10, ]
 
-# Add the normalised abundance data from STAR Salmon and filter to match the counts data
-rna_data_dge_min10$abundance <- as.matrix(assay(rna_data, 'abundance'))[keep_min10, ]
+    # Calculate norm factors and perform voom normalisation
+    rna_data_dge_min10 <- calcNormFactors(rna_data_dge_min10)
+    rna_data_dge_min10 <- voom(rna_data_dge_min10, design, plot = TRUE)
 
-# Select protein coding defined genes only
-rna_data_dge_min10 <- rna_data_dge_min10[rna_data_dge_min10$genes$gene_biotype == "protein_coding" & rna_data_dge_min10$genes$hgnc_symbol != "", ]
+    # Add the normalised abundance data from STAR Salmon and filter to match the counts data
+    rna_data_dge_min10$abundance <- as.matrix(assay(rna_data, 'abundance'))[keep_min10, ]
 
-# Add symbol as rowname
-rownames(rna_data_dge_min10) <- rna_data_dge_min10$genes$gene_name
+    # Select protein coding defined genes only
+    rna_data_dge_min10 <- rna_data_dge_min10[rna_data_dge_min10$genes$gene_biotype == "protein_coding" & rna_data_dge_min10$genes$hgnc_symbol != "", ]
 
-# Save the DGEList
-saveRDS(rna_data_dge_min10, here('input', 'rna_data_dge_min10.rds'))
-```
+    # Add symbol as rowname
+    rownames(rna_data_dge_min10) <- rna_data_dge_min10$genes$gene_name
+
+    # Save the DGEList
+    saveRDS(rna_data_dge_min10, here('input', 'rna_data_dge_min10.rds'))
+    ```
+
+=== "Mouse 🐁"
+
+    ```r title="Prepare Voom-normalised DGE List"
+    # Load R packages
+    pkgs <- c('knitr', 'here', 'SummarizedExperiment', 'biomaRt', 'edgeR', 'limma')
+    pacman::p_load(char = pkgs)
+
+    # Import the bias-corrected counts from STAR Salmon
+    rna_data <- readRDS(here('input', 'salmon.merged.gene_counts_length_scaled.rds'))
+
+    # Get Ensembl annotations
+    ensembl <- useMart('ensembl', dataset = 'mmusculus_gene_ensembl')
+
+    ensemblIDs <- rownames(rna_data)
+
+    gene_list <- getBM(attributes = c('ensembl_gene_id', 'mgi_symbol', 'gene_biotype'),
+                    filters = 'ensembl_gene_id', values = ensemblIDs, mart = ensembl)
+    colnames(gene_list) <- c("gene_id", "mgi_symbol", "gene_biotype")
+    gene_list <- filter(gene_list, !duplicated(gene_id))
+
+    # Ensure that only genes in the STAR Salmon outputs are kept for the gene list
+    rna_data <- rna_data[rownames(rna_data) %in% gene_list$gene_id, ]
+
+    # Add the ENSEMBL data to the rowData element
+    rowData(rna_data) <- merge(gene_list, rowData(rna_data), by = "gene_id", all = FALSE)
+
+    # Load the RNA metadata
+    metadata_rna <- read_csv(here('input', 'metadata_rna.csv'))
+
+    # Sort the metadata rows to match the order of the abundance data
+    rownames(metadata_rna) <- metadata_rna$RNA_barcode
+    metadata_rna <- metadata_rna[colnames(rna_data),]
+
+    # Create a DGEList from the SummarizedExperiment object
+    rna_data_dge <- DGEList(assay(rna_data, 'counts'), 
+                            samples = metadata_rna, 
+                            group = metadata_rna$group,
+                            genes = rowData(rna_data),
+                            remove.zeros = TRUE)
+
+    # Filter the DGEList based on the group information
+    design <- model.matrix(~ group, data = rna_data_dge$samples)
+    keep_min10 <- filterByExpr(rna_data_dge, design, min.count = 10)
+    rna_data_dge_min10 <- rna_data_dge[keep_min10, ]
+
+    # Calculate norm factors and perform voom normalisation
+    rna_data_dge_min10 <- calcNormFactors(rna_data_dge_min10)
+    rna_data_dge_min10 <- voom(rna_data_dge_min10, design, plot = TRUE)
+
+    # Add the normalised abundance data from STAR Salmon and filter to match the counts data
+    rna_data_dge_min10$abundance <- as.matrix(assay(rna_data, 'abundance'))[keep_min10, ]
+
+    # Select protein coding defined genes only
+    rna_data_dge_min10 <- rna_data_dge_min10[rna_data_dge_min10$genes$gene_biotype == "protein_coding" & rna_data_dge_min10$genes$hgnc_symbol != "", ]
+
+    # Add symbol as rowname
+    rownames(rna_data_dge_min10) <- rna_data_dge_min10$genes$gene_name
+
+    # Save the DGEList
+    saveRDS(rna_data_dge_min10, here('input', 'rna_data_dge_min10.rds'))
+    ```
 
 ## Rights
 
