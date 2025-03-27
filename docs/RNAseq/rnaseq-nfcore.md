@@ -302,7 +302,7 @@ Here we show our standard process for preparing RNAseq data for downstream analy
     rna_data_dge_min10$abundance <- as.matrix(assay(rna_data, 'abundance'))[keep_min10, ]
 
     # Select protein coding defined genes only
-    rna_data_dge_min10 <- rna_data_dge_min10[rna_data_dge_min10$genes$gene_biotype == "protein_coding" & rna_data_dge_min10$genes$hgnc_symbol != "", ]
+    rna_data_dge_min10 <- rna_data_dge_min10[rna_data_dge_min10$genes$gene_biotype == "protein_coding" & rna_data_dge_min10$genes$mgi_symbol != "", ]
 
     # Add symbol as rowname
     rownames(rna_data_dge_min10) <- rna_data_dge_min10$genes$gene_name
