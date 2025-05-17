@@ -7,7 +7,15 @@ After processing LCMS data through the MS-DIAL pipeline, secondary annotations f
     * **What is MS1 data?**
         * MS1 data represents the initial scan in mass spectrometry, where ions are detected based on their mass-to-charge ratio (m/z). It provides an overview of all molecular features in a sample, including their m/z values and intensities, enabling detection and quantification of compounds.
     * **How does that differ from MS/MS (MS2) data?**
-        * While MS1 provides a broad profile of ions without structural information, MS/MS involves selecting specific ions from the MS1 scan (precursor ions), fragmenting them, and analysing the resulting product ions. This fragmentation reveals structural details, enabling precise compound identification and differentiation of isomers. 
+        * While MS1 provides a broad profile of ions without structural information, MS/MS involves selecting specific ions from the MS1 scan (precursor ions), fragmenting them, and analysing the resulting product ions. This fragmentation reveals structural details, enabling precise compound identification and differentiation of isomers.
+
+!!! info "Version 2 of the secondary annotation functions available"
+
+    Please update your script files for the [`add_hmdb()`](../assets/LCMS/LCMS_preprocessing/add_hmdb.R) and [`add_lmsd()`](../assets/LCMS/LCMS_preprocessing/add_lmsd.R) functions for new runs.
+    Updated with additional adduct values for automated adduct-specific correction to monoisotopic masses.
+    This is important for accurate secondary assignments.
+
+    *17 May, 2025*
 
 ## Secondary annotation with HMDB 📘
 
