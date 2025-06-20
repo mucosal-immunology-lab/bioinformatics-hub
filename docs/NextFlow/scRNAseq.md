@@ -6,6 +6,12 @@
 
 ![nf-mucimmuno/scRNAseq](../assets/NextFlow/nf-mucimmuno_scRNAseq.png){ align=center }
 
+!!! info "Citation"
+
+    If you use this workflow and end up publishing something, please consider including a reference to our work! 😎🙏
+
+    Macowan, M., Pattaroni, C., Cardwell, B. A., & Marsland, B. (2024). nf-mucimmuno/scRNAseq (0.1.0). Zenodo. [https://doi.org/10.5281/zenodo.14868176](https://doi.org/10.5281/zenodo.14868176)
+
 ## Usage
 
 ### Download the repository 📁
