@@ -149,3 +149,27 @@ limma_sig <- foreach(i = seq_along(res$limma_significant)) %do% {
 }; names(limma_sig) <- names(res$limma_significant)
 write.xlsx(limma_sig, here('figures', 'LimmaDA', 'ASV', 'limma_DA_significant.xlsx'))
 ```
+
+## Rights
+
+- Copyright ©️ 2024 Mucosal Immunology Lab, Monash University, Melbourne, Australia.
+- Licence: This software is provided under the MIT license.
+- Authors: M. Macowan
+
+!!! info ""
+
+    - **limma**: Ritchie ME, Phipson B, Wu D, Hu Y, Law CW, Shi W, Smyth GK (2015). "limma powers differential expression analyses for RNA-sequencing and microarray studies." Nucleic Acids Research, 43(7), e47. doi:10.1093/nar/gkv007.
+    - **ggplot2**: Wickham H (2016). ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. ISBN 978-3-319-24277-4, https://ggplot2.tidyverse.org.
+    - **ggpubr**: Kassambara A (2023). ggpubr: 'ggplot2' Based Publication Ready Plots. R package version 0.6.0, https://rpkgs.datanovia.com/ggpubr/.
+    - **ggrepel**: Slowikowski K (2024). ggrepel: Automatically Position Non-Overlapping Text Labels with 'ggplot2'. https://ggrepel.slowkow.com/, https://github.com/slowkow/ggrepel.
+    - **ggtree**: Yu, G., Smith, D.K., Zhu, H., Guan, Y. and Lam, T.T.-Y. (2017), ggtree: an r package for visualization and annotation of phylogenetic trees with their covariates and other associated data. Methods Ecol Evol, 8: 28-36. https://doi.org/10.1111/2041-210X.12628
+    - **biomformat**: McMurdie PJ, Paulson JN (2025). biomformat: An interface package for the BIOM file format. doi:10.18129/B9.bioc.biomformat, R package version 1.36.0, https://bioconductor.org/packages/biomformat.
+    - **tidyverse**: Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E, Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K, Vaughan D, Wilke C, Woo K, Yutani H (2019). “Welcome to the tidyverse.” Journal of Open Source Software, 4(43), 1686. doi:10.21105/joss.01686.
+    - **phyloseq**: McMurdie and Holmes (2013) phyloseq: An R Package for Reproducible Interactive Analysis and Graphics of Microbiome Census Data. PLoS ONE. 8(4):e61217
+    - **SummarizedExperiment**: Morgan M, Obenchain V, Hester J, Pagès H (2025). SummarizedExperiment: A container (S4 class) for matrix-like assays. doi:10.18129/B9.bioc.SummarizedExperiment, R package version 1.38.1, https://bioconductor.org/packages/SummarizedExperiment.
+    - **edgeR**: Chen Y, Chen L, Lun ATL, Baldoni P, Smyth GK (2025). “edgeR v4: powerful differential analysis of sequencing data with expanded functionality and improved support for small counts and larger datasets.” Nucleic Acids Research, 53(2), gkaf018. doi:10.1093/nar/gkaf018.
+    - **here**: Müller K (2025). here: A Simpler Way to Find Your Files. R package version 1.0.1, https://here.r-lib.org/.
+    - **stringr**: Wickham H (2023). stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.5.1, https://github.com/tidyverse/stringr, https://stringr.tidyverse.org.
+    - **stringdist**: van der Loo M (2014). “The stringdist package for approximate string matching.” The R Journal, 6, 111-122. https://CRAN.R-project.org/package=stringdist.
+    - **ggbeeswarm**: Clarke, E., Sherrill-Mix, S., & Dawson, C. (2023). ggbeeswarm: Categorical Scatter (Violin Point) Plots. R package version 0.7.2. CRAN.
+    - **doParallel**: Corporation M, Weston S (2022). doParallel: Foreach Parallel Adaptor for the 'parallel' Package. R package version 1.0.17. https://CRAN.R-project.org/package=doParallel
