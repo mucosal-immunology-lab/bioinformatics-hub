@@ -17,6 +17,9 @@ nav:
   - Nextflow Pipelines:
     - Single-cell RNAseq: NextFlow/scRNAseq.md
     - DADA2 16S rRNA: NextFlow/dada2_16S.md
+  - Cross-omic Tools:
+    - Differential testing:
+      - Linear modelling with bio_limma: CrossOmicTools/DifferentialTesting/bio_limma.md
   - Utilities:
     - Handling sequencing data:
       - Data best practices: Utilities/data-best-practices.md
