@@ -6,6 +6,12 @@ Here we discuss the application of a **wrapper function** around the popular `li
 Our [`bio_limma()`](../../assets/CrossOmicTools/DifferentialTesting/bio_limma.R) function can neatly handle this task and enable rapid exploratory analysis of the effect of various associated sample metadata, including correcting for various potential confounders. 
 Please see the [limma documentation](https://bioconductor.org/packages/release/bioc/html/limma.html) for further details regarding the main package if you have any particular limma-related queries.
 
+!!! info "Citation"
+
+    If you use this function and end up publishing something, please consider including a reference to our work! 😎🙏
+
+    Macowan, M., Pattaroni, C., Iacono, G., & Marsland, B. (2025). Linear modelling for differential abundance with bio_limma - a wrapper around limma. Zenodo. [https://doi.org/10.5281/zenodo.15726180](https://zenodo.org/records/15726180)
+
 ## Inputs 🔢
 
 Currently the function is suited to handle typical R data container formats related to microbiome, LCMS, and RNAseq data.
