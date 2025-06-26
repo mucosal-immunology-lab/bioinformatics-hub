@@ -16,6 +16,7 @@ nav:
     - 4. Manual Peak Curation: LCMS/manual-peak-curation.md
   - Nextflow Pipelines:
     - Single-cell RNAseq: NextFlow/scRNAseq.md
+    - Metagenomics: NextFlow/metagenomics.md
     - DADA2 16S rRNA: NextFlow/dada2_16S.md
   - Cross-omic Tools:
     - Differential testing:
