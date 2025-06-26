@@ -10,7 +10,7 @@
 
     If you use this workflow and end up publishing something, please consider including a reference to our work! 😎🙏
 
-    Macowan, M., Pattaroni, C., & Marsland, B. (2025). nf-mucimmuno/metagenomics (0.1.0). Zenodo. https://doi.org/10.5281/zenodo.15743010
+    Macowan, M., Pattaroni, C., & Marsland, B. (2025). nf-mucimmuno/metagenomics (0.1.0). Zenodo. [https://doi.org/10.5281/zenodo.15743010](https://doi.org/10.5281/zenodo.15743010)
 
 ## Usage
 
