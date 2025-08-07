@@ -223,8 +223,12 @@ The main outputs of interest for downstream processing are your Bracken-correcte
 
 | Output | Description |
 | --- | --- |
-| `filtered_combined_bracken_report.tsv` | The Bracken-corrected clean counts table matrix |
+| `filtered_combined_bracken_report.tsv` | The Bracken-corrected clean counts table matrix including genus, family, order, class and phylum columns derived from the Kraken2/Bracken taxonomy database |
 | `decontam/` | A folder containing all of your trimmed, decontaminated `.fastq.gz` files &ndash; these can be used for other pipelines such as HUMAnN3 functional profiling. |
+
+!!! info "Additional taxonomy"
+
+    The filtering step requires access to the Kraken2/Bracken taxonomy files (`taxonomy/nodes.dmp` and `taxonomy/names.dmp`) to determine these higher-level ranks.
 
 **Folder structure**
 
