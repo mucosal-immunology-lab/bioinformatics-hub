@@ -1,0 +1,1678 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../secondary-feature-annotation/">
+      
+      
+        <link rel="next" href="../../NextFlow/scRNAseq/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>4. Manual Peak Curation - Mucosal Immunology Bioinformatics Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheet/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-7HN0DB92MT"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-7HN0DB92MT",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-7HN0DB92MT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#manual-curation-of-peaks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mucosal Immunology Bioinformatics Hub" class="md-header__button md-logo" aria-label="Mucosal Immunology Bioinformatics Hub" data-md-component="logo">
+      
+  <img src="../../assets/mil_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mucosal Immunology Bioinformatics Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Manual Peak Curation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mucosal-Immunology-Lab/bioinformatic-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mucosal Immunology Bioinformatics Hub" class="md-nav__button md-logo" aria-label="Mucosal Immunology Bioinformatics Hub" data-md-component="logo">
+      
+  <img src="../../assets/mil_logo.png" alt="logo">
+
+    </a>
+    Mucosal Immunology Bioinformatics Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mucosal-Immunology-Lab/bioinformatic-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RNAseq/rnaseq-nfcore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bulk Transcriptomics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Microbiome
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Microbiome
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    16S rRNA amplicon
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            16S rRNA amplicon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Microbiome/dada2_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DADA2 pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    LCMS Analysis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            LCMS Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lcms-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msdial-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Raw Data Processing with MS-DIAL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pmp-quality-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Peak Matrix Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secondary-feature-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Secondary Feature Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    4. Manual Peak Curation
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Manual Peak Curation
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-xml-files-for-ms-dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare XML files for MS-DIAL 📄🛠️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prepare XML files for MS-DIAL 📄🛠️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-a-curation-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate a curation table 📋
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepare-the-relevant-xml-files-for-ms-dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare the relevant XML files for MS-DIAL 🗂️⚙️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peak-curation-in-ms-dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Peak curation in MS-DIAL 📈🔍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Peak curation in MS-DIAL 📈🔍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identifying-good-quality-peaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifying good quality peaks ⭐🔎
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-the-summarizedexperiment-object-for-the-best-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter the SummarizedExperiment object for the best features ⚗️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Filter the SummarizedExperiment object for the best features ⚗️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-in-the-manual-curation-results-from-ms-dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read in the manual curation results from MS-DIAL 📥📋
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecting-the-best-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selecting the best features 🎯✨
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next steps ➡️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rights
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nextflow Pipelines
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Nextflow Pipelines
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NextFlow/scRNAseq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Single-cell RNAseq
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NextFlow/metagenomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Metagenomics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NextFlow/dada2_16S/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DADA2 16S rRNA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cross-omic Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Cross-omic Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Differential testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Differential testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CrossOmicTools/DifferentialTesting/bio_limma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linear modelling with bio_limma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Utilities
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Handling sequencing data
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Handling sequencing data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/data-best-practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data best practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/convert-raw-novaseq-outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Converting NovaSeq outputs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/sra-data-submission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SRA sequencing data submission
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Monash data storage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Monash data storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/market-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/vault-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vault storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PublicDatasets/public-datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Datasets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-xml-files-for-ms-dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare XML files for MS-DIAL 📄🛠️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prepare XML files for MS-DIAL 📄🛠️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-a-curation-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate a curation table 📋
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepare-the-relevant-xml-files-for-ms-dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare the relevant XML files for MS-DIAL 🗂️⚙️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peak-curation-in-ms-dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Peak curation in MS-DIAL 📈🔍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Peak curation in MS-DIAL 📈🔍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identifying-good-quality-peaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifying good quality peaks ⭐🔎
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-the-summarizedexperiment-object-for-the-best-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter the SummarizedExperiment object for the best features ⚗️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Filter the SummarizedExperiment object for the best features ⚗️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-in-the-manual-curation-results-from-ms-dial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read in the manual curation results from MS-DIAL 📥📋
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecting-the-best-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selecting the best features 🎯✨
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next steps ➡️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rights
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="manual-curation-of-peaks">Manual curation of peaks</h1>
+<p>Manual peak curation is an essential part of the preprocessing of LMCS datasets, particularly for ensuring that only high quality spectra are retained for downstream analysis and interpretation. Automated tools like <code>pmp</code> are a great start, and remove a lot of the noise (which is a big help in reducing the number of peaks we actually have to check), but they are not foolproof and many poor quality peaks will inevitably remain. Manual curation is therefore critical, and both refines the dataset and strengthens confidence in metabolite and lipid identification, which in turn supports more robust biological conclusions.</p>
+<div class="admonition info">
+<p class="admonition-title">Cutting through the clutter...</p>
+<p>You will tend to find that about <strong>30-50% of peaks are poor quality</strong> and require removal &ndash; this is of course dataset dependent.</p>
+<ul>
+<li>Poor signal-to-noise ratio is a common issue, resulting in "messy" and noisy spectra.</li>
+<li>Peaks only present in a few samples should also be removed to avoid over-fitted data imputation &ndash; it is fine to keep peaks that show up in just a single biological sample group however, because perhaps it is only abundant in this setting.</li>
+</ul>
+</div>
+<h2 id="prepare-xml-files-for-ms-dial">Prepare XML files for MS-DIAL 📄🛠️</h2>
+<p>To speed up the process, we can add a <code>1</code> tag to each of the remaining annotated features in our <code>SummarizedExperiment</code> object. In MS-DIAL, a <code>1</code> tag simply refers to a confirmed metabolite, but for our purposes, we simply need a way to filter the tens of thousands of peaks down to just the ones we need to check.</p>
+<p>MS-DIAL actually creates a file already, and so we can just update the two <code>.xml</code> files for the positive and negative ionisation modes.</p>
+<div class="admonition question">
+<p class="admonition-title">Where are these files?</p>
+<p>These files are located in the main MS-DIAL project folder where you processed the raw LCMS data.</p>
+<p>If you followed the recommendation to choose a custom project name in MS-DIAL, then this will be a lot easier <img alt="😉" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f609.png" title=":wink:" /></p>
+<ul>
+<li>For example, if your named your project files:<ul>
+<li><code>metab_stool_pos.mdproject</code></li>
+<li><code>metab_stool_neg.mdproject</code></li>
+</ul>
+</li>
+<li>Then these files will be:<ul>
+<li><code>metab_stool_pos_tags.xml</code></li>
+<li><code>metab_stool_neg_tags.xml</code></li>
+</ul>
+</li>
+</ul>
+</div>
+<h3 id="generate-a-curation-table">Generate a curation table 📋</h3>
+<p>To begin, we will generate a curation table that will identify which features we will need to manually check.
+The <a href="../../assets/LCMS/LCMS_preprocessing/make_curation_table.R"><code>make_curation_table()</code></a> function will do this for us.</p>
+<details class="info">
+<summary>Parameters for <code>make_curation_table()</code></summary>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>metab_SE</code></td>
+<td>A <code>SummarizedExperiment</code> object with secondary annotations, which has been filtered for just annotated features.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<div class="language-r highlight"><span class="filename">Generate curation table</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Make the curation table</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">curation_table</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">make_curation_table</span><span class="p">(</span><span class="n">metab_SE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_glog</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Save curation table</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">curation_dir</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;01_LCMS&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;manual_curation&#39;</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nf">saveRDS</span><span class="p">(</span><span class="n">curation_table</span><span class="p">,</span><span class="w"> </span><span class="nf">here</span><span class="p">(</span><span class="n">curation_dir</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;curation_table.rds&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Save your curation table</p>
+<p>Ensure you save the curation table, because you will need to it read back in the manual curation results from the MS-DIAL XML tag files.</p>
+</div>
+<h3 id="prepare-the-relevant-xml-files-for-ms-dial">Prepare the relevant XML files for MS-DIAL 🗂️⚙️</h3>
+<p>MS-DIAL uses the <code>tag</code> files for identifying which features have certain available peak spot characteristics.</p>
+<details class="question">
+<summary>What peak spot tags does MS-DIAL use?</summary>
+<p>There are 5 different "Peak Spot Tags" in MS-DIAL. We are just co-opting the <code>Confirmed</code> tag as a marker for manual curation.
+The current tags for peaks are:</p>
+<ol>
+<li>Confirmed</li>
+<li>Low quality spectrum</li>
+<li>Misannotation</li>
+<li>Coelution (mixed spectra)</li>
+<li>Overannotation</li>
+</ol>
+<p>We will use tag <code>2</code> to mark poor quality peaks as we curate.</p>
+</details>
+<p>We will use the <a href="../../assets/LCMS/LCMS_preprocessing/create_msdial_xml.R"><code>create_msdial_xml()</code></a> function to automate the process of tagging peaks found in the curation table to the relevant ionisation mode tag file.</p>
+<details class="info">
+<summary>Parameters for <code>create_msdial_xml()</code></summary>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>curation_table</code></td>
+<td>The <code>data.frame</code> curation table output from the <code>make_curation_table()</code> function.</td>
+</tr>
+<tr>
+<td><code>path_to_folder</code></td>
+<td>The file path to the main MS-DIAL project folder (i.e. where your tag files are).</td>
+</tr>
+<tr>
+<td><code>experiment_name</code></td>
+<td>The base file name of your tag files. E.g. <code>'metab_stool'</code> for tag files named <code>metab_stool_pos_tags.xml</code> and <code>metab_stool_neg_tags.xml</code>.</td>
+</tr>
+<tr>
+<td><code>peak_id_column</code></td>
+<td>Default: <code>1</code> &ndash; the number of the column containing the annotation IDs.</td>
+</tr>
+<tr>
+<td><code>ionisation</code></td>
+<td>Default: <code>c('pos', 'neg')</code> &ndash; the ionisation markers at the end of the tag files.</td>
+</tr>
+<tr>
+<td><code>force_proceed</code></td>
+<td>Default: <code>FALSE</code> &ndash; an option for whether to force the override of existing files. This is <strong>not</strong> recommended. Remove the existing update to the tags file, and rename the <code>_BACKUP.xml</code> file to its original name. Then rerun &ndash; this is a safer option.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<div class="language-r highlight"><span class="filename">Update the XML tag files</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Prepare the relevant XML files for MS-DIAL</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">create_msdial_xml</span><span class="p">(</span><span class="n">curation_table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">curation_table</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">                  </span><span class="n">path_to_folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;01_LCMS&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Raw&#39;</span><span class="p">),</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">                  </span><span class="n">experiment_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;metab_stool&#39;</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">                  </span><span class="n">peak_id_column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">                  </span><span class="n">ionisation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;pos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;neg&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<h2 id="peak-curation-in-ms-dial">Peak curation in MS-DIAL 📈🔍</h2>
+<p>Now that the tag files have been update to indicate which peaks we need to manually curate, we can return to MS-DIAL and check each of the peaks.</p>
+<p>As you can see below, some of the tags are now highlighted in the peak spot table, which is just what we wanted!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should not see anything highlighted in the "Low quality spectrum" column at this stage. These images were taken after manual peak checking.</p>
+</div>
+<p><img alt="Manual curation p1" src="../../assets/LCMS/MSDIAL/msdial_manualcuration_1.png" /></p>
+<p>You can then select the ☑️ option next to <code>Tag filter</code> at the top left of the peak spot table to filter for just the peaks requiring curation.</p>
+<p><img alt="Manual curation p2" src="../../assets/LCMS/MSDIAL/msdial_manualcuration_2.png" /></p>
+<p>At this point you can simply work your way through each peak to determine whether it should be retained for downstream analysis. 
+Mark peaks as having low quality by pressing <code>Ctrl + 2</code> or by clicking the <code>L</code> button.</p>
+<h3 id="identifying-good-quality-peaks">Identifying good quality peaks ⭐🔎</h3>
+<div class="admonition question">
+<p class="admonition-title">How do I know what to keep?</p>
+<p>The simple question you should ask yourself is: "Would I call this a peak?".</p>
+<p>If not, then mark it as low quality, and continue with the next spectrum.
+This task is not something to labour over &ndash; you will get the hang of things quickly as you see more examples and learn how different spectra look.</p>
+</div>
+<p>To help you out, some examples of spectra are shown below.</p>
+<p><img alt="Spectra" src="../../assets/LCMS/MSDIAL/peaks_good_vs_poor.png" /></p>
+<p>Remember too to open the <code>Peak curation (sample table)</code> of the aligned spots. This will give you a much better idea about how your peaks look in individual samples, and can often provide a clearer picture. For example, the left-most "good" peak above has one sample with far greater intensity than the other which may skew our impression. The peak curation sample table however would allow us to see that peaks look good in all samples, and importantly that it is also present in the majority of samples (if not all).</p>
+<p><img alt="Individual spectra" src="../../assets/LCMS/MSDIAL/step11_v5.png" /></p>
+<h2 id="filter-the-summarizedexperiment-object-for-the-best-features">Filter the <code>SummarizedExperiment</code> object for the best features ⚗️</h2>
+<p>At this point, all of the peaks have been manually checked in both the positive and negative ionisation modes and it is time to read the results back into R. Then we can filter for the best feature for each named metabolite/lipid. You can</p>
+<h3 id="read-in-the-manual-curation-results-from-ms-dial">Read in the manual curation results from MS-DIAL 📥📋</h3>
+<p>We can now use the <a href="../../assets/LCMS/LCMS_preprocessing/read_msdial_xml.R"><code>read_msdial_xml()</code></a> function to load in the tag files from MS-DIAL.
+Recall that we need the curation table we prepared earlier too, so this also needs to be retrieved.</p>
+<details class="info">
+<summary>Parameters for <code>read_msdial_xml()</code></summary>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>curation_table</code></td>
+<td>The <code>data.frame</code> curation table output from the <code>make_curation_table()</code> function.</td>
+</tr>
+<tr>
+<td><code>path_to_folder</code></td>
+<td>The file path to the main MS-DIAL project folder (i.e. where your tag files are).</td>
+</tr>
+<tr>
+<td><code>experiment_name</code></td>
+<td>The base file name of your tag files. E.g. <code>'metab_stool'</code> for tag files named <code>metab_stool_pos_tags.xml</code> and <code>metab_stool_neg_tags.xml</code>.</td>
+</tr>
+<tr>
+<td><code>ionisation</code></td>
+<td>Default: <code>c('pos', 'neg')</code> &ndash; the ionisation markers at the end of the tag files.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">Manually check feature names</p>
+<p>This is entirely up to you, but at this point, you may also wish to double check that your have the optimal <code>shortname</code> values.
+You can simply add an additional column to a <code>.csv</code> export of your curation table, and adjust anything as required.
+This can be useful if you identify features that are the same, but have slightly different names or capitalisation etc.</p>
+</div>
+<div class="language-r highlight"><span class="filename">Filter out low quality peaks</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Recover the SummarizedExperiment and curation table</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">metab_stool_glog</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readRDS</span><span class="p">(</span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;output&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;01_Preprocessing&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;metab_stool_glog_anno.rds&#39;</span><span class="p">))</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">curation_dir</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;01_LCMS&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;manual_curation&#39;</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">curation_table</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readRDS</span><span class="p">(</span><span class="nf">here</span><span class="p">(</span><span class="n">curation_dir</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;curation_table.rds&#39;</span><span class="p">))</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Read in the XML tag files from MS-DIAL</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">manual_curation_xml</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_msdial_xml</span><span class="p">(</span><span class="n">curation_table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">curation_table</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                                       </span><span class="n">path_to_folder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;01_LCMS&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Raw&#39;</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">                                       </span><span class="n">experiment_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;metab_stool&#39;</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">                                       </span><span class="n">ionisation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;pos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;neg&#39;</span><span class="p">)))</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># Filter out the low quality peaks</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">metab_stool_glog</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metab_stool_glog</span><span class="p">[</span><span class="o">!</span><span class="n">manual_curation_xml</span><span class="o">$</span><span class="n">Anno2</span><span class="p">,]</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1"># Save intermediate object</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="nf">saveRDS</span><span class="p">(</span><span class="n">metab_stool_glog</span><span class="p">,</span><span class="w"> </span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;output&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;01_Preprocessing&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;metab_stool_glog_tmp_curated.rds&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Why do we filter by <code>Anno2</code>?</p>
+<p>Each of the tags is assigned to an annotation number. Here, <code>Anno2</code> refers to tag <code>2</code> which, as we saw above, represents low quality peaks. <code>Anno1</code> on the other hand would represent confirmed hits (i.e. the ones we were manually checking).</p>
+</div>
+<h3 id="selecting-the-best-features">Selecting the best features 🎯✨</h3>
+<p>Now we will select for the best features from both the positive and negative ionisation modes so we are left with a single representation of each metabolite/lipid.
+We find this to be preferable to avoid cases where there are multiple features with the same name and pattern &ndash; this is particularly noticeable on heatmaps when you can see bands of features with identical patterns.</p>
+<p>To identify the best feature, we will select the highest value from the multiple of <code>Fill %</code> and <code>S/N ratio</code>.
+From there, we will create a logical vector to indicate whether a feature should be retained.</p>
+<div class="language-r highlight"><span class="filename">Best feature selection</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Recover metabolomics data</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">metab_stool_glog</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readRDS</span><span class="p">(</span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;output&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;01_Preprocessing&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;metab_stool_glog_tmp_curated.rds&#39;</span><span class="p">))</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Create a data.frame with the necessary feature metadata to identify best features</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">element_meta</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">metab_stool_glog</span><span class="o">@</span><span class="n">elementMetadata</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nf">mutate</span><span class="p">(</span><span class="n">original_order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">metab_stool_glog</span><span class="o">@</span><span class="n">elementMetadata</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">original_order</span><span class="p">,</span><span class="w"> </span><span class="n">info.Alignment.ID</span><span class="p">,</span><span class="w"> </span><span class="n">ionisation</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">                  </span><span class="n">info.Fill..</span><span class="p">,</span><span class="w"> </span><span class="n">info.S.N.average</span><span class="p">,</span><span class="w"> </span><span class="n">shortname</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nf">arrange</span><span class="p">(</span><span class="n">shortname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;_pos.*|_neg.*&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">shortname</span><span class="p">))</span><span class="w"> </span><span class="c1"># remove ionisation</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># Filter for the highest multiple of &#39;Fill %&#39; * &#39;Signal-to-noise ratio&#39;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">element_meta_top</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">element_meta</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nf">mutate</span><span class="p">(</span><span class="n">metab_score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">info.Fill..</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">info.S.N.average</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">metab_score</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="nf">group_by</span><span class="p">(</span><span class="n">shortname</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="nf">slice_head</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="nf">ungroup</span><span class="p">()</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c1"># Create a vector of &quot;best&quot; features to keep</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="n">feature_keep</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">element_meta</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="nf">left_join</span><span class="p">(</span><span class="n">element_meta_top</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="nf">select</span><span class="p">(</span><span class="n">original_order</span><span class="p">,</span><span class="w"> </span><span class="n">metab_score</span><span class="p">),</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">              </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;original_order&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="nf">mutate</span><span class="p">(</span><span class="n">keep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">metab_score</span><span class="p">),</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="nf">arrange</span><span class="p">(</span><span class="n">original_order</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">    </span><span class="nf">pull</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Now we can use the "keep vector" to filter the <code>SummarizedExperiment</code> object, remove the QC samples, and save the object to an <code>.rds</code> file.</p>
+<div class="language-r highlight"><span class="filename">Filter SummarizedExperiment and save to file</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Filter the SummarizedExperiment object</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">metab_stool_glog</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metab_stool_glog</span><span class="p">[</span><span class="n">feature_keep</span><span class="p">,]</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Remove ionisation from the shortname values</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">metab_stool_glog</span><span class="o">@</span><span class="n">elementMetadata</span><span class="o">$</span><span class="n">shortname</span><span class="w"> </span><span class="o">&lt;-</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nf">gsub</span><span class="p">(</span><span class="s">&#39;_pos.*|_neg.*&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">metab_stool_glog</span><span class="o">@</span><span class="n">elementMetadata</span><span class="o">$</span><span class="n">shortname</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># Remove the QC samples</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">metab_stool_glog</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metab_stool_glog</span><span class="p">[,</span><span class="w"> </span><span class="o">!</span><span class="nf">str_detect</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">metab_stool_glog</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;QC&#39;</span><span class="p">)]</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># Save to object</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nf">saveRDS</span><span class="p">(</span><span class="n">metab_stool_glog</span><span class="p">,</span><span class="w"> </span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;output&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;01_Preprocessing&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;metab_stool_glog_curated.rds&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Why would we use Fill% and S/N ratio to select the best features?</p>
+<ul>
+<li><strong>Fill %:</strong> this refers to the percentage of samples in which a given feature (peak) is detected across the entire dataset. It provides an indication of the feature's prevalence or coverage among the samples.<ul>
+<li>High Fill % indicates that the feature is detected in most or all samples, suggesting it may be a consistently present metabolite or compound.</li>
+<li>Low Fill % indicates that the feature is detected in only a few samples, which could imply it is rare, a contaminant, or specific to certain conditions or samples.</li>
+</ul>
+</li>
+<li><strong>S/N ratio:</strong> signal-to-noise ratio represents the relative strength of a detected signal compared to the background noise level. It is calculated as the ratio of the intensity of the analyte's signal to the baseline noise level.<ul>
+<li>High S/N ratio indicates a strong, reliable signal that stands out clearly from the background noise. Typically considered robust and accurate.</li>
+<li>Low S/N ratio suggests a weak signal relative to noise, which may be less reliable and could represent a borderline or questionable detection.</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="next-steps">Next steps ➡️</h2>
+<p>Congratulations! The pre-processing steps are complete, and you now have a prepared <code>SummarizedExperiment</code> that has undergone quality control, secondary annotation, and manual curation.</p>
+<p>From here, you can move onto downstream analysis of the data.</p>
+<h2 id="rights">Rights</h2>
+<ul>
+<li>Copyright ©️ 2024 Mucosal Immunology lab, Monash University, Melbourne, Australia.</li>
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/34986597/">HMDB version 5.0</a>: Wishart DS, Guo A, Oler E, Wang F, Anjum A, Peters H, Dizon R, Sayeeda Z, Tian S, Lee BL, Berjanskii M. HMDB 5.0: the human metabolome database for 2022. <em>Nucleic acids research</em>. 2022 Jan 7;50(D1):D622-31.</li>
+<li>License: This pipeline is provided under the MIT license.</li>
+<li>Authors: M. Macowan, B. Cardwell, and C. Pattaroni</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

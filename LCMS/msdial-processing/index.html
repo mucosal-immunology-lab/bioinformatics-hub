@@ -1,0 +1,1983 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lcms-analysis/">
+      
+      
+        <link rel="next" href="../pmp-quality-control/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>1. Raw Data Processing with MS-DIAL - Mucosal Immunology Bioinformatics Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheet/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-7HN0DB92MT"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-7HN0DB92MT",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-7HN0DB92MT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#processing-metabolome-and-lipidome-data-with-ms-dial" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mucosal Immunology Bioinformatics Hub" class="md-header__button md-logo" aria-label="Mucosal Immunology Bioinformatics Hub" data-md-component="logo">
+      
+  <img src="../../assets/mil_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mucosal Immunology Bioinformatics Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Raw Data Processing with MS-DIAL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mucosal-Immunology-Lab/bioinformatic-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mucosal Immunology Bioinformatics Hub" class="md-nav__button md-logo" aria-label="Mucosal Immunology Bioinformatics Hub" data-md-component="logo">
+      
+  <img src="../../assets/mil_logo.png" alt="logo">
+
+    </a>
+    Mucosal Immunology Bioinformatics Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mucosal-Immunology-Lab/bioinformatic-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RNAseq/rnaseq-nfcore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bulk Transcriptomics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Microbiome
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Microbiome
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    16S rRNA amplicon
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            16S rRNA amplicon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Microbiome/dada2_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DADA2 pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    LCMS Analysis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            LCMS Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lcms-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    1. Raw Data Processing with MS-DIAL
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Raw Data Processing with MS-DIAL
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up a new project 🏗️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up a new project 🏗️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raw-measurement-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raw measurement files 🗂️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measurement-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measurement parameters 📐
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis-parameter-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analysis parameter settings 🔧
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis parameter settings 🔧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run the pipeline 🏃💻
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viewing-and-exporting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing and exporting data 👀💾
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Viewing and exporting data 👀💾">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aligned-spot-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aligned spot information 📍📝
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exporting-for-downstream-processing-and-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exporting for downstream processing and analysis 📤
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exporting for downstream processing and analysis 📤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#height-table-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      Height table export 📊📄
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter export 🛠️📤
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next steps ➡️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rights
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pmp-quality-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Peak Matrix Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secondary-feature-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Secondary Feature Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manual-peak-curation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Manual Peak Curation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nextflow Pipelines
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Nextflow Pipelines
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NextFlow/scRNAseq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Single-cell RNAseq
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NextFlow/metagenomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Metagenomics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NextFlow/dada2_16S/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DADA2 16S rRNA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cross-omic Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Cross-omic Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Differential testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Differential testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CrossOmicTools/DifferentialTesting/bio_limma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linear modelling with bio_limma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Utilities
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Handling sequencing data
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Handling sequencing data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/data-best-practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data best practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/convert-raw-novaseq-outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Converting NovaSeq outputs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/sra-data-submission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SRA sequencing data submission
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Monash data storage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Monash data storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/market-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/vault-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vault storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PublicDatasets/public-datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Datasets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up a new project 🏗️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up a new project 🏗️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raw-measurement-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raw measurement files 🗂️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measurement-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measurement parameters 📐
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis-parameter-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analysis parameter settings 🔧
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis parameter settings 🔧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run the pipeline 🏃💻
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viewing-and-exporting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing and exporting data 👀💾
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Viewing and exporting data 👀💾">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aligned-spot-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aligned spot information 📍📝
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exporting-for-downstream-processing-and-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exporting for downstream processing and analysis 📤
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exporting for downstream processing and analysis 📤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#height-table-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      Height table export 📊📄
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameter export 🛠️📤
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next steps ➡️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rights
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="processing-metabolome-and-lipidome-data-with-ms-dial">Processing metabolome and lipidome data with MS-DIAL</h1>
+<p>MS-DIAL provides a pipeline for untargeted metabolomics. Here we will discuss the process for generating intensity height tables from raw LC-MS data, and subsequent export for downstream analysis and secondary annotation methods.</p>
+<h2 id="requirements">Requirements <img alt="⚠️" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/26a0.png" title=":warning:" /></h2>
+<div class="admonition info">
+<p class="admonition-title">Conversion of .RAW files</p>
+<p>As of MS-DIAL version 4.70, it is no longer a requirement to convert your .RAW LC-MS files into .ABF format, however if you are using an older version of MS-DIAL, you will need to download the ABF file converter.</p>
+</div>
+<ul>
+<li><a href="https://www.reifycs.com/AbfConverter/">ABF File Converter</a> (depending on MS-DIAL version).</li>
+<li><a href="http://prime.psc.riken.jp/compms/msdial/main.html">MS-DIAL</a> software for Windows.</li>
+<li><a href="http://prime.psc.riken.jp/compms/msdial/main.html#MSP">MassBank MS/MS positive and negative database files</a>.</li>
+<li>The LC-MS files all present in a single folder.</li>
+<li>The LC-MS standards file generated during data collection (should contain columns for: metabolite name, m/z, and retention time).</li>
+</ul>
+<h2 id="setting-up-a-new-project">Setting up a new project 🏗️</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The instructions given here are for MS-DIAL version 5.</p>
+</div>
+<p>Begin by opening MS-DIAL and starting a new project using the icon in the centre of the screen.</p>
+<p>MS-DIAL will prompt you to enter a <code>Project title</code> and a <code>Project file path</code>. Please remember that the project file path must contain all of your raw LCMS files &ndash; you can navigate to this folder using the <code>'Browse'</code> button.</p>
+<div class="admonition tip">
+<p class="admonition-title">Change the default project name</p>
+<p>It is recommended that you change the default <code>.mdproject</code> file name generated by MS-DIAL to something more easily recognisable in the future,
+such as <code>date_sampletype_ionisationmode.mtd</code>.</p>
+</div>
+<p><img alt="Step 1" src="../../assets/LCMS/MSDIAL/step1_v5.png" /></p>
+<h3 id="raw-measurement-files">Raw measurement files 🗂️</h3>
+<p>The next screen will ask you to define your <code>'Analysis file paths'</code>. Click the browse button, and select all of your LC-MS files.
+Note that these must be located in the same folder as your project in order to be valid.</p>
+<p>Once you have done this, you will need to change the <code>'Type'</code> column to indicate whether that sample is a sample, blank, QC, or standard.
+It is also recommended, for quick analysis later on, to change the values in the <code>'Class ID'</code> column.</p>
+<p>For example, in the <code>'Class ID'</code> column below, it is indicated what the sample type is (if you have multiple groups, you can specify these here),
+and of note, while <code>MS2</code> samples are given a <code>'Type'</code> of <code>QC</code>, you can specify that they are their own class in this column.</p>
+<p>If you were provided with information about the order in which your samples were actually run, you can input this in the <code>Analytical order</code> column. This will allow retention time correction. However, as the majority of our annotations will be provided by the Human Metabolome Database (HMDB), which does not take retention time into account, this step will be less important downstream. One benefit however will be for the alignment of peaks in the event you have significant retention time drift over the course of data acquisition.</p>
+<p>Once you have finished, click <code>'Next'</code> to continue.</p>
+<p><img alt="Step 2" src="../../assets/LCMS/MSDIAL/step2_v5.png" /></p>
+<h3 id="measurement-parameters">Measurement parameters 📐</h3>
+<p>The next screen will ask you to select various parameters regarding how your data was acquired.</p>
+<p>Firstly, you can define a project name. It is recommended that you change the default <code>.mddata</code> file name generated by MS-DIAL to something more easily recognisable in the future, such as <code>date_sampletype_ionisationmode.mddata</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">File name suffix</p>
+<p>No matter how you decide to name your files, ensure that you use the same name for both positive and negative ionisations, and end each with <code>_pos</code> and <code>_neg</code> respectively. If you don't, you won't be able to make easy use of the XML curation function to speed up your manual curation later on.</p>
+<ul>
+<li>If you use <code>_positive</code> and <code>_negative</code> like the example below, you'll also be fine.</li>
+<li>The key is the make sure the file base name is identical.</li>
+</ul>
+</div>
+<p>For our data, most of the default options will be appropriate. </p>
+<ul>
+<li>Data type for both <code>MS1</code> and <code>MS2</code> should be set to <code>Profile data</code> for our data, acquired using a Thermo Fisher Scientific LCMS apparatus.</li>
+<li>Ensure you choose the correct <code>'Ion mode'</code> at the bottom left, either positive or negative ionisation. and that you select the correct <code>'Target omics'</code> from either metabolomics or lipidomics.</li>
+</ul>
+<p>Click <code>Next</code> once complete.</p>
+<p><img alt="Step 3" src="../../assets/LCMS/MSDIAL/step3_v5.png" /></p>
+<h2 id="analysis-parameter-settings">Analysis parameter settings 🔧</h2>
+<p>Each tab below covers the settings for a tab on MS-DIAL. Input the correct settings, and then proceed to running your samples.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Data collection 📊</label><label for="__tabbed_1_2">Peak detection 📈🔍</label><label for="__tabbed_1_3">Spectrum deconvolution 🌈🔬</label><label for="__tabbed_1_4">Identification 🆔🔎</label><label for="__tabbed_1_5">Adduct ion ➕⚛️</label><label for="__tabbed_1_6">Alignment parameters 🔗📏</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition tip">
+<p class="admonition-title">Load parameters</p>
+<p>If you have a parameter configuration file, you can load it in via the <code>Load parameter</code> button in the bottom-left of the window.</p>
+</div>
+<p>We begin the setting of analysis parameters by inputting the data collection parameters.</p>
+<p><strong>Mass Accuracy:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Metabolomics</th>
+<th>Lipidomics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MS1 tolerance</td>
+<td>0.002 Da</td>
+<td>0.002 Da</td>
+</tr>
+<tr>
+<td>MS2 tolerance</td>
+<td>0.002 Da</td>
+<td>0.002 Da</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Data collection parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Metabolomics</th>
+<th>Lipidomics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retention time begin</td>
+<td>0 min</td>
+<td>0 min</td>
+</tr>
+<tr>
+<td>Retention time end</td>
+<td>40 min</td>
+<td>40 min</td>
+</tr>
+<tr>
+<td>MS1 mass range begin</td>
+<td>50 Da</td>
+<td>200 Da</td>
+</tr>
+<tr>
+<td>MS1 mass range end</td>
+<td>1000 Da</td>
+<td>1300 Da</td>
+</tr>
+<tr>
+<td>MS/MS mass range begin</td>
+<td>50 Da</td>
+<td>200 Da</td>
+</tr>
+<tr>
+<td>MS/MS mass range end</td>
+<td>1000 Da</td>
+<td>1300 Da</td>
+</tr>
+<tr>
+<td>Execute retention time correction</td>
+<td>FALSE</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Retention time correction option</p>
+<p>You can choose here to perform retention time correction. This should typically be set to <code>FALSE</code> for at least your initial processing, and always set to <code>FALSE</code> if you do not have information about the analytical order of your samples.</p>
+</div>
+<p><strong>Isotope recognition:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Metabolomics</th>
+<th>Lipidomics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maximum charged number</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Consider Cl and Br elements</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Multithreading (will depend on your machine):</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Metabolomics</th>
+<th>Lipidomics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number of threads</td>
+<td>8</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Execute retention time corrections</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Step 4" src="../../assets/LCMS/MSDIAL/step4_v5.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>Next we select the minimum peak height threshold. Peaks below this threshold will not be retained.
+A value of <code>100,000</code> is recommended for data acquired by Thermo Fisher Scientific machines.
+However, this will vary by apparatus, and may require data-dependant tuning.</p>
+<p>We will leave the <code>'Mass slice width'</code> value to the default, along with all options in the drop-down <code>'Advanced'</code> menu.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Metabolomics</th>
+<th>Lipidomics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minimum peak height</td>
+<td>100000</td>
+<td>100000</td>
+</tr>
+<tr>
+<td>Mass slice width</td>
+<td>0.05 Da</td>
+<td>0.05 Da</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Step 5" src="../../assets/LCMS/MSDIAL/step5_v5.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>The default values are suitable.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Metabolomics</th>
+<th>Lipidomics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sigma window value</td>
+<td>0.5</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>MS/MS abundance cut off</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Exclude after precursor ion</td>
+<td>TRUE</td>
+<td>TRUE</td>
+</tr>
+<tr>
+<td>Keep the isotopic ions until</td>
+<td>5 Da</td>
+<td>5 Da</td>
+</tr>
+<tr>
+<td>Keep the isotopic ions w/o MS2Dec</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Step 6" src="../../assets/LCMS/MSDIAL/step6_v5.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>In this tab, you will add your databases as appropriate. One of these will be the appropriate <code>.msp</code> <a href="https://systemsomicslab.github.io/compms/msdial/main.html#MSP">MassBank database file</a> (either positive or negative depending on the ionisation mode you are currently running).</p>
+<p>Click the <strong>green tick</strong> next the <code>Database setting</code> heading. In the <code>DataBase</code> box, select <code>Msp</code> as your database type and then navigate and select the appropriate MassBank file using the <code>Browse</code> button. The <code>Database name</code> and other values will be automatically populated.</p>
+<p>We will now adjust a number of parameters (the lipidomics columns are left blank below as you will not need to input or change anything).</p>
+<div class="admonition info">
+<p class="admonition-title">Retention time tolerance</p>
+<p>Keep in mind that the <code>Retention time tolerance</code> parameter can be adjusted in a project-specific manner. Using a value of about 2 minutes has worked well in the past, but may require fine-tuning. Setting the value lower will result in a greater number of highly similar features, and may result in issues downstream during manual curation steps.</p>
+</div>
+<p><strong>MS/MS identification setting:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Metabolomics</th>
+<th>Lipidomics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accurate mass tolerance (MS1)</td>
+<td>0.002 Da</td>
+<td></td>
+</tr>
+<tr>
+<td>Accurate mass tolerance (MS2)</td>
+<td>0.002 Da</td>
+<td></td>
+</tr>
+<tr>
+<td>Retention time tolerance</td>
+<td>2 min</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>We will leave the other drop-down menus with their default settings.</p>
+<p><img alt="Step 7" src="../../assets/LCMS/MSDIAL/step7_v5.png" /></p>
+<p>In addition, you can select a text file containing the standards run during data acquisition.
+This file should contain three columns, including the metabolite name, m/z, and retention time (in that order).
+These columns should be named <code>Metabolite</code>, <code>MZ</code>, and <code>RT</code>.</p>
+<p>Click the <strong>green tick</strong> again to add another database. This time, choose <code>Text</code> as your database type. Navigate and select your standards file, and the other fields will be populated.</p>
+<p>Once again, we will change a few parameters:</p>
+<p><strong>Tolerance:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Metabolomics</th>
+<th>Lipidomics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accurate mass tolerance (MS1)</td>
+<td>0.002 Da</td>
+<td></td>
+</tr>
+<tr>
+<td>Retention time tolerance</td>
+<td>2 min</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Step 8" src="../../assets/LCMS/MSDIAL/step8_v5.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>Here we will select the appropriate adduct ion settings for our runs.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Metabolomics</label><label for="__tabbed_2_2">Lipidomics</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Metabolomics Positive</th>
+<th>Metabolomics Negative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[M+H]+</td>
+<td>[M-H]-</td>
+</tr>
+<tr>
+<td>[M+NH4]+</td>
+<td>[M+Na-2H]-</td>
+</tr>
+<tr>
+<td>[M+Na]+</td>
+<td>[M+Cl]-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Lipidomics Positive</th>
+<th>Lipidomics Negative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[M+H]+</td>
+<td>[M-H]-</td>
+</tr>
+<tr>
+<td>[M+NH4]+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><img alt="Step 9" src="../../assets/LCMS/MSDIAL/step9_v5.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>Here, you should rename the <code>'Result name:'</code> to something more recognisable.
+For example, <code>alignment_data_sampletype_ionisation</code>.</p>
+<p>Set the <code>'Reference file:'</code> to your <strong>second</strong> QC sample. The first QC sample is typically different than the others,
+and this will affect your results.</p>
+<p>The <code>'Retention time tolerance:'</code> parameter will be data-dependant, however a good start is to try either <code>2 min</code> or <code>1 min</code>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Metabolomics</th>
+<th>Lipidomics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retention time tolerance</td>
+<td>2 min</td>
+<td>2 min</td>
+</tr>
+<tr>
+<td>MS1 tolerance</td>
+<td>0.002 Da</td>
+<td>0.002 Da</td>
+</tr>
+</tbody>
+</table>
+<p>There are also some other parameters we need to check in the <code>'Advanced'</code> drop-down menu.
+Because we don't remove the features based on blank information, the following three tick boxes are 'greyed out', and not available to
+change. You do not need to change the default options for these.</p>
+<div class="admonition info">
+<p class="admonition-title">Gap filling</p>
+<p>We will use <code>Gap filling by compulsion</code>, as it improves peak alignment (often resulting in fewer highly similar features), but you may choose to skip this step. The choice will largely be data-dependent, and with a higher retention time tolerance, you may not see much of a difference.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Metabolomics</th>
+<th>Lipidomics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retention time factor</td>
+<td>0.5</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>MS1 factor</td>
+<td>0.5</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Peak count filter</td>
+<td>0 %</td>
+<td>0 %</td>
+</tr>
+<tr>
+<td>N% detected in at least one group</td>
+<td>0 %</td>
+<td>0 %</td>
+</tr>
+<tr>
+<td>Remove features based on blank information</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+<tr>
+<td>Sample max / blank average</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Keep 'reference matched' metabolite features</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+<tr>
+<td>Keep 'suggested (w/o MS2)' metabolite features</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+<tr>
+<td>Keep removable features and assign the tag</td>
+<td>FALSE</td>
+<td>FALSE</td>
+</tr>
+<tr>
+<td>Gap filling by compulsion</td>
+<td>TRUE</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Step 10" src="../../assets/LCMS/MSDIAL/step10_v5.png" /></p>
+</div>
+</div>
+</div>
+<h3 id="run-the-pipeline">Run the pipeline 🏃💻</h3>
+<p>Once you have finished setting up the analysis parameters, click <code>'Finish'</code> to begin the run.</p>
+<p>When the run finishes, the data will appear on the screen. On the left-hand side of the screen, you will see an <code>'Alignment navigator'</code> box.
+Double click the file that is inside to load all of your data at once.</p>
+<h2 id="viewing-and-exporting-data">Viewing and exporting data 👀💾</h2>
+<p>The <code>'Show ion table'</code> button in the middle of the screen is a good place to start to see how many metabolites/lipids (features) were found during the run.
+You can click the <code>'Metabolite name'</code> column to group all features that were annotated.</p>
+<h3 id="aligned-spot-information">Aligned spot information 📍📝</h3>
+<p>If you want to view more information about a specific feature, you can single click on the row within the ion table list.</p>
+<p>At the top of the screen, the default image shown is the <code>'Bar chart of aligned spot (OH)'</code>. This will show you the average intensities
+of each of your <code>'Class IDs'</code>.</p>
+<p>To view the actual peak itself, you can click the adjacent <code>'EIC of aligned spot'</code> tab to view and assess the quality of the peak.
+Good quality peaks, especially for smaller weight features, are tight and well-aligned (see the image below).</p>
+<p>Next, if you want to see the individual peaks for each of your samples, you can right-click on the peak window and click the
+<code>Peak curation (Sample table)</code> option. This will show you the peak for that feature for each sample so you can further
+assess their quality. This will be necessary for manual curation of features later to confirm confidence in the annotation of significant findings.</p>
+<p>After downstream pre-processing, you will come back to MS-DIAL and manually curate each of the features, removing those with poor-quality spectra.
+It should be noted that without manual curation, your ordination plots (e.g. PCoA) will be affected by remaining poor quality features.</p>
+<p><img alt="Step 11" src="../../assets/LCMS/MSDIAL/step11_v5.png" /></p>
+<h3 id="exporting-for-downstream-processing-and-analysis">Exporting for downstream processing and analysis 📤</h3>
+<p>There are a few useful things we can routinely export:</p>
+<ul>
+<li>The raw data height matrix (contains all of our intensity values and feature information).</li>
+<li>Analysis parameters (to streamline future analysis set-up).</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Export as CSV</p>
+<p>For consistency and easy import into R, best practice is to save the height matrix output in <code>.csv</code> format.</p>
+</div>
+<h4 id="height-table-export">Height table export 📊📄</h4>
+<p>To export the raw height matrix table, navigate to the <code>'Alignment result'</code> option within the <code>'Export'</code> tab in the top menu.</p>
+<p>Select the directory for export and leave all other options to their defaults. Change the <code>Export format</code> to <code>csv</code>, and click <code>'Export'</code>.</p>
+<p><img alt="Step 12" src="../../assets/LCMS/MSDIAL/step12_v5.png" /></p>
+<h4 id="parameter-export">Parameter export 🛠️📤</h4>
+<p>To export the analysis parameters, open the green tab at the top-left of the screen with the new project icon, select <code>Save</code>, and then select the <code>Save parameter option</code>.</p>
+<p><img alt="Step 13" src="../../assets/LCMS/MSDIAL/step13_v5.png" /></p>
+<h2 id="next-steps">Next steps ➡️</h2>
+<p>Now that you have your height matrices (positive and negative ionisation modes), you can proceed to automated quality control steps, using <a href="../pmp-quality-control/">Peak Matrix Processing</a>.</p>
+<h2 id="rights">Rights</h2>
+<ul>
+<li>Copyright ©️ 2024 Mucosal Immunology Lab, Monash University, Melbourne, Australia.</li>
+<li><code>pmp</code> package: Jankevics A, Lloyd GR, Weber RJM (2021). pmp: Peak Matrix Processing and signal batch correction for metabolomics datasets. R package version 1.4.0.</li>
+<li>License: This pipeline is provided under the MIT license.</li>
+<li>Authors: M. Macowan and C. Pattaroni</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

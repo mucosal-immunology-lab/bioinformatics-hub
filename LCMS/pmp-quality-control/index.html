@@ -1,0 +1,1895 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../msdial-processing/">
+      
+      
+        <link rel="next" href="../secondary-feature-annotation/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>2. Peak Matrix Processing - Mucosal Immunology Bioinformatics Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheet/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-7HN0DB92MT"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-7HN0DB92MT",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-7HN0DB92MT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#peak-matrix-processing-for-raw-ms-dial-height-matrices" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mucosal Immunology Bioinformatics Hub" class="md-header__button md-logo" aria-label="Mucosal Immunology Bioinformatics Hub" data-md-component="logo">
+      
+  <img src="../../assets/mil_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mucosal Immunology Bioinformatics Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Peak Matrix Processing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mucosal-Immunology-Lab/bioinformatic-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mucosal Immunology Bioinformatics Hub" class="md-nav__button md-logo" aria-label="Mucosal Immunology Bioinformatics Hub" data-md-component="logo">
+      
+  <img src="../../assets/mil_logo.png" alt="logo">
+
+    </a>
+    Mucosal Immunology Bioinformatics Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mucosal-Immunology-Lab/bioinformatic-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RNAseq/rnaseq-nfcore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bulk Transcriptomics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Microbiome
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Microbiome
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    16S rRNA amplicon
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            16S rRNA amplicon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Microbiome/dada2_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DADA2 pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    LCMS Analysis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            LCMS Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lcms-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../msdial-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Raw Data Processing with MS-DIAL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2. Peak Matrix Processing
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Peak Matrix Processing
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preprocessing-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preprocessing script 📜
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      R processing 🧮
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="R processing 🧮">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment setup 🛠️🌱
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data import 📥
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data import 📥">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metadata-optional-at-this-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata (optional at this stage) 🗂️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stool-metabolomics-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stool metabolomics data 💩
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-preprocessing-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run the preprocessing script 🏃
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed steps 📝
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed steps 📝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continue-manual-data-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continue manual data import 🔄
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-into-a-summarizedexperiment-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import into a SummarizedExperiment object 📦
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-on-blank-intensity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtering on blank intensity 🧪⛔
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-on-missing-values-and-qc-intensity-variation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtering on missing values and QC intensity variation 🧺🔎
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pqn-normalisation-and-glog-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      PQN normalisation and glog scaling 📊⚖️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principle-component-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principle component analysis 📈
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next steps ➡️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rights
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secondary-feature-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Secondary Feature Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manual-peak-curation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Manual Peak Curation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nextflow Pipelines
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Nextflow Pipelines
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NextFlow/scRNAseq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Single-cell RNAseq
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NextFlow/metagenomics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Metagenomics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NextFlow/dada2_16S/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DADA2 16S rRNA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cross-omic Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Cross-omic Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Differential testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Differential testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CrossOmicTools/DifferentialTesting/bio_limma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linear modelling with bio_limma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Utilities
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Handling sequencing data
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Handling sequencing data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/data-best-practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data best practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/convert-raw-novaseq-outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Converting NovaSeq outputs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/sra-data-submission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SRA sequencing data submission
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Monash data storage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Monash data storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/market-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/vault-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vault storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PublicDatasets/public-datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Datasets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preprocessing-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preprocessing script 📜
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      R processing 🧮
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="R processing 🧮">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment setup 🛠️🌱
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data import 📥
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data import 📥">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metadata-optional-at-this-stage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata (optional at this stage) 🗂️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stool-metabolomics-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stool metabolomics data 💩
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-preprocessing-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run the preprocessing script 🏃
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed steps 📝
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed steps 📝">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continue-manual-data-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continue manual data import 🔄
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-into-a-summarizedexperiment-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import into a SummarizedExperiment object 📦
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-on-blank-intensity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtering on blank intensity 🧪⛔
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-on-missing-values-and-qc-intensity-variation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtering on missing values and QC intensity variation 🧺🔎
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pqn-normalisation-and-glog-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      PQN normalisation and glog scaling 📊⚖️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principle-component-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principle component analysis 📈
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next steps ➡️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rights
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="peak-matrix-processing-for-raw-ms-dial-height-matrices">Peak Matrix Processing for raw MS-DIAL height matrices</h1>
+<p>The raw height matrices output by MS-DIAL will typically contain thousands (if not tens of thousands) of so-called "uninformative" and "irreproducible" features.
+Features such as these could hinder downstream analyses, including statistical analysis, biomarker discovery, or pathway inference.</p>
+<p>Therefore the common practice is to apply peak matrix validation and filtering procedures as described in Di Guida et al. 
+(<a href="https://doi.org/10.1007/s11306-016-1030-9">2016</a>), Broadhurst et al. (<a href="https://doi.org/10.1007/s11306-018-1367-3">2018</a>),
+and Schiffman et al. (<a href="https://doi.org/10.1186/s12859-019-2871-9">2019</a>).</p>
+<p>Functions within the <code>pmp</code> (Peak Matrix Processing) package are designed to help users to prepare data for further statistical data analysis in a fast, 
+easy to use and reproducible manner.</p>
+<h2 id="preprocessing-script">Preprocessing script 📜</h2>
+<p>An R function to handle the various steps is available as <a href="../../assets/LCMS/LCMS_preprocessing/pmp_preprocess.R"><code>pmp_preprocess()</code></a>, and will be explained in-depth below.</p>
+<details class="info">
+<summary>Parameters for <code>pmp_preprocess</code></summary>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pos_df</code></td>
+<td>The positive ionisation intensity <code>data.frame</code>.</td>
+</tr>
+<tr>
+<td><code>neg_df</code></td>
+<td>The negative ionisation intensity <code>data.frame</code>.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>The metadata <code>data.frame</code>.</td>
+</tr>
+<tr>
+<td><code>samples_key</code></td>
+<td>Default: <code>'Sample'</code> &ndash; a universal string that is unique to the start of all samples (and not blanks or QCs etc.).</td>
+</tr>
+<tr>
+<td><code>intens_cols</code></td>
+<td>A vector of column numbers corresponding to columns with intensity values.</td>
+</tr>
+<tr>
+<td><code>info_cols</code></td>
+<td>A vector of column numbers corresponding to the peak information.</td>
+</tr>
+<tr>
+<td><code>blankFC</code></td>
+<td>Default: <code>5</code> &ndash; the minimum fold change above the average intensity of blanks in order for peaks (and samples) to be retained.</td>
+</tr>
+<tr>
+<td><code>max_perc_mv</code></td>
+<td>Default: <code>0.8</code> &ndash; the maximum percentage of peaks that can be missing for a <strong>sample</strong> to be retained.</td>
+</tr>
+<tr>
+<td><code>missingPeaksFraction</code></td>
+<td>Default: <code>0.8</code> &ndash; the maximum percentage of samples that can contain a missing value for a <strong>peak</strong> to be retained.</td>
+</tr>
+<tr>
+<td><code>max_rsd</code></td>
+<td>Default: <code>25</code> &ndash; the maximum relative standard deviation of intensity values for a given peak within specified QC samples for that peak to be retained.</td>
+</tr>
+<tr>
+<td><code>mv_imp_rowmax</code></td>
+<td>Default: <code>0.7</code> &ndash; the maximum percentage of missing values allowable in a given row for imputation.</td>
+</tr>
+<tr>
+<td><code>mv_imp_colmax</code></td>
+<td>Default: <code>0.7</code> &ndash; the maximum percentage of missing values allowable in a given column for imputation.</td>
+</tr>
+<tr>
+<td><code>mv_imp_method</code></td>
+<td>Default: <code>knn</code> &ndash; the method to be used for imputation.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h2 id="r-processing">R processing 🧮</h2>
+<h3 id="environment-setup">Environment setup 🛠️🌱</h3>
+<p>Firstly, we need to load the required packages. We will also display their versions for future reference.</p>
+<div class="language-r highlight"><span class="filename">Load the required packages</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Get the R version</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">version</span><span class="o">$</span><span class="n">version.string</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Define a vector of required packages</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">pkgs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;here&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;data.table&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;tidyverse&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;kableExtra&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;ggplot2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;pmp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;SummarizedExperiment&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;S4Vectors&#39;</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># For each of the packages, load it and display the version number</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">pkg</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">pkgs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nf">suppressPackageStartupMessages</span><span class="p">(</span><span class="nf">library</span><span class="p">(</span><span class="n">pkg</span><span class="p">,</span><span class="w"> </span><span class="n">character.only</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="n">pkg</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nf">packageVersion</span><span class="p">(</span><span class="n">pkg</span><span class="p">)))</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># Set the seed for generation of pseudo-random numbers</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Example output:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;R version 4.0.5 (2021-03-31)&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;here: 1.0.1&quot;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;data.table: 1.14.0&quot;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;tidyverse: 1.3.1&quot;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;kableExtra: 1.3.4&quot;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;ggplot2: 3.3.5&quot;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;pmp: 1.2.1&quot;</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;SummarizedExperiment: 1.20.0&quot;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="s2">&quot;S4Vectors: 0.28.1&quot;</span>
+</span></code></pre></div>
+<h3 id="data-import">Data import 📥</h3>
+<p>The data we will be importing is the height matrix data output from the MS-DIAL pipeline.
+This output will be imported into a <code>SummarizedExperiment</code> object for pre-processing using the <code>pmp</code> package.</p>
+<h4 id="metadata-optional-at-this-stage">Metadata (optional at this stage) 🗂️</h4>
+<div class="admonition question">
+<p class="admonition-title">Why should I include metadata now?</p>
+<p>While this step is optional at this stage, the benefit of supplying metadata to the <code>SummarizedExperiment</code> object is that your metadata
+will also be filtered by the pre-processing steps to match the remaining samples and features at the end.</p>
+</div>
+<p>Firstly, we will import and prepare the metadata component of our <code>SummarizedExperiment</code> object.
+For simplicity and economy of code, we can specify the column types of our metadata using the <code>col_types</code> parameter in the <code>read_csv()</code> function.
+These will usually be one of:</p>
+<ul>
+<li><code>'c'</code> = character</li>
+<li><code>'f'</code> = factor</li>
+<li><code>'n'</code> = numeric</li>
+<li><code>'l'</code> = logical (i.e. boolean)</li>
+</ul>
+<p>In this example, we will be working with LCMS data from a set of stool samples that were collected from different patients.</p>
+<p>There are two metadata files: one that contains information about the samples themselves 
+(e.g. sample name and ID, sampling site, and age at collection), and one that contains information about the patient 
+(e.g. gender, disease type, other clinical metadata etc.). We will combine these two tables to produce a single metadata file for input
+into the <code>SummarizedExperiment</code> object.</p>
+<div class="language-r highlight"><span class="filename">Import clinical metadata</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Import the patient metadata (the &#39;here&#39; function makes defining file paths much easier)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">metadata_patient</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;patient_metadata.csv&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">col_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;ffffnnccfnc&#39;</span><span class="p">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Import the metabolomics sample metadata</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">metadata_metab_stool</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;metadata_metabolomics.csv&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">col_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;ffffn&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">origin</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&#39;stool&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="c1"># filter for the stool metabolomics metadata alone (not from other sites)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nf">left_join</span><span class="p">(</span><span class="n">metadata_patient</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;patient&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;ID&#39;</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="c1"># match patient metadata onto the sample metadata rows using a matched column</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="nf">column_to_rownames</span><span class="p">(</span><span class="n">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;sample&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1"># choose the value that matches the MS-DIAL height matrix column names to be the rownames</span>
+</span></code></pre></div>
+<h4 id="stool-metabolomics-data">Stool metabolomics data 💩</h4>
+<p>We will load in both the positive and negative ionisation mode height matrices from the MS-DIAL pipeline.
+We need to remove the MS/MS columns, as these were acquired in a different manner to the other columns.</p>
+<p>Then, we can <code>rbind</code> the two tables together after denoting the original ionisation mode in the row names.
+Because the QC data is incorporated within each feature (row), <code>pmp</code> can pre-process all of our data at once, and normalise the entire dataset.</p>
+<div class="language-r highlight"><span class="filename">Load the peak height tables from MS-DIAL</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Load the metabolomics height data</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">metab_stool_pos</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;stool_metabolites_height_positive.csv&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">skip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w"> </span><span class="c1"># skip the first 4 rows</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">metab_stool_neg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;stool_metabolites_height_negative.csv&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">skip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="run-the-preprocessing-script">Run the preprocessing script 🏃</h3>
+<p>At this point, we can simply run the <code>pmp_preprocess()</code> function. You will just need to identify which of your columns relate to what, and this could change depending on the exact MS-DIAL version you are using.</p>
+<ol>
+<li><strong>Information columns</strong>: these contain general information including mass, retention time, signal-to-noise ratio, spectrum fill percentage etc. These may be columns <code>1:32</code>.</li>
+<li><strong>Intensity columns</strong>: these contain the actual intensity values associated with each sample-peak pair, and will vary depending on your LCMS run. </li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Don't include the averaged columns</p>
+<p>Ensure you do not include the group averages, and only include individual samples, blanks, and QC samples</p>
+</div>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Process stool data</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">metab_stool_pmp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">pmp_preprocess</span><span class="p">(</span><span class="n">pos_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_data_pos</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">                                  </span><span class="n">neg_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_data_neg</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">                                  </span><span class="n">metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_metadata</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">                                  </span><span class="n">samples_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;stool&#39;</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">                                  </span><span class="n">intens_cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">33</span><span class="o">:</span><span class="m">38</span><span class="p">,</span><span class="w"> </span><span class="m">45</span><span class="o">:</span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="m">67</span><span class="o">:</span><span class="m">76</span><span class="p">),</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">                                  </span><span class="n">info_cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">32</span><span class="p">,</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">                                  </span><span class="n">mv_imp_method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;rf&#39;</span><span class="p">)</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Save output data</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nf">saveRDS</span><span class="p">(</span><span class="n">metab_stool_pmp</span><span class="p">,</span><span class="w"> </span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;output&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;temp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;metab_stool_pmp_temp.rds&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Skip ahead</p>
+<p>If you run the script here, you can skip down to the <a href="#principle-component-analysis">principle component analysis</a> step.</p>
+</div>
+<h3 id="detailed-steps">Detailed steps 📝</h3>
+<p>If you have a more complex setup, or would rather just do things manually to fine tune each step, we describe here the individual steps that the <code>pmp_process()</code> function is performing.</p>
+<h4 id="continue-manual-data-import">Continue manual data import 🔄</h4>
+<div class="language-r highlight"><span class="filename">Combine ionisation modes and prepare intensity and peak tables</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Remove the MS/MS samples (not acquired in the same way)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">metab_stool_pos</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metab_stool_pos</span><span class="p">[,</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">metab_stool_pos</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;MSMS_pos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;MSMS_neg&#39;</span><span class="p">))]</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">metab_stool_neg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metab_stool_neg</span><span class="p">[,</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">metab_stool_neg</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;MSMS_pos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;MSMS_neg&#39;</span><span class="p">))]</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Separate into intensity and information data.frames for the SummarizedExperiment object</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">metab_stool_pos_counts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">metab_stool_pos</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">33</span><span class="o">:</span><span class="m">54</span><span class="p">,</span><span class="w"> </span><span class="m">62</span><span class="o">:</span><span class="m">165</span><span class="p">)])</span><span class="w"> </span><span class="c1"># you need to find the column numbers that contain Blanks, QCs, and samples</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">metab_stool_neg_counts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">metab_stool_neg</span><span class="p">[,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">33</span><span class="o">:</span><span class="m">54</span><span class="p">,</span><span class="w"> </span><span class="m">62</span><span class="o">:</span><span class="m">165</span><span class="p">)])</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">metab_stool_pos_info</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metab_stool_pos</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">32</span><span class="p">]</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">metab_stool_neg_info</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metab_stool_neg</span><span class="p">[,</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">32</span><span class="p">]</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="c1"># Rename the data to indicate ionisation mode (using the MS-DIAL alignment ID)</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="n">stool_pos_rownames</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">metab_stool_pos_info</span><span class="o">$</span><span class="n">`Alignment ID`</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;_pos&#39;</span><span class="p">)</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="n">stool_neg_rownames</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">metab_stool_neg_info</span><span class="o">$</span><span class="n">`Alignment ID`</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;_neg&#39;</span><span class="p">)</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="nf">rownames</span><span class="p">(</span><span class="n">metab_stool_pos_counts</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">stool_pos_rownames</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="nf">rownames</span><span class="p">(</span><span class="n">metab_stool_pos_info</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">stool_pos_rownames</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="nf">rownames</span><span class="p">(</span><span class="n">metab_stool_neg_counts</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">stool_neg_rownames</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="nf">rownames</span><span class="p">(</span><span class="n">metab_stool_neg_info</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">stool_neg_rownames</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="c1"># Merge the postive and negative ionisation modes using rbind</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="n">metab_stool_counts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">metab_stool_pos_counts</span><span class="p">,</span><span class="w"> </span><span class="n">metab_stool_neg_counts</span><span class="p">)</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="n">metab_stool_info</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">metab_stool_pos_info</span><span class="p">,</span><span class="w"> </span><span class="n">metab_stool_neg_info</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Now that we have our intensity and feature information datasets, before we can import them into a <code>SummarizedExperiment</code> object,
+we need to define class and group vectors so that <code>pmp</code> knows whether our variables are samples, QCs, or blanks.</p>
+<p>The easiest way to achieve this is by getting the first two characters (a substring) of our column names,
+and using these as indicators of the classes: <code>'Bl'</code> = blank, <code>'QC'</code> = QC etc.</p>
+<div class="language-r highlight"><span class="filename">Define sample classes and groups</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Create class and group vectors</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">metab_stool_class</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">substr</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">metab_stool_counts</span><span class="p">),</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">metab_stool_group</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">substr</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">metab_stool_counts</span><span class="p">),</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+</span></code></pre></div>
+<details class="warning">
+<summary>Why didn't this work for me?</summary>
+<p>If you have samples that start with the same two letters as our ideal blanks (<code>'Bl'</code>) and quality control (<code>'QC'</code>) samples, then this process will not work.
+For example, if you have blood/serum samples that start with <code>'Bl'</code>, then these will need to be renamed.
+Alternatively, you may wish to manually define your classes and groups.</p>
+</details>
+<h4 id="import-into-a-summarizedexperiment-object">Import into a SummarizedExperiment object 📦</h4>
+<p>Now that we have our individual components ready, we can check that the metadata matches our sample data,
+and then import everything into a single, unified <code>SummarizedExperiment</code> object for pre-processing with the <code>pmp</code> package.</p>
+<div class="language-r highlight"><span class="filename">Assemble a SummarizedExperiment object</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Reorder the metadata rows so that they match the column order of samples in the counts data.frame (ignoring blanks and QCs)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">metadata_metab_stool</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metadata_metab_stool</span><span class="p">[</span><span class="nf">colnames</span><span class="p">(</span><span class="n">metab_stool_counts</span><span class="p">)[</span><span class="m">23</span><span class="o">:</span><span class="m">126</span><span class="p">],</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="c1"># use only column containing sample intensities</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Check that the metadata matches the samples</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nf">identical</span><span class="p">(</span><span class="nf">rownames</span><span class="p">(</span><span class="n">metadata_metab_stool</span><span class="p">),</span><span class="w"> </span><span class="nf">colnames</span><span class="p">(</span><span class="n">metab_stool_counts</span><span class="p">)[</span><span class="m">23</span><span class="o">:</span><span class="m">126</span><span class="p">])</span><span class="w"> </span><span class="c1"># should return &#39;TRUE&#39;</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Create the SummarizedExperiment (SE) object</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">metab_stool_SE</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">SummarizedExperiment</span><span class="p">(</span><span class="n">assays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_counts</span><span class="p">),</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">                                       </span><span class="n">metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">metadata_metab_stool</span><span class="p">),</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">                                       </span><span class="n">rowData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_info</span><span class="p">),</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">                                       </span><span class="n">colData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">DataFrame</span><span class="p">(</span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_class</span><span class="p">))</span>
+</span></code></pre></div>
+<h4 id="filtering-on-blank-intensity">Filtering on blank intensity 🧪⛔</h4>
+<p>The first filtering steps we will carry out are to replace any so-called "missing" values (i.e. 0 values) with <code>NA</code> so
+they will be compatible with downstream filtering steps.</p>
+<p>After this, we can filter peaks based on the intensity values of our blanks.</p>
+<div class="language-r highlight"><span class="filename">Filter on blank intensity</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Check the original number of features</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nf">dim</span><span class="p">(</span><span class="n">metab_stool_SE</span><span class="p">)</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Replace missing values with NA to be compatible with downstream filtering</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nf">assay</span><span class="p">(</span><span class="n">metab_stool_SE</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nf">assay</span><span class="p">(</span><span class="n">metab_stool_SE</span><span class="p">),</span><span class="w"> </span><span class="nf">assay</span><span class="p">(</span><span class="n">metab_stool_SE</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">)</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Filter peaks and optionally samples based on blanks</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">metab_stool_filt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">filter_peaks_by_blanks</span><span class="p">(</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_SE</span><span class="p">,</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">                                           </span><span class="n">fold_change</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="c1"># 5-fold change</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">                                           </span><span class="n">classes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_SE</span><span class="o">$</span><span class="n">class</span><span class="p">,</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">                                           </span><span class="n">remove_samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">                                           </span><span class="n">remove_peaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">                                           </span><span class="n">blank_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;Bl&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1"># from the class vector</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="c1"># Check the number of features/samples remaining</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="nf">dim</span><span class="p">(</span><span class="n">metab_stool_filt</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Example output (dimension checks):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="m">81334</span><span class="w">   </span><span class="m">126</span><span class="w"> </span><span class="c1"># Original</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="m">71700</span><span class="w">   </span><span class="m">115</span><span class="w"> </span><span class="c1"># After blank intensity filtering</span>
+</span></code></pre></div>
+<h4 id="filtering-on-missing-values-and-qc-intensity-variation">Filtering on missing values and QC intensity variation 🧺🔎</h4>
+<p>Next, we can perform a few filtering steps based on missing values and degree of variation in the QC samples.</p>
+<ul>
+<li><code>filter_samples_by_mv</code>: removal of samples containing a user-defined maximum percentage of missing values <a href="https://rdrr.io/bioc/pmp/man/filter_samples_by_mv.html">see documentation</a>. E.g. setting the <code>max_perc_mv</code> argument to 0.8 will remove all samples with at least 80% missing values.</li>
+<li><code>filter_peaks_by_fraction</code>: removal of peaks based upon the relative proportion of samples containing non-missing values <a href="https://rdrr.io/bioc/pmp/man/filter_peaks_by_fraction.html">see documentation</a>.</li>
+<li><code>filter_peaks_by_rsd</code>: removal of peaks based upon relative standard deviation of intensity values for a given feature within specified QC samples <a href="https://rdrr.io/bioc/pmp/man/filter_peaks_by_rsd.html">see documentation</a>.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Relative standard deviation</p>
+<p>As the name suggests, this value is dependent on the standard deviation that exists in your QC samples.
+As such, if there is substantial variation in your QC samples you have a couple of options:</p>
+<ul>
+<li>Increase the <code>max_rsd</code> value &ndash; this is a threshold of the QC RSD% value, so maybe try <code>40</code> if <code>25</code> is too low.</li>
+<li>Identify problematic QC samples &ndash; see if you can work out what the issue is, and remove that particular QC sample if appropriate.</li>
+</ul>
+</div>
+<div class="language-r highlight"><span class="filename">Continue filtering process</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Filter samples based on the percentage of missing values</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">metab_stool_filt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">filter_samples_by_mv</span><span class="p">(</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_filt</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">                                         </span><span class="n">max_perc_mv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">)</span><span class="w"> </span><span class="c1"># remove samples where &gt;80% of values are missing </span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># Check the number of features/samples</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nf">dim</span><span class="p">(</span><span class="n">metab_stool_filt</span><span class="p">)</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1"># Filter peaks based on missing values across all samples</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="n">metab_stool_filt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">filter_peaks_by_fraction</span><span class="p">(</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_filt</span><span class="p">,</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">                                             </span><span class="n">min_frac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.8</span><span class="p">,</span><span class="w"> </span><span class="c1"># features should have values for &gt;80% of samples</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">                                             </span><span class="n">classes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_filt</span><span class="o">$</span><span class="n">class</span><span class="p">,</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">                                             </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;across&#39;</span><span class="p">)</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1"># Check the number of features/samples</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="nf">dim</span><span class="p">(</span><span class="n">metab_stool_filt</span><span class="p">)</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="c1"># Filter peaks based on the percentage of variation in the QC samples</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="n">metab_stool_filt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">filter_peaks_by_rsd</span><span class="p">(</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_filt</span><span class="p">,</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">                                        </span><span class="n">max_rsd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span><span class="p">,</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">                                        </span><span class="n">classes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_filt</span><span class="o">$</span><span class="n">class</span><span class="p">,</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">                                        </span><span class="n">qc_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;QC&#39;</span><span class="p">)</span>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="c1"># Check the number of features/samples</span>
+</span><span id="__span-10-24"><a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="nf">dim</span><span class="p">(</span><span class="n">metab_stool_filt</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Example output (dimension checks):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="m">71700</span><span class="w">   </span><span class="m">115</span><span class="w"> </span><span class="c1"># After filtering for missing values within peaks</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="m">17315</span><span class="w">   </span><span class="m">115</span><span class="w"> </span><span class="c1"># After filtering for missing values across samples</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span><span class="m">11648</span><span class="w">   </span><span class="m">115</span><span class="w"> </span><span class="c1"># After filtering out high variability in QC samples</span>
+</span></code></pre></div>
+<h4 id="pqn-normalisation-and-glog-scaling">PQN normalisation and glog scaling 📊⚖️</h4>
+<p>Finally we can normalise our data using probabilistic quotient normalisation (PQN) (<a href="https://rdrr.io/github/computational-metabolomics/pmp/man/pqn_normalisation.html">see documentation</a>),
+followed by missing value imputation (various method choices available; <a href="https://rdrr.io/github/computational-metabolomics/pmp/man/mv_imputation.html">see documentation</a>), 
+and then transform the data using a variance-stabling generalised logarithmic transformation (<a href="https://rdrr.io/github/computational-metabolomics/pmp/man/glog_transformation.html">see documentation</a>).</p>
+<div class="admonition question">
+<p class="admonition-title">What is a glog transformation?</p>
+<p>Generalised logarithmic (glog) transformation is a statistical technique that applies a modified logarithmic function to raw intensity data, thereby stabilising variance across both low and high intensity mass spectral features. The <code>glog_transformation</code> function uses QC samples to optimise the scaling factor lambda, and using the <code>glog_plot_optimised_lambda</code> function it’s possible to visualise if the optimisation of the given parameter has converged at the minima.</p>
+</div>
+<div class="language-r highlight"><span class="filename">PQN normalise, impute missing values, and glog transform data</span><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># PQN data normalisation</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">metab_stool_norm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">pqn_normalisation</span><span class="p">(</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_filt</span><span class="p">,</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">                                      </span><span class="n">classes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_filt</span><span class="o">$</span><span class="n">class</span><span class="p">,</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">                                      </span><span class="n">qc_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;QC&#39;</span><span class="p">)</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1"># Missing values imputation</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">metab_stool_imp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mv_imputation</span><span class="p">(</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_norm</span><span class="p">,</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">                                 </span><span class="n">rowmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="c1"># max % of missing data allowed in any row</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">                                 </span><span class="n">colmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.7</span><span class="p">,</span><span class="w"> </span><span class="c1"># max % of missing data allowed in any column</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">                                 </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;knn&#39;</span><span class="p">)</span><span class="w"> </span><span class="c1"># or rf, bcpa, sv, mn, md.</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="c1"># Data scaling</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">metab_stool_glog</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">glog_transformation</span><span class="p">(</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_imp</span><span class="p">,</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">                                        </span><span class="n">classes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_imp</span><span class="o">$</span><span class="n">class</span><span class="p">,</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">                                        </span><span class="n">qc_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;QC&#39;</span><span class="p">)</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="n">opt_lambda_stool</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">processing_history</span><span class="p">(</span><span class="n">metab_stool_glog</span><span class="p">)</span><span class="o">$</span><span class="n">glog_transformation</span><span class="o">$</span><span class="n">lambda_opt</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="nf">glog_plot_optimised_lambda</span><span class="p">(</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_imp</span><span class="p">,</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">                           </span><span class="n">optimised_lambda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">opt_lambda_stool</span><span class="p">,</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">                           </span><span class="n">classes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_imp</span><span class="o">$</span><span class="n">class</span><span class="p">,</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">                           </span><span class="n">qc_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;QC&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Example plot:</p>
+<figure>
+    <img align="center," alt="glog plot" src="../../assets/LCMS/LCMS_preprocessing/glog_optimised_lambda_plot.png" width="60%" />
+</figure>
+<p>We can also check the number of assigned metabolites that remain.</p>
+<div class="language-r highlight"><span class="filename">Check number of named features</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Recover RDS object if you used the pmp_preprocess function</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">metab_stool_pmp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readRDS</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;output&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;temp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;metab_stool_pmp_temp.rds&#39;</span><span class="p">))</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">metab_stool_glog</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metab_stool_pmp</span><span class="o">$</span><span class="n">glog_results</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># Number of assigned metabolites</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nf">table</span><span class="p">(</span><span class="nf">rowData</span><span class="p">(</span><span class="n">metab_stool_glog</span><span class="p">)</span><span class="o">@</span><span class="n">listData</span><span class="p">[[</span><span class="s">&#39;info.Metabolite name&#39;</span><span class="p">]]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&#39;Unknown&#39;</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Example output (189 metabolites with assignments remain):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>FALSE<span class="w">  </span>TRUE<span class="w"> </span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="m">11459</span><span class="w">   </span><span class="m">189</span><span class="w"> </span>
+</span></code></pre></div>
+<h3 id="principle-component-analysis">Principle component analysis 📈</h3>
+<p>We can now visualise the output data using a principle component analysis plot (PCA) plot.</p>
+<div class="language-r highlight"><span class="filename">Generate a PCA plot to visualise QC clustering</span><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Recover RDS object if you used the pmp_preprocess function</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">metab_stool_pmp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readRDS</span><span class="p">(</span><span class="n">here</span><span class="o">::</span><span class="nf">here</span><span class="p">(</span><span class="s">&#39;output&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;temp&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;metab_stool_pmp_temp.rds&#39;</span><span class="p">))</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">metab_stool_glog</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">metab_stool_pmp</span><span class="o">$</span><span class="n">glog_results</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># Perform the PCA and retrieve the explained variance values</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">PCA_stool</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">prcomp</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="nf">assay</span><span class="p">(</span><span class="n">metab_stool_glog</span><span class="p">)),</span><span class="w"> </span><span class="n">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">varexp_stool</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="nf">summary</span><span class="p">(</span><span class="n">PCA_stool</span><span class="p">)</span><span class="o">$</span><span class="n">importance</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="m">100</span><span class="p">,</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">                  </span><span class="nf">summary</span><span class="p">(</span><span class="n">PCA_stool</span><span class="p">)</span><span class="o">$</span><span class="n">importance</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="m">100</span><span class="p">)</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c1"># Create a dataset for plotting</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="n">data_PCA_stool</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cbind</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">PCA_stool</span><span class="o">$</span><span class="n">x</span><span class="p">),</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">                                   </span><span class="n">PC1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCA_stool</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">                                   </span><span class="n">PC2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCA_stool</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span><span class="m">2</span><span class="p">]),</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">                        </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metab_stool_glog</span><span class="o">$</span><span class="n">class</span><span class="p">)</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="c1"># Plot results</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="p">(</span><span class="n">PCA_stool_plot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data_PCA_stool</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PC1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PC2</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">    </span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">class</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="n">class</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">    </span><span class="nf">stat_ellipse</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">class</span><span class="p">),</span><span class="w"> </span><span class="n">geom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;polygon&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;t&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">    </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;Stool Metabolomics&#39;</span><span class="p">,</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">         </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&#39;PC1 &#39;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">varexp_stool</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;%&#39;</span><span class="p">),</span>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&#39;PC2 &#39;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">varexp_stool</span><span class="p">[</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;%&#39;</span><span class="p">))</span>
+</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>Example plot:</p>
+<figure>
+    <img align="center," alt="PCA plot" src="../../assets/LCMS/LCMS_preprocessing/metab_stool_class_PCA.png" width="60%" />
+</figure>
+<h2 id="next-steps">Next steps ➡️</h2>
+<p>Now that you have finished initial quality control, and have an imputed, glog-normalised dataset, you can proceed to <a href="../secondary-feature-annotation/">secondary MS1 feature identification</a>.</p>
+<h2 id="rights">Rights</h2>
+<ul>
+<li>Copyright ©️ 2024 Mucosal Immunology Lab, Monash University, Melbourne, Australia.</li>
+<li><code>pmp</code> package: Jankevics A, Lloyd GR, Weber RJM (2021). pmp: Peak Matrix Processing and signal batch correction for metabolomics datasets. R package version 1.4.0.</li>
+<li>License: This pipeline is provided under the MIT license.</li>
+<li>Authors: M. Macowan and C. Pattaroni</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

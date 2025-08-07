@@ -1,0 +1,1797 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../scRNAseq/">
+      
+      
+        <link rel="next" href="../dada2_16S/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Metagenomics - Mucosal Immunology Bioinformatics Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheet/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-7HN0DB92MT"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-7HN0DB92MT",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-7HN0DB92MT",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#shotgun-metagenomics-sequencing-pre-processing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Mucosal Immunology Bioinformatics Hub" class="md-header__button md-logo" aria-label="Mucosal Immunology Bioinformatics Hub" data-md-component="logo">
+      
+  <img src="../../assets/mil_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mucosal Immunology Bioinformatics Hub
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Metagenomics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mucosal-Immunology-Lab/bioinformatic-hub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mucosal Immunology Bioinformatics Hub" class="md-nav__button md-logo" aria-label="Mucosal Immunology Bioinformatics Hub" data-md-component="logo">
+      
+  <img src="../../assets/mil_logo.png" alt="logo">
+
+    </a>
+    Mucosal Immunology Bioinformatics Hub
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://mucosal-immunology-lab.github.io/bioinformatics-hub/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mucosal-Immunology-Lab/bioinformatic-hub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RNAseq/rnaseq-nfcore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bulk Transcriptomics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Microbiome
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Microbiome
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    16S rRNA amplicon
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            16S rRNA amplicon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Microbiome/dada2_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DADA2 pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    LCMS Analysis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            LCMS Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCMS/lcms-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCMS/msdial-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Raw Data Processing with MS-DIAL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCMS/pmp-quality-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Peak Matrix Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCMS/secondary-feature-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Secondary Feature Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCMS/manual-peak-curation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Manual Peak Curation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nextflow Pipelines
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Nextflow Pipelines
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scRNAseq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Single-cell RNAseq
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Metagenomics
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Metagenomics
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction 📖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download the repository 📁
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-conda-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create the conda environment 🐍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-your-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up your folders 🗂️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepare-your-sample-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare your sample sheet 📝
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the pipeline 🏃
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the pipeline 🏃">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customisation ⚙️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outputs 📤
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rights
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dada2_16S/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DADA2 16S rRNA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cross-omic Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Cross-omic Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Differential testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Differential testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CrossOmicTools/DifferentialTesting/bio_limma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Linear modelling with bio_limma
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Utilities
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Handling sequencing data
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Handling sequencing data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/data-best-practices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data best practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/convert-raw-novaseq-outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Converting NovaSeq outputs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/sra-data-submission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SRA sequencing data submission
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Monash data storage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Monash data storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/market-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Market storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Utilities/vault-storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vault storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PublicDatasets/public-datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Public Datasets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction 📖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download the repository 📁
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-conda-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create the conda environment 🐍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-your-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up your folders 🗂️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepare-your-sample-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prepare your sample sheet 📝
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the pipeline 🏃
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the pipeline 🏃">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#customisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customisation ⚙️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outputs 📤
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rights
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="shotgun-metagenomics-sequencing-pre-processing">Shotgun metagenomics sequencing pre-processing</h1>
+<h2 id="introduction">Introduction 📖</h2>
+<p><a href="https://github.com/mucosal-immunology-lab/nf-mucimmuno/tree/main/metagenomics"><strong>nf-mucimmuno/metagenomics</strong></a> is a bioinformatics pipeline that can be used for pre-processing of shotgun metagenomics sequencing reads. It takes a sample sheet and raw sequencing <code>.fastq.gz</code> files, performs quality profiling, filtering and trimming, removal of low complexity reads, and host decontamination. MultiQC is run on the FastQC outputs both before and after TrimGalore! for visual inspection of sample quality &ndash; output <code>.html</code> files are collected in the results. Reads are then assigned taxonomic classifications using Kraken2 and abundance-corrected via Bracken.</p>
+<p><img align="center" alt="nf-mucimmuno/scRNAseq" src="../../assets/NextFlow/nf-mucimmuno_metagenomics.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Citation</p>
+<p>If you use this workflow and end up publishing something, please consider including a reference to our work! 😎🙏</p>
+<p>Macowan, M., Pattaroni, C., &amp; Marsland, B. (2025). nf-mucimmuno/metagenomics (0.1.0). Zenodo. <a href="https://doi.org/10.5281/zenodo.15743010">https://doi.org/10.5281/zenodo.15743010</a></p>
+</div>
+<h2 id="usage">Usage</h2>
+<h3 id="download-the-repository">Download the repository 📁</h3>
+<p>This repository contains the relevant Nextflow workflow components, including a conda environment and submodules, to run the pipeline. To retrieve this repository alone, run the <a href="../../assets/Microbiome/metagenomics/retrieve_me.sh"><code>retrieve_me.sh</code></a> script. Alternatively, you can prepare your own download script by following the instructions below.</p>
+<div class="admonition warning">
+<p class="admonition-title">Git version requirements</p>
+<p>Git <code>sparse-checkout</code> is required to retrieve just the <strong>nf-mucimmuno/metagenomics</strong> pipeline. It was only introduced to Git in version 2.27.0, so ensure that the loaded version is high enough (or that there is a version loaded on the cluster at all). As of July 2024, the M3 MASSIVE cluster has version 2.38.1 available.</p>
+</div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Check git version</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>--version
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Load git module if not loaded or insufficient version</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>module<span class="w"> </span>load<span class="w"> </span>git/2.38.1
+</span></code></pre></div>
+<p>First, create a new bash script file.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Create and edit a new file with nano</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>nano<span class="w"> </span>retrieve_me.sh
+</span></code></pre></div>
+<p>Add the contents to the file, save, and close.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Define variables</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nv">REPO_URL</span><span class="o">=</span><span class="s2">&quot;https://github.com/mucosal-immunology-lab/nf-mucimmuno&quot;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">REPO_DIR</span><span class="o">=</span><span class="s2">&quot;nf-mucimmuno&quot;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nv">SUBFOLDER</span><span class="o">=</span><span class="s2">&quot;metagenomics&quot;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># Clone the repository with sparse checkout</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>git<span class="w"> </span>clone<span class="w"> </span>--no-checkout<span class="w"> </span><span class="nv">$REPO_URL</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$REPO_DIR</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># Initialize sparse-checkout and set the desired subfolder</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>git<span class="w"> </span>sparse-checkout<span class="w"> </span>init<span class="w"> </span>--cone
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>git<span class="w"> </span>sparse-checkout<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nv">$SUBFOLDER</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="c1"># Checkout the files in the subfolder</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="c1"># Move the folder into the main folder and delete the parent</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>mv<span class="w"> </span><span class="nv">$SUBFOLDER</span><span class="w"> </span>../
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="nb">cd</span><span class="w"> </span>..
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>rm<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$REPO_DIR</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Subfolder &#39;</span><span class="nv">$SUBFOLDER</span><span class="s2">&#39; has been downloaded successfully.&quot;</span>
+</span></code></pre></div>
+<p>Then run the script to retrieve the repository into a new folder called <code>metagenomics</code>, which will house your workflow files and results.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Run the script</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>bash<span class="w"> </span>retrieve_me.sh
+</span></code></pre></div>
+<h3 id="create-the-conda-environment">Create the conda environment 🐍</h3>
+<p>To create the conda environment, use the provided environment <code>.yaml</code> file. Then activate it to access required functions.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Create the environment</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yaml
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Activate the environment</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>mamba<span class="w"> </span>activate<span class="w"> </span>nextflow-metaG
+</span></code></pre></div>
+<h3 id="setting-up-your-folders">Setting up your folders 🗂️</h3>
+<p>Because you specify the full directory path for your raw input data, you can technically house them however and wherever you like. However, below is an example of how to store your raw sequencing files.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>metagenomics/
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span>├──<span class="w"> </span>modules/
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>├──<span class="w"> </span>data/
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>raw_fastq/
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>sample1_R1.fastq.gz
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>sample1_R2.fastq.gz
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>sample2_R1.fastq.gz
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span>│<span class="w">       </span>├──<span class="w"> </span>sample2_R2.fastq.gz
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span>│<span class="w">       </span>└──<span class="w"> </span>...
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span>├──<span class="w"> </span>metaG_pipeline.nf
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span>├──<span class="w"> </span>nextflow.config
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span>├──<span class="w"> </span>retrieve_me.sh
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span>└──<span class="w"> </span>sample_sheet.csv
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">You don't have to have paired-end reads</p>
+<p>Although the example folder structure above shows paired-end reads, the pipeline will handle both single- and paired-end reads.
+You will be able to define this all in your sample sheet, as shown below.</p>
+</div>
+<h3 id="prepare-your-sample-sheet">Prepare your sample sheet 📝</h3>
+<p>This pipeline requires a sample sheet to identify where your sequencing data is located. You can also change the name of each sample to something some specific if you desire from the original folder name.</p>
+<p>Your sample sheet should look as follows, <strong>ensuring you use the exact column names as below</strong>. You can also just edit the sample sheet already in the folder.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>id,fastq_1,fastq_2
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sample1,./data/raw_fastq/sample1.fastq.gz,
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sample2,./data/raw_fastq/sample2_R1.fastq.gz,./data/raw_fastq/sample2_R2.fastq.gz
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>sample3,./data/raw_fastq/sample3_R1.fastq.gz,./data/raw_fastq/sample3_R2.fastq.gz
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Sample sheets columns</p>
+<p>You simply require the column names <code>id</code>, <code>fastq_1</code>, and <code>fastq_2</code>.
+If you are working with single-ended data, simply leave the <code>fastq_2</code> column blank for the relevant samples.</p>
+</div>
+<h3 id="running-the-pipeline">Running the pipeline 🏃</h3>
+<p>Now you can run the pipeline. You will need to set up a parent job to run each of the individual jobs &ndash; this can be either an interactive session, or an sbatch job. For example:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Start an interactive session with minimal resources</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>smux<span class="w"> </span>n<span class="w"> </span>--time<span class="o">=</span><span class="m">3</span>-00:00:00<span class="w"> </span>--mem<span class="o">=</span>16GB<span class="w"> </span>--ntasks<span class="o">=</span><span class="m">1</span><span class="w"> </span>--cpuspertask<span class="o">=</span><span class="m">2</span><span class="w"> </span>-J<span class="w"> </span>nf-metaG
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Set the correct sample sheet location</p>
+<p>Make sure you alter the <code>nextflow.config</code> file to provide the path to your sample sheet, unless it is <code>./sample_sheet.csv</code> which is the default for the cluster profile. Stay within the top <code>cluster</code> profile section to alter settings for Slurm-submitted jobs.</p>
+</div>
+<p>Inside your interactive session, be sure to activate your <code>nextflow-metaG</code> environment from above. Then, <strong>inside the metagenomics folder</strong>, begin the pipeline using the following command (ensuring you use the <code>cluster</code> profile to make use of the Slurm workflow manager).</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Activate conda environment</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>mamba<span class="w"> </span>activate<span class="w"> </span>nextflow-metaG
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Begin running the pipeline</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>nextflow<span class="w"> </span>run<span class="w"> </span>metaG_pipeline.nf<span class="w"> </span>-resume<span class="w"> </span>-profile<span class="w"> </span>cluster
+</span></code></pre></div>
+<h4 id="customisation">Customisation ⚙️</h4>
+<p>There are several customisation options that are available within the <code>nextflow.config</code> file. While the defaults should be suitable for those with access to the M3 MASSIVE cluster genomics partition, for those without access, of for those who require different amounts of resources, there are ways to change these.</p>
+<p>To adjust the <code>cluster</code> profile settings, stay within the appropriate section at the top of the file. The <code>local</code> settings are at the bottom.</p>
+<details class="info">
+<summary>Parameters</summary>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>samples_csv</td>
+<td>The file path to your sample sheet</td>
+</tr>
+<tr>
+<td>outdir</td>
+<td>A new folder name to be created for your results</td>
+</tr>
+<tr>
+<td><em>trimgalore</em>.quality</td>
+<td>The minimum quality score for, after which reads will be truncated to remove low-quality read ends. (Default: <code>20</code>)</td>
+</tr>
+<tr>
+<td><em>trimgalore</em>.length</td>
+<td>The minimum post-trimming read length required for a read to be retained. (Default: <code>25</code>)</td>
+</tr>
+<tr>
+<td><em>trimgalore</em>.adapter</td>
+<td>Adapter sequence to be trimmed from R1. Defaults to the Illumina adapters. (Default: <code>'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'</code>)</td>
+</tr>
+<tr>
+<td><em>trimgalore</em>.adapter2</td>
+<td>Adapter sequence to be trimmed from R1. Defaults to the Illumina adapters. (Default: <code>'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'</code>)</td>
+</tr>
+<tr>
+<td><em>decontaminate</em>.hostIndex</td>
+<td>The base file path to the host index <code>.b2tl</code> files. Be sure to just provide the base name, e.g. <code>'path/to/folder/chm13v2.0_GRCh38_full_plus_decoy'</code>. If you don't provide anything, the pipeline will generate the host index for you and place a copy in the results folder. (Default: <code>''</code>)</td>
+</tr>
+<tr>
+<td><em>taxonomy</em>.kraken2_db</td>
+<td>The folder path to the kraken2 database if you have one prepared. If you don't provide anything, the pipeline will generate it for you and place a copy in the results folder. (Default: <code>''</code>)</td>
+</tr>
+<tr>
+<td><em>taxonomy</em>.kmer_length</td>
+<td>The sliding kmer length for Kraken2 to use for generating the database. This will also be used for generating the Bracken-corrected database version. (Default: <code>35</code>)</td>
+</tr>
+<tr>
+<td><em>bracken</em>.bracken_level</td>
+<td>The level to which Bracken taxonomy should be corrected. (Default: <code>'S'</code> - i.e. species)</td>
+</tr>
+</tbody>
+</table>
+</details>
+<details class="info">
+<summary>Process</summary>
+<p>These settings relate to resource allocation and cluster settings. Database building steps in particular take longer than 4 hours, and therefore the default option is to run these steps on the <code>comp</code> partition.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>executor</td>
+<td>The workload manager (default: <code>'slurm'</code>)</td>
+</tr>
+<tr>
+<td>conda</td>
+<td>The conda environment to use (default: <code>'./environment.yaml'</code>)</td>
+</tr>
+<tr>
+<td>queueSize</td>
+<td>The maximum number of jobs to be submitted at any time (default: <code>12</code>)</td>
+</tr>
+<tr>
+<td>submitRateLimit</td>
+<td>The rate allowed for job submission &ndash; either a number of jobs per second (e.g. 20sec) or a number of jobs per time period (e.g. 20/5min) (default: <code>'1/2sec'</code>)</td>
+</tr>
+<tr>
+<td>memory</td>
+<td>The maximum global memory allowed for Nextflow to use (default: <code>'320 GB'</code>)</td>
+</tr>
+<tr>
+<td><em>FASTQC</em>.memory</td>
+<td>Memory for FASTQC step to use (default: <code>'80 GB'</code>)</td>
+</tr>
+<tr>
+<td><em>FASTQC</em>.cpus</td>
+<td>Number of CPUs for FASTQC step to use (default: <code>'8'</code>)</td>
+</tr>
+<tr>
+<td><em>FASTQC</em>.clusterOptions</td>
+<td>Specific cluster options for FASTQC step to use (default: <code>'--time=8:00:00'</code>)</td>
+</tr>
+<tr>
+<td><em>TRIMGALORE</em>.memory</td>
+<td>Memory for TRIMGALORE step to use (default: <code>'80 GB'</code>)</td>
+</tr>
+<tr>
+<td><em>TRIMGALORE</em>.cpus</td>
+<td>Number of CPUs for TRIMGALORE step to use (default: <code>'8'</code>)</td>
+</tr>
+<tr>
+<td><em>TRIMGALORE</em>.clusterOptions</td>
+<td>Specific cluster options for TRIMGALORE step to use (default: <code>'--time=8:00:00'</code>)</td>
+</tr>
+<tr>
+<td><em>KOMPLEXITY_FILTER</em>.memory</td>
+<td>Memory for KOMPLEXITY_FILTER step to use (default: <code>'80 GB'</code>)</td>
+</tr>
+<tr>
+<td><em>KOMPLEXITY_FILTER</em>.cpus</td>
+<td>Number of CPUs for KOMPLEXITY_FILTER step to use (default: <code>'12'</code>)</td>
+</tr>
+<tr>
+<td><em>KOMPLEXITY_FILTER</em>.clusterOptions</td>
+<td>Specific cluster options for KOMPLEXITY_FILTER step to use (default: <code>'--time=4:00:00 --partition=genomics --partition=genomics'</code>)</td>
+</tr>
+<tr>
+<td><em>PREPARE_HOST_GENOME</em>.memory</td>
+<td>Memory for PREPARE_HOST_GENOME step to use (default: <code>'40 GB'</code>)</td>
+</tr>
+<tr>
+<td><em>PREPARE_HOST_GENOME</em>.cpus</td>
+<td>Number of CPUs for PREPARE_HOST_GENOME step to use (default: <code>'8'</code>)</td>
+</tr>
+<tr>
+<td><em>PREPARE_HOST_GENOME</em>.clusterOptions</td>
+<td>Specific cluster options for PREPARE_HOST_GENOME step to use (default: <code>'--time=24:00:00'</code>)</td>
+</tr>
+<tr>
+<td><em>HOST_DECONTAMINATE</em>.memory</td>
+<td>Memory for HOST_DECONTAMINATE step to use (default: <code>'80 GB'</code>)</td>
+</tr>
+<tr>
+<td><em>HOST_DECONTAMINATE</em>.cpus</td>
+<td>Number of CPUs for HOST_DECONTAMINATE step to use (default: <code>'12'</code>)</td>
+</tr>
+<tr>
+<td><em>HOST_DECONTAMINATE</em>.clusterOptions</td>
+<td>Specific cluster options for HOST_DECONTAMINATE step to use (default: <code>'--time=4:00:00 --partition=genomics --partition=genomics'</code>)</td>
+</tr>
+<tr>
+<td><em>PREPARE_KRAKEN2_DB</em>.memory</td>
+<td>Memory for PREPARE_KRAKEN2_DB step to use (default: <code>'120 GB'</code>)</td>
+</tr>
+<tr>
+<td><em>PREPARE_KRAKEN2_DB</em>.cpus</td>
+<td>Number of CPUs for PREPARE_KRAKEN2_DB step to use (default: <code>'24'</code>)</td>
+</tr>
+<tr>
+<td><em>PREPARE_KRAKEN2_DB</em>.clusterOptions</td>
+<td>Specific cluster options for PREPARE_KRAKEN2_DB step to use (default: <code>'--time=24:00:00'</code>)</td>
+</tr>
+<tr>
+<td><em>CLASSIFY_KRAKEN2</em>.memory</td>
+<td>Memory for CLASSIFY_KRAKEN2 step to use (default: <code>'120 GB'</code>)</td>
+</tr>
+<tr>
+<td><em>CLASSIFY_KRAKEN2</em>.cpus</td>
+<td>Number of CPUs for CLASSIFY_KRAKEN2 step to use (default: <code>'16'</code>)</td>
+</tr>
+<tr>
+<td><em>CLASSIFY_KRAKEN2</em>.clusterOptions</td>
+<td>Specific cluster options for CLASSIFY_KRAKEN2 step to use (default: <code>'--time=4:00:00 --partition=genomics --partition=genomics'</code>)</td>
+</tr>
+<tr>
+<td><em>MERGE_KRAKEN2_REPORTS</em>.memory</td>
+<td>Memory for MERGE_KRAKEN2_REPORTS step to use (default: <code>'40 GB'</code>)</td>
+</tr>
+<tr>
+<td><em>MERGE_KRAKEN2_REPORTS</em>.cpus</td>
+<td>Number of CPUs for MERGE_KRAKEN2_REPORTS step to use (default: <code>'6'</code>)</td>
+</tr>
+<tr>
+<td><em>MERGE_KRAKEN2_REPORTS</em>.clusterOptions</td>
+<td>Specific cluster options for MERGE_KRAKEN2_REPORTS step to use (default: <code>'--time=4:00:00 --partition=genomics --partition=genomics'</code>)</td>
+</tr>
+<tr>
+<td><em>PREPARE_BRACKEN_DB</em>.memory</td>
+<td>Memory for PREPARE_BRACKEN_DB step to use (default: <code>'120 GB'</code>)</td>
+</tr>
+<tr>
+<td><em>PREPARE_BRACKEN_DB</em>.cpus</td>
+<td>Number of CPUs for PREPARE_BRACKEN_DB step to use (default: <code>'24'</code>)</td>
+</tr>
+<tr>
+<td><em>PREPARE_BRACKEN_DB</em>.clusterOptions</td>
+<td>Specific cluster options for PREPARE_BRACKEN_DB step to use (default: <code>'--time=24:00:00'</code>)</td>
+</tr>
+</tbody>
+</table>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Nextflow Error Status (137)</p>
+<p>Nextflow error status (137) relates to insufficent RAM allocated to the job. If you get this error, try allocating more resources to the job that failed.</p>
+</div>
+<h2 id="outputs">Outputs 📤</h2>
+<p>Several outputs will be copied from their respective Nextflow <code>work</code> directories to the output folder of your choice (default: <code>results</code>).</p>
+<p>The main outputs of interest for downstream processing are your Bracken-corrected <code>.tsv</code> file and your trimmed, decontaminated reads.</p>
+<table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filtered_combined_bracken_report.tsv</code></td>
+<td>The Bracken-corrected clean counts table matrix including genus, family, order, class and phylum columns derived from the Kraken2/Bracken taxonomy database</td>
+</tr>
+<tr>
+<td><code>decontam/</code></td>
+<td>A folder containing all of your trimmed, decontaminated <code>.fastq.gz</code> files &ndash; these can be used for other pipelines such as HUMAnN3 functional profiling.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Additional taxonomy</p>
+<p>The filtering step requires access to the Kraken2/Bracken taxonomy files (<code>taxonomy/nodes.dmp</code> and <code>taxonomy/names.dmp</code>) to determine these higher-level ranks.</p>
+</div>
+<p><strong>Folder structure</strong></p>
+<p>There are also a collection of quality control outputs and database files (if you didn't provide them to the pipeline) available in this directory too. If the pipeline generated the databases for you, it is recommended that you move these somewhere else so you can use them in future to save yourself some time. Below is an example of the output structure after running the pipeline.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>results/
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span>├──<span class="w"> </span>kraken2/
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>combined_kraken2_report.tsv
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>filtered_combined_kraken2_report.tsv
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>sample1.kraken
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>sample1.report
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>...
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span>├──<span class="w"> </span>bracken/
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>combined_bracken_report.tsv
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>filtered_combined_bracken_report.tsv
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span>├──<span class="w"> </span>decontam/
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>sample1_decontam.fq.gz
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>sample2_R1_decontam.fq.gz
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>sample2_R2_decontam.fq.gz
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>...
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">    </span>├──<span class="w"> </span>decontam_log/
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>sample1_bowtie2.log
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>sample2_bowtie2.log
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>...
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">    </span>├──<span class="w"> </span>kraken2_database/<span class="w"> </span><span class="c1"># ~470 GB</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>database.kraken<span class="w"> </span><span class="c1"># 50.2 GB</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>database35mers.kmer_distrib
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>database35mers.kraken
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>hash.k2d<span class="w"> </span><span class="c1"># 90.9 GB</span>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>opts.k2d
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>seqid2taxid.map
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>taxo.k2d
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>library/<span class="w"> </span>...<span class="w"> </span><span class="c1"># ~ 223 GB</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>taxonomy/<span class="w"> </span>...<span class="w"> </span><span class="c1"># ~ 46.4 GB</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">    </span>├──<span class="w"> </span>hostIndex/<span class="w"> </span><span class="c1"># ~18.2 GB</span>
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>chm13v2.0_GRCh38_full_plus_decoy.1.bt2l
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>chm13v2.0_GRCh38_full_plus_decoy.2.bt2l
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>chm13v2.0_GRCh38_full_plus_decoy.3.bt2l
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>chm13v2.0_GRCh38_full_plus_decoy.4.bt2l
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>chm13v2.0_GRCh38_full_plus_decoy.rev.1.bt2l
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>chm13v2.0_GRCh38_full_plus_decoy.rev.2.bt2l
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>chm13v2.0_GRCh38_full_plus_decoy.fasta
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a><span class="w">    </span>├──<span class="w"> </span>reports/
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>pretrim_multiqc_report.html
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>posttrim_multiqc_report.html
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="w">    </span>├──<span class="w"> </span>taxonomy.txt
+</span><span id="__span-9-42"><a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a><span class="w">    </span>└──<span class="w"> </span>tree.rds
+</span></code></pre></div>
+<h2 id="rights">Rights</h2>
+<ul>
+<li>Copyright ©️ 2025 Mucosal Immunology Lab, Monash University, Melbourne, Australia.</li>
+<li>Licence: This pipeline is provided under the MIT license.</li>
+<li>Authors: M. Macowan</li>
+</ul>
+<div class="admonition info">
+<ul>
+<li><strong>FastQC</strong>: Andrews, S. (2010). FastQC: A Quality Control Tool for High Throughput Sequence Data [Online]. Available online at: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/</li>
+<li><strong>MultiQC</strong>: Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics. 2016 Oct 1;32(19):3047-8. doi: 10.1093/bioinformatics/btw354. Epub 2016 Jun 16. PMID: 27312411; PMCID: PMC5039924.</li>
+<li><strong>TrimGalore!</strong>: Felix Krueger, Frankie James, Phil Ewels, Ebrahim Afyounian, Michael Weinstein, Benjamin Schuster-Boeckler, Gert Hulselmans, &amp; sclamons. (2023). FelixKrueger/TrimGalore: v0.6.10 - add default decompression path (0.6.10). Zenodo. https://doi.org/10.5281/zenodo.7598955</li>
+<li><strong>Komplexity</strong>: Clarke EL, Taylor LJ, Zhao C, Connell A, Lee JJ, Fett B, Bushman FD, Bittinger K. Sunbeam: an extensible pipeline for analyzing metagenomic sequencing experiments. Microbiome. 2019 Mar 22;7(1):46. doi: 10.1186/s40168-019-0658-x. PMID: 30902113; PMCID: PMC6429786.</li>
+<li><strong>bowtie2</strong>: Langmead, B., &amp; Salzberg, S. L. (2012). Fast gapped-read alignment with Bowtie 2. Nature Methods, 9(4), 357-359.</li>
+<li><strong>Kraken2</strong>: Wood, D.E., Lu, J. &amp; Langmead, B. Improved metagenomic analysis with Kraken 2. Genome Biol 20, 257 (2019). https://doi.org/10.1186/s13059-019-1891-0.</li>
+<li><strong>KrakenTools</strong>: Lu J, Rincon N, Wood D E, Breitwieser F P, Pockrandt C, Langmead B, Salzberg S L, Steinegger M. Metagenome analysis using the Kraken software suite. Nature Protocols, doi: 10.1038/s41596-022-00738-y (2022).</li>
+<li><strong>Bracken</strong>: Lu, J., Breitwieser, F. P., Thielen, P., &amp; Salzberg, S. L. (2017). Bracken: Estimating species abundance in metagenomics data. PeerJ, 5, e3276.</li>
+<li><strong>T2T-CHM13v2.0 human genome</strong>: Rhie A, Nurk S, Cechova M, Hoyt SJ, Taylor DJ, et al. The complete sequence of a human Y chromosome. bioRxiv, 2022. See <a href="https://github.com/marbl/CHM13">GitHub page</a>.</li>
+<li><strong>GRCh38 human genome</strong>: The Human Genome Project, currently maintained by the Genome Reference Consortium (GRC). See its <a href="https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000001405.26/">NIH page</a>.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
