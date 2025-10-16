@@ -182,7 +182,7 @@ Your sample sheet should look as follows, **ensuring you use the exact column na
     Remember that on the M3 MASSIVE cluster, you need to use the **full file path** &ndash; relative file paths don't usually work.
 
 ```bash
-sample,fastq_1,fastq_2,CLS,GenomeIndex
+id,fastq_1,fastq_2,CLS,GenomeIndex
 CONTROL_S1,CONTROL_S1_R1.fastq.gz,CONTROL_S1_R2.fastq.gz,BD_Enhanced_V2,mf33/Databases/ensembl/human/STARgenomeIndex79
 CONTROL_S2,CONTROL_S2_R1.fastq.gz,CONTROL_S1_R2.fastq.gz,BD_Enhanced_V2,mf33/Databases/ensembl/human/STARgenomeIndex79
 TREATMENT_S1,TREATMENT_S1_R1.fastq.gz,TREATMENT_S1_R2.fastq.gz,BD_Enhanced_V2,mf33/Databases/ensembl/human/STARgenomeIndex79
