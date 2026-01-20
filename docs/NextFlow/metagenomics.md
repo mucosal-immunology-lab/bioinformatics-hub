@@ -167,6 +167,7 @@ To adjust the `cluster` profile settings, stay within the appropriate section at
     | *trimgalore*.length | The minimum post-trimming read length required for a read to be retained. (Default: `25`) |
     | *trimgalore*.adapter | Adapter sequence to be trimmed from R1. Defaults to the Illumina adapters. (Default: `'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'`) |
     | *trimgalore*.adapter2 | Adapter sequence to be trimmed from R1. Defaults to the Illumina adapters. (Default: `'AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT'`) |
+    | *decontaminate*.host | The relevant host species you are wanting your reads decontaminated for. Currently, the options are either `'human'` or `'mouse'`. If this field is left empty, the pipeline will default to human for decontamination. |
     | *decontaminate*.hostIndex | The base file path to the host index `.b2tl` files. Be sure to just provide the base name, e.g. `'path/to/folder/chm13v2.0_GRCh38_full_plus_decoy'`. If you don't provide anything, the pipeline will generate the host index for you and place a copy in the results folder. (Default: `''`) |
     | *taxonomy*.kraken2_db | The folder path to the kraken2 database if you have one prepared. If you don't provide anything, the pipeline will generate it for you and place a copy in the results folder. (Default: `''`) |
     | *taxonomy*.kmer_length | The sliding kmer length for Kraken2 to use for generating the database. This will also be used for generating the Bracken-corrected database version. (Default: `35`) |
@@ -214,6 +215,20 @@ To adjust the `cluster` profile settings, stay within the appropriate section at
 !!! warning "Nextflow Error Status (137)"
 
     Nextflow error status (137) relates to insufficent RAM allocated to the job. If you get this error, try allocating more resources to the job that failed.
+
+!!! tip "Host decontamination"
+
+    As mentioned in the parameters customisation, you can currently select between either human or mouse for host decontamination.
+
+    - The `'mouse'` option will use the [GRCm39 mouse genome (release M33)](https://www.gencodegenes.org/mouse/release_M33.html) provided by Gencode.
+
+    - The `'human'` option will utilise a custom composite of both the [telomere-to-telomere consortium CHM13](https://github.com/marbl/CHM13) and [1000 Genomes GRCh38 (full analysis set + decoy)](https://www.internationalgenome.org/data/) human genomes to provide better coverage for decontamination.<sup>[1](https://journals.asm.org/doi/10.1128/mbio.01607-23)</sup>
+
+    If you want to generate your own genome index for contamination, download the appropriate genome `.fasta` file, and run the following code (where `${fasta_name}` is the genome file and `${index_prefix}` is the base genome index name you want, e.g. `'GRCm39'`), ensuring you use the `--large-index` flag:
+
+    ```
+    bowtie2-build ${fasta_name} ${index_prefix} --large-index
+    ```
 
 ## Outputs 📤
 
