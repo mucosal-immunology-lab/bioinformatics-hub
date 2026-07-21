@@ -11,15 +11,17 @@ The following datasets have been uploaded to the NCBI Sequencing Read Archive (S
 | Sequencing type | Sequencing runs (uploaded) |
 |---|---|
 | Bulk transcriptomics | 425 |
-| Single-cell transcriptomics | 10 |
+| Single-cell transcriptomics | 11 |
 | Shotgun metagenomics | 310 |
-| 16S amplicon | 1,099 |
+| 16S amplicon | 1,229 |
 | ITS amplicon | 373 |
 
 ### Datasets
 
 | Host organism | Context | BioProject | Availability | Bulk transcriptomics | Single-cell transcriptomics| Shotgun metagenomics | 16S amplicon | ITS amplicon |
 |---|---|---|---|---|---|---|---|---|
+| Mouse | Hookworm infection | PRJNA1498205 | :hourglass: To be released | | **1** multiplexed CD45+ cells from lung digests | | | |
+| Human + Mouse | Exclusive enteral nutrition (EEN) + gut health | PRJNA1476859 | :hourglass: To be released | | | | **40** human stool + **90** mouse stool | |
 | Human + Mouse | Silicosis | [PRJNA1289989](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1289989) &ndash; 2026 | :white_check_mark: Released | | **4** Human BAL + **4** Mouse whole lung digest | | | |
 | Mouse | High fat diet | [PRJNA1131116](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1131116) &ndash; 2024 | :white_check_mark: Released | | | **24** ileum luminal samples + **24** ileum mucosal samples + **22** colon luminal samples | **30** stool samples | |
 | Mouse | Early life antibiotic treatment | [PRJNA1112091](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1112091) &ndash; 2024 | :white_check_mark: Released | | **2** lung structural cell digests | **96** stool samples | **41** lung tissue samples + **30** BAL samples | |
