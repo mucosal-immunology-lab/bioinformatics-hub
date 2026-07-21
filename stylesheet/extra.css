@@ -1,0 +1,10 @@
+.md-clipboard {
+    /* Customize the copy button */
+    background-color: #ffffff;
+    color: #3f51b5
+  }
+
+/* Set grid to display 3 columns on all screen sizes */
+.grid.cards {
+  grid-template-columns: repeat(3, 1fr);
+}
